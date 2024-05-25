@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="tp_lab2" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/tp_lab2" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/tp_lab2" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="CostoAgregado.cpp" />
+		<Unit filename="CostoAgregado.h" />
+		<Unit filename="CostoAgregadoArchivo.cpp" />
+		<Unit filename="CostoAgregadoArchivo.h" />
+		<Unit filename="CostoAgregadoManager.cpp" />
+		<Unit filename="CostoAgregadoManager.h" />
+		<Unit filename="Fecha.cpp" />
+		<Unit filename="Fecha.h" />
+		<Unit filename="Prenda.cpp" />
+		<Unit filename="Prenda.h" />
+		<Unit filename="PrendaArchivo.cpp" />
+		<Unit filename="PrendaArchivo.h" />
+		<Unit filename="PrendaManager.cpp" />
+		<Unit filename="PrendaManager.h" />
+		<Unit filename="Taller.cpp" />
+		<Unit filename="Taller.h" />
+		<Unit filename="TallerArchivo.cpp" />
+		<Unit filename="TallerArchivo.h" />
+		<Unit filename="TallerManager.cpp" />
+		<Unit filename="TallerManager.h" />
+		<Unit filename="Venta.cpp" />
+		<Unit filename="Venta.h" />
+		<Unit filename="VentaArchivo.cpp" />
+		<Unit filename="VentaArchivo.h" />
+		<Unit filename="VentaManager.cpp" />
+		<Unit filename="VentaManager.h" />
+		<Unit filename="main.cpp" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

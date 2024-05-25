@@ -1,0 +1,51 @@
+# depslib dependency file v1.0
+1716670099 source:c:\users\administrator\downloads\tp_lab2\costoagregado.cpp
+
+1716669990 source:c:\users\administrator\downloads\tp_lab2\costoagregadoarchivo.cpp
+
+1716670137 source:c:\users\administrator\downloads\tp_lab2\costoagregadomanager.cpp
+
+1716672213 source:c:\users\administrator\downloads\tp_lab2\fecha.cpp
+	"Fecha.h"
+	<ctime>
+
+1584205420 source:c:\users\administrator\downloads\tp_lab2\main.cpp
+	<iostream>
+
+1716670373 source:c:\users\administrator\downloads\tp_lab2\prenda.cpp
+
+1716670404 source:c:\users\administrator\downloads\tp_lab2\prendaarchivo.cpp
+
+1716670430 source:c:\users\administrator\downloads\tp_lab2\prendamanager.cpp
+
+1716672237 source:c:\users\administrator\downloads\tp_lab2\taller.cpp
+	<iostream>
+	<cstring>
+	<string>
+	"Taller.h"
+
+1716672254 source:c:\users\administrator\downloads\tp_lab2\tallerarchivo.cpp
+	"TallerArchivo.h"
+
+1716670521 source:c:\users\administrator\downloads\tp_lab2\tallermanager.cpp
+
+1716670635 source:c:\users\administrator\downloads\tp_lab2\venta.cpp
+
+1716670655 source:c:\users\administrator\downloads\tp_lab2\ventaarchivo.cpp
+
+1716670677 source:c:\users\administrator\downloads\tp_lab2\ventamanager.cpp
+
+1716671463 c:\users\administrator\downloads\tp_lab2\tallerarchivo.h
+	<string>
+	"taller.h"
+
+1716671337 c:\users\administrator\downloads\tp_lab2\taller.h
+	<iostream>
+	<string>
+	<cstring>
+	"Fecha.h"
+
+1716671224 c:\users\administrator\downloads\tp_lab2\fecha.h
+	<iostream>
+	<string>
+

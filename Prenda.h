@@ -1,45 +1,42 @@
 #ifndef PRENDA_H_INCLUDED
 #define PRENDA_H_INCLUDED
-
-#include <string>
-#include "Fecha.h"
-#include <cstring>
+#include <iostream>
 using namespace std;
-class Prenda{
 
-    private:
-        int _codigoPrenda;
-        char _nombre[50];
-        char _talle[50];
-        char _Modelo[50];
-        char _color[50];
-        char _campania[50];
-        int _cantidad;
-        float _porcentajeGanancia;
-        bool _activo;
-
-    public:
-        Prenda(int codPren,const char*n, const char *talle, const char *mod ,const char*co, const char *cam, int cant, float pg, bool activo);
-        //Prenda();
-        void setCodigoPrenda(int codigoPrenda);
-        void setNombre(const char*n);
-        void setTalle(const char *talle);
-        void setModelo(const char *mod);
-        void setColor(const char*co);
-        void setCampania(const char *cam);
-        void setCantidad(int cant);
-        void setPorcentajeGanancia(float pg);
-        void setActivo(bool activo);
-
-        int getCodigoPrenda();
-        char getNombre();
-        char getTalle();
-        char getModelo();
-        char getColor();
-        char getCampania();
-        int getCantidad();
-        float getPorcentajeGanancia();
-        bool getActivo();
+class Prenda
+{
+private:
+    int CodigoPrenda;
+    string NombrePrenda;
+    string Modelo;
+    string Talle;
+    string Color;
+    string Campania;
+    int Cantidad;
+    float PorcentajeDeGanancia;
+    bool EstadoDePrenda;
+public:
+    Prenda(int codigo_prenda, string nombre_prenda, string modelo, string talle, string color, string campania, int cantidad, float porcentaje_ganancia, bool estado);
+    //
+    int getCodigo();
+    string getNombrePrenda();
+    string getModelo();
+    string getTalle();
+    string getColor();
+    string getCampania();
+    int getCantidad();
+    float getPorcentajeDeGanancia();
+    bool getEstadoDePrenda();
+    //
+    void setCodigoPrenda(int codigo_prenda);
+    void setNombrePrenda(string nombre_prenda);
+    void setModelo(string modelo);
+    void setTalle(string talle);
+    void setColor(string color);
+    void setCampania(string campania);
+    void setCantidad(int cantidad);
+    void setPorcentajeDeGanancia(float porcentaje_ganancia);
+    void setEstado(bool estado);
 };
 
 #endif // PRENDA_H_INCLUDED

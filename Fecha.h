@@ -9,14 +9,14 @@ class Fecha
 private:
     int Dia, Mes, Anio;
 public:
-    Fecha(int dia, int mes, int anio);
+    Fecha(int _Dia, int _Mes, int _Anio);
     Fecha();
     int getDia();
     int getMes();
     int getAnio();
-    void setDia(int dia);
-    void setMes(int mes);
-    void setAnio(int anio);
+    void setDia(int _Dia);
+    void setMes(int _Mes);
+    void setAnio(int _Anio);
     void MostrarFecha();
     void CargarFecha();
 };

@@ -1,79 +1,64 @@
 #include "Fecha.h"
 #include <ctime>
 
-void Fecha :: setDia(int dia)
-{
-        Dia = dia;
-}
+// Constructor
 
-int Fecha :: getDia()
-{
+//getters
+int Fecha::getDia(){
     return Dia;
 }
 
-void Fecha :: setMes(int mes)
-{
-        Mes = mes;
-}
-
-int Fecha :: getMes()
-{
+int Fecha::getMes(){
     return Mes;
 }
 
-void Fecha :: setAnio(int anio)
-{
-        Anio = anio;
-}
-
-int Fecha :: getAnio()
-{
+int Fecha::getAnio(){
     return Anio;
 }
 
-Fecha :: Fecha()
-{
-     time_t t;
-    struct tm *f;
-    time(&t);
-    f = localtime(&t);
-    Dia = f->tm_mday;
-    Mes = f->tm_mon+1;
-    Anio = f->tm_year+1900;
+//setters
+void Fecha::setDia(int _Dia){
+    Dia = _Dia;
 }
 
-Fecha :: Fecha(int dia, int mes, int anio)
-{
+void Fecha::setMes(int _Mes){
+    Mes = _Mes;
+}
+
+void Fecha::setAnio(int _Anio){
+    Anio = _Anio;
+}
+
+//mostrar fecha
+void Fecha::MostrarFecha() {
+    cout << Dia << "/" << Mes << "/" << Anio << endl;
+}
+
+//cargar fecha
+void Fecha::CargarFecha() {
+    int dia, mes, anio;
+    bool fechaValida = false;
+
+    while (!fechaValida) {
+        cout << "Ingrese dia: ";
+        cin >> dia;
+        cout << "Ingrese mes: ";
+        cin >> mes;
+        cout << "Ingrese anio: ";
+        cin >> anio;
+
+        // validacion de la fecha ingresaa
+        if (dia >= 1 && dia <= 31 && mes >= 1 && mes <= 12 && anio >= 2020 && anio <= 2030) {//el año lo hice entre 2020 y 2030
+            fechaValida = true;
+        } else {
+            cout << "Fecha no válida. Por favor, ingrese nuevamente.\n";
+        }
+    }
+
     setDia(dia);
     setMes(mes);
     setAnio(anio);
 }
 
-void Fecha :: MostrarFecha()
-{
-     if (Dia < 10)
-        {
-            std::cout << "0";
-        }
-            std::cout << Dia << "/";
-    if (Mes < 10)
-    {
-        std::cout << "0";
-    }
-    std::cout << Mes << "/";
-    std::cout <<Anio << std::endl;
-}
 
-void Fecha :: CargarFecha()
-{
-    cout << "INGRESE EL DIA: ";
-    cin >> Dia;
-    cout << endl;
-    cout << "INGRESE EL MES: ";
-    cin >> Mes;
-    cout << endl;
-    cout << "INGRESE EL ANIO: ";
-    cin >> Anio;
-    cout << endl;
-    ///hojdosndscnksd
-}
+

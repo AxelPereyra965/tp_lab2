@@ -19,7 +19,7 @@ class Taller
     Fecha FechaDeEntrega;
     bool Estado;
 public:
-    Taller(int _numero_pedido=0 ,string _nombre_taller = "", string _nombre_prenda="", float _precio_confeccion = 0.0f,  char modelo_confeccion = 'n', string _color = "", int cant_prendas = 0, Fecha fecha_de_entrega = Fecha(), bool _estado = false);
+    Taller(int _NumeroDePedido=0 ,string _NombreTaller = "", string _NombrePrenda="", float _PrecioDeConfeccion = 0.0f,  char _ModeloConfeccion = 'n', string _Color = "", int _CantidadPrendas = 0, Fecha _FechaDeEntrega = Fecha(), bool _Estado = false);
     //Taller();
     int getNumeroDePedido();
     string getNombreTaller();
@@ -31,17 +31,15 @@ public:
     Fecha getFechaEntrega();
     bool getEstado();
     //
-    void setNumeroDePedido(int _numero_pedido);
-    void setNombreTaller(string _nombre_taller);
-    void setNombrePrenda(string _nombre_prenda);
-    void setPrecioConfeccion(float _precio_confeccion);
-    void setModeloConfeccion(char modelo_confeccion);
-    void setColor(string _color);
-    void setCantidadPrendas(int cant_prendas);
-    void setFechaEntrega(Fecha fecha_de_entrega);
-    void setEstado(bool _estado);
-
-
+    void setNumeroDePedido(int _NumeroDePedido);
+    void setNombreTaller(string _NombreTaller);
+    void setNombrePrenda(string _NombrePrenda);
+    void setPrecioConfeccion(float _PrecioDeConfeccion);
+    void setModeloConfeccion(char _ModeloConfeccion);
+    void setColor(string _Color);
+    void setCantidadPrendas(int _CantidadPrendas);
+    void setFechaEntrega(Fecha _FechaDeEntrega);
+    void setEstado(bool _Estado);
 };
 
 

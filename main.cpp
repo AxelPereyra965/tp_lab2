@@ -1,8 +1,8 @@
 #include <iostream>
-#include "ManagerCostoAgregado.h"
-#include "ManagerPrenda.h"
-#include "ManagerTaller.h"
-#include "ManagerVenta.h"
+#include "CostoAgregadoManager.h"
+#include "PrendaManager.h"
+#include "TallerManager.h"
+#include "VentaManager.h"
 
 using namespace std;
 
@@ -24,7 +24,7 @@ int main()
         switch(opcion){
             case 1:
                 {
-                    
+
                 }
                 break;
             case 2:

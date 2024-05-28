@@ -49,3 +49,91 @@
 	<iostream>
 	<string>
 
+1716906684 source:c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\costoagregado.cpp
+	"CostoAgregado.h"
+
+1716906684 c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\costoagregado.h
+
+1716903981 source:c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\costoagregadoarchivo.cpp
+	"CostoAgregadoArchivo.h"
+
+1716903981 c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\costoagregadoarchivo.h
+
+1716903981 source:c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\costoagregadomanager.cpp
+	"CostoAgregadoManager.h"
+
+1716903981 c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\costoagregadomanager.h
+
+1716907452 source:c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\fecha.cpp
+	"Fecha.h"
+	<ctime>
+
+1716907504 c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\fecha.h
+	<iostream>
+	<string>
+
+1716906684 source:c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\main.cpp
+	<iostream>
+	"CostoAgregadoManager.h"
+	"PrendaManager.h"
+	"TallerManager.h"
+	"VentaManager.h"
+
+1716908580 source:c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\prenda.cpp
+	"Prenda.h"
+
+1716908454 c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\prenda.h
+	<iostream>
+
+1716903981 source:c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\prendaarchivo.cpp
+	"PrendaArchivo.h"
+
+1716903981 c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\prendaarchivo.h
+
+1716903981 source:c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\prendamanager.cpp
+	"PrendaManager.h"
+
+1716903981 c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\prendamanager.h
+
+1716909257 source:c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\taller.cpp
+	<iostream>
+	<cstring>
+	<string>
+	"Taller.h"
+
+1716909147 c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\taller.h
+	<iostream>
+	<string>
+	<cstring>
+	"Fecha.h"
+
+1716907606 source:c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\tallerarchivo.cpp
+	"TallerArchivo.h"
+
+1716903981 c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\tallerarchivo.h
+	<string>
+	"taller.h"
+
+1716903981 source:c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\tallermanager.cpp
+
+1716903981 source:c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\venta.cpp
+	"Venta.h"
+
+1716903981 c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\venta.h
+	"Fecha.h"
+
+1716903981 source:c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\ventaarchivo.cpp
+	"VentaArchivo.h"
+
+1716903981 c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\ventaarchivo.h
+
+1716903981 source:c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\ventamanager.cpp
+	"VentaManager.h"
+
+1716903981 c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\ventamanager.h
+
+1716903981 c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\tallermanager.h
+	<cstring>
+	"Taller.h"
+	"TallerArchivo.h"
+

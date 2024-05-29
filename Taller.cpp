@@ -6,8 +6,30 @@
 using namespace std;
 
 
-
 // Constructor
+Taller::Taller(){
+    NumeroDePedido=0;
+    NombreTaller="";
+    NombrePrenda="";
+    PrecioDeConfeccion=0;
+    ModeloConfeccion= 'n';
+    Color = "";
+    CantidadPrendas = 0;
+    FechaDeEntrega = Fecha();
+    Estado = false;
+}
+Taller::Taller(int _NumeroDePedido,string _NombreTaller, string _NombrePrenda, float _PrecioDeConfeccion,  char _ModeloConfeccion , string _Color, int _CantidadPrendas, Fecha _FechaDeEntrega, bool _Estado)
+{
+    setNumeroDePedido(_NumeroDePedido);
+    setNombreTaller(_NombreTaller);
+    setNombrePrenda(_NombrePrenda);
+    setPrecioConfeccion(_PrecioDeConfeccion);
+    setModeloConfeccion(_ModeloConfeccion);
+    setColor(_Color);
+    setCantidadPrendas(_CantidadPrendas);
+    setFechaEntrega(_FechaDeEntrega);
+    setEstado(_Estado);
+}
 
 //getters
 int Taller::getNumeroDePedido() {

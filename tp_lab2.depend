@@ -232,3 +232,98 @@
 1716936847 source:c:\users\lucas\onedrive\escritorio\nueva carpeta\laboratorio2_proyecto\ventamanager.cpp
 	"VentaManager.h"
 
+1717002921 source:c:\users\administrator\downloads\laboratorio2_proyecto\costoagregado.cpp
+	"CostoAgregado.h"
+
+1717002877 c:\users\administrator\downloads\laboratorio2_proyecto\costoagregado.h
+
+1717001840 source:c:\users\administrator\downloads\laboratorio2_proyecto\costoagregadoarchivo.cpp
+	"CostoAgregadoArchivo.h"
+	<iostream>
+
+1717001840 c:\users\administrator\downloads\laboratorio2_proyecto\costoagregadoarchivo.h
+	"CostoAgregado.h"
+
+1717001840 source:c:\users\administrator\downloads\laboratorio2_proyecto\costoagregadomanager.cpp
+	"CostoAgregadoManager.h"
+
+1717001840 c:\users\administrator\downloads\laboratorio2_proyecto\costoagregadomanager.h
+
+1717002821 source:c:\users\administrator\downloads\laboratorio2_proyecto\fecha.cpp
+	"Fecha.h"
+	<ctime>
+
+1717001840 c:\users\administrator\downloads\laboratorio2_proyecto\fecha.h
+	<iostream>
+	<string>
+
+1717001840 source:c:\users\administrator\downloads\laboratorio2_proyecto\main.cpp
+	<iostream>
+	"CostoAgregadoManager.h"
+	"PrendaManager.h"
+	"TallerManager.h"
+	"VentaManager.h"
+
+1717001840 c:\users\administrator\downloads\laboratorio2_proyecto\prendamanager.h
+
+1717001840 c:\users\administrator\downloads\laboratorio2_proyecto\tallermanager.h
+	<cstring>
+	"Taller.h"
+	"TallerArchivo.h"
+
+1717002889 c:\users\administrator\downloads\laboratorio2_proyecto\taller.h
+	<iostream>
+	<string>
+	<cstring>
+	"Fecha.h"
+
+1717001840 c:\users\administrator\downloads\laboratorio2_proyecto\tallerarchivo.h
+	"taller.h"
+
+1717001840 c:\users\administrator\downloads\laboratorio2_proyecto\ventamanager.h
+
+1717002799 source:c:\users\administrator\downloads\laboratorio2_proyecto\prenda.cpp
+	"Prenda.h"
+
+1717002761 c:\users\administrator\downloads\laboratorio2_proyecto\prenda.h
+	<iostream>
+
+1717001840 source:c:\users\administrator\downloads\laboratorio2_proyecto\prendaarchivo.cpp
+	"PrendaArchivo.h"
+	<iostream>
+
+1717001840 c:\users\administrator\downloads\laboratorio2_proyecto\prendaarchivo.h
+	"Prenda.h"
+
+1717001840 source:c:\users\administrator\downloads\laboratorio2_proyecto\prendamanager.cpp
+	"PrendaManager.h"
+
+1717002936 source:c:\users\administrator\downloads\laboratorio2_proyecto\taller.cpp
+	<iostream>
+	<cstring>
+	<string>
+	"Taller.h"
+
+1717001840 source:c:\users\administrator\downloads\laboratorio2_proyecto\tallerarchivo.cpp
+	"TallerArchivo.h"
+	<iostream>
+
+1717001840 source:c:\users\administrator\downloads\laboratorio2_proyecto\tallermanager.cpp
+
+1717002949 source:c:\users\administrator\downloads\laboratorio2_proyecto\venta.cpp
+	"Venta.h"
+	"Venta.h"
+
+1717002863 c:\users\administrator\downloads\laboratorio2_proyecto\venta.h
+	"Fecha.h"
+
+1717001840 source:c:\users\administrator\downloads\laboratorio2_proyecto\ventaarchivo.cpp
+	"VentaArchivo.h"
+	<iostream>
+
+1717001840 c:\users\administrator\downloads\laboratorio2_proyecto\ventaarchivo.h
+	"Venta.h"
+
+1717001840 source:c:\users\administrator\downloads\laboratorio2_proyecto\ventamanager.cpp
+	"VentaManager.h"
+

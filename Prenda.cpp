@@ -1,7 +1,29 @@
 #include "Prenda.h"
 
 // Constructor
-
+Prenda::Prenda(){
+    CodigoPrenda=0;
+    NombrePrenda="";
+    Modelo="";
+    Talle="";
+    Color="";
+    Campania="";
+    Cantidad=0;
+    PorcentajeDeGanancia=0.0f;
+    EstadoDePrenda= false;
+}
+Prenda::Prenda(int _CodigoPrenda, string _NombrePrenda, string _Modelo, string _Talle, string _Color, string _Campania, int _Cantidad, float _PorcentajeDeGanancia, bool _EstadoDePrenda)
+{
+    setCodigoPrenda(_CodigoPrenda);
+    setNombrePrenda(_NombrePrenda);
+    setModelo(_Modelo);
+    setTalle(_Talle);
+    setColor(_Color);
+    setCampania(_Campania);
+    setCantidad(_Cantidad);
+    setPorcentajeDeGanancia(_PorcentajeDeGanancia);
+    setEstadoDePrenda(_EstadoDePrenda);
+}
 
 //getters
 int Prenda::getCodigo() {
@@ -73,6 +95,6 @@ void Prenda::setPorcentajeDeGanancia(float _PorcentajeDeGanancia) {
     PorcentajeDeGanancia = _PorcentajeDeGanancia;
 }
 
-void Prenda::setEstado(bool _EstadoDePrenda) {
+void Prenda::setEstadoDePrenda(bool _EstadoDePrenda) {
     EstadoDePrenda = _EstadoDePrenda;
 }

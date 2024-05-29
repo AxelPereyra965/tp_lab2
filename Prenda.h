@@ -17,6 +17,7 @@ private:
     bool EstadoDePrenda;
 public:
     Prenda(int _CodigoPrenda, string _NombrePrenda, string _Modelo, string _Talle, string _Color, string _Campania, int _Cantidad, float _PorcentajeDeGanancia, bool _EstadoDePrenda);
+    Prenda();
     //
     int getCodigo();
     string getNombrePrenda();
@@ -36,7 +37,7 @@ public:
     void setCampania(string _Campania);
     void setCantidad(int _Cantidad);
     void setPorcentajeDeGanancia(float _PorcentajeDeGanancia);
-    void setEstado(bool _EstadoDePrenda);
+    void setEstadoDePrenda(bool _EstadoDePrenda);
 };
 
 #endif // PRENDA_H_INCLUDED

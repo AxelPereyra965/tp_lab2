@@ -2,6 +2,17 @@
 #include <ctime>
 
 // Constructor
+Fecha::Fecha(){
+    Dia = 5;
+    Mes = 6;
+    Anio = 2024;
+}
+Fecha::Fecha(int _Dia,int _Mes, int _Anio){
+    setDia(_Dia);
+    setMes(_Mes);
+    setAnio(_Anio);
+}
+
 
 //getters
 int Fecha::getDia(){

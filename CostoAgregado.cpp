@@ -2,6 +2,17 @@
 
 
 // Constructor
+CostoAgregado::CostoAgregado(){
+    CodigoPrenda=0;
+    CostoPackaging=0.0f;
+    CostoEtiqueta=0.0f;
+}
+CostoAgregado::CostoAgregado(int _CodigoPrenda, float _CostoPackaging, float _CostoEtiqueta)
+{
+    setCodigo(_CodigoPrenda);
+    setPackaging(_CostoPackaging);
+    setEtiqueta(_CostoEtiqueta);
+}
 
 
 // Getters

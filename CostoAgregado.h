@@ -9,6 +9,8 @@ private:
     float CostoEtiqueta;
 public:
     CostoAgregado(int _CodigoPrenda, float _CostoPackaging, float _CostoEtiqueta);
+    CostoAgregado();
+    //
     int getCodigo();
     float getPackaging();
     float getEtiqueta();

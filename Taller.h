@@ -20,7 +20,8 @@ class Taller
     bool Estado;
 public:
     Taller(int _NumeroDePedido=0 ,string _NombreTaller = "", string _NombrePrenda="", float _PrecioDeConfeccion = 0.0f,  char _ModeloConfeccion = 'n', string _Color = "", int _CantidadPrendas = 0, Fecha _FechaDeEntrega = Fecha(), bool _Estado = false);
-    //Taller();
+    Taller();
+    //
     int getNumeroDePedido();
     string getNombreTaller();
     string getNombrePrenda();

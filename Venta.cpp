@@ -4,6 +4,28 @@
 #include "Venta.h"
 
 // Constructor
+Venta::Venta(){
+    CodigoPrenda =0;
+    NombrePrenda="";
+    Modelo="";
+    Talle="";
+    Color="";
+    Campania="";
+    Cantidad=0;
+    FechaDeVenta=Fecha();
+}
+
+Venta::Venta(int _CodigoPrenda, string _NombrePrenda, string _Modelo, string _Talle, string _Color, string _Campania, int _Cantidad, Fecha _FechaDeVenta)
+{
+    setCodigoPrenda(_CodigoPrenda);
+    setNombrePrenda(_NombrePrenda);
+    setModelo(_Modelo);
+    setTalle(_Talle);
+    setColor(_Color);
+    setCampania(_Campania);
+    setCantidad(_Cantidad);
+    setVentaFecha(_FechaDeVenta);
+}
 
 //getters
 int Venta::getCodigo() {

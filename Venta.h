@@ -15,6 +15,7 @@ private:
     Fecha FechaDeVenta;
 public:
     Venta(int _CodigoPrenda, string _NombrePrenda, string _Modelo, string _Talle, string _Color, string _Campania, int _Cantidad, Fecha _FechaDeVenta);
+    Venta();
     //
     int getCodigo();
     string getNombrePrenda();

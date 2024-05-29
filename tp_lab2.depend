@@ -137,3 +137,98 @@
 	"Taller.h"
 	"TallerArchivo.h"
 
+1716936847 source:c:\users\lucas\onedrive\escritorio\nueva carpeta\laboratorio2_proyecto\costoagregado.cpp
+	"CostoAgregado.h"
+
+1716936847 c:\users\lucas\onedrive\escritorio\nueva carpeta\laboratorio2_proyecto\costoagregado.h
+
+1716941453 source:c:\users\lucas\onedrive\escritorio\nueva carpeta\laboratorio2_proyecto\costoagregadoarchivo.cpp
+	"CostoAgregadoArchivo.h"
+	<iostream>
+
+1716941455 c:\users\lucas\onedrive\escritorio\nueva carpeta\laboratorio2_proyecto\costoagregadoarchivo.h
+	"CostoAgregado.h"
+
+1716936847 source:c:\users\lucas\onedrive\escritorio\nueva carpeta\laboratorio2_proyecto\costoagregadomanager.cpp
+	"CostoAgregadoManager.h"
+
+1716936847 c:\users\lucas\onedrive\escritorio\nueva carpeta\laboratorio2_proyecto\costoagregadomanager.h
+
+1716936847 source:c:\users\lucas\onedrive\escritorio\nueva carpeta\laboratorio2_proyecto\fecha.cpp
+	"Fecha.h"
+	<ctime>
+
+1716936847 c:\users\lucas\onedrive\escritorio\nueva carpeta\laboratorio2_proyecto\fecha.h
+	<iostream>
+	<string>
+
+1716936847 source:c:\users\lucas\onedrive\escritorio\nueva carpeta\laboratorio2_proyecto\main.cpp
+	<iostream>
+	"CostoAgregadoManager.h"
+	"PrendaManager.h"
+	"TallerManager.h"
+	"VentaManager.h"
+
+1716936847 c:\users\lucas\onedrive\escritorio\nueva carpeta\laboratorio2_proyecto\prendamanager.h
+
+1716936847 c:\users\lucas\onedrive\escritorio\nueva carpeta\laboratorio2_proyecto\tallermanager.h
+	<cstring>
+	"Taller.h"
+	"TallerArchivo.h"
+
+1716936847 c:\users\lucas\onedrive\escritorio\nueva carpeta\laboratorio2_proyecto\taller.h
+	<iostream>
+	<string>
+	<cstring>
+	"Fecha.h"
+
+1716941654 c:\users\lucas\onedrive\escritorio\nueva carpeta\laboratorio2_proyecto\tallerarchivo.h
+	"taller.h"
+
+1716936847 c:\users\lucas\onedrive\escritorio\nueva carpeta\laboratorio2_proyecto\ventamanager.h
+
+1716936847 source:c:\users\lucas\onedrive\escritorio\nueva carpeta\laboratorio2_proyecto\prenda.cpp
+	"Prenda.h"
+
+1716936847 c:\users\lucas\onedrive\escritorio\nueva carpeta\laboratorio2_proyecto\prenda.h
+	<iostream>
+
+1716941640 source:c:\users\lucas\onedrive\escritorio\nueva carpeta\laboratorio2_proyecto\prendaarchivo.cpp
+	"PrendaArchivo.h"
+	<iostream>
+
+1716941615 c:\users\lucas\onedrive\escritorio\nueva carpeta\laboratorio2_proyecto\prendaarchivo.h
+	"Prenda.h"
+
+1716936847 source:c:\users\lucas\onedrive\escritorio\nueva carpeta\laboratorio2_proyecto\prendamanager.cpp
+	"PrendaManager.h"
+
+1716936847 source:c:\users\lucas\onedrive\escritorio\nueva carpeta\laboratorio2_proyecto\taller.cpp
+	<iostream>
+	<cstring>
+	<string>
+	"Taller.h"
+
+1716941615 source:c:\users\lucas\onedrive\escritorio\nueva carpeta\laboratorio2_proyecto\tallerarchivo.cpp
+	"TallerArchivo.h"
+	<iostream>
+
+1716936847 source:c:\users\lucas\onedrive\escritorio\nueva carpeta\laboratorio2_proyecto\tallermanager.cpp
+
+1716936847 source:c:\users\lucas\onedrive\escritorio\nueva carpeta\laboratorio2_proyecto\venta.cpp
+	"Venta.h"
+	"Venta.h"
+
+1716936847 c:\users\lucas\onedrive\escritorio\nueva carpeta\laboratorio2_proyecto\venta.h
+	"Fecha.h"
+
+1716941913 source:c:\users\lucas\onedrive\escritorio\nueva carpeta\laboratorio2_proyecto\ventaarchivo.cpp
+	"VentaArchivo.h"
+	<iostream>
+
+1716941923 c:\users\lucas\onedrive\escritorio\nueva carpeta\laboratorio2_proyecto\ventaarchivo.h
+	"Venta.h"
+
+1716936847 source:c:\users\lucas\onedrive\escritorio\nueva carpeta\laboratorio2_proyecto\ventamanager.cpp
+	"VentaManager.h"
+

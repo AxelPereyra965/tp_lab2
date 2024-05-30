@@ -1,8 +1,5 @@
 #include <iostream>
-#include "CostoAgregadoManager.h"
-#include "PrendaManager.h"
-#include "TallerManager.h"
-#include "VentaManager.h"
+#include "Menus.h"
 
 using namespace std;
 
@@ -24,17 +21,17 @@ int main()
         switch(opcion){
             case 1:
                 {
-
+                    Menu1();
                 }
                 break;
             case 2:
                 {
-
+                    Menu2();
                 }
                 break;
             case 3:
                 {
-
+                    Menu3();
                 }
                 break;
             case 0:

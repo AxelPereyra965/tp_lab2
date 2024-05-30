@@ -327,3 +327,104 @@
 1717001840 source:c:\users\administrator\downloads\laboratorio2_proyecto\ventamanager.cpp
 	"VentaManager.h"
 
+1717021878 source:c:\users\dream\desktop\proyecto\laboratorio2_proyecto\costoagregado.cpp
+	"CostoAgregado.h"
+
+1717021878 c:\users\dream\desktop\proyecto\laboratorio2_proyecto\costoagregado.h
+
+1717021878 source:c:\users\dream\desktop\proyecto\laboratorio2_proyecto\costoagregadoarchivo.cpp
+	"CostoAgregadoArchivo.h"
+	<iostream>
+
+1717028187 c:\users\dream\desktop\proyecto\laboratorio2_proyecto\costoagregadoarchivo.h
+	"CostoAgregado.h"
+
+1717028187 source:c:\users\dream\desktop\proyecto\laboratorio2_proyecto\costoagregadomanager.cpp
+	"CostoAgregadoManager.h"
+	<iostream>
+
+1717028277 c:\users\dream\desktop\proyecto\laboratorio2_proyecto\costoagregadomanager.h
+	"CostoAgregado.h"
+	"CostoAgregadoArchivo.h"
+
+1717021878 source:c:\users\dream\desktop\proyecto\laboratorio2_proyecto\fecha.cpp
+	"Fecha.h"
+	<ctime>
+
+1717021878 c:\users\dream\desktop\proyecto\laboratorio2_proyecto\fecha.h
+	<iostream>
+	<string>
+
+1717026178 source:c:\users\dream\desktop\proyecto\laboratorio2_proyecto\main.cpp
+	<iostream>
+	"Menus.h"
+
+1717021878 c:\users\dream\desktop\proyecto\laboratorio2_proyecto\prendamanager.h
+
+1717021878 c:\users\dream\desktop\proyecto\laboratorio2_proyecto\tallermanager.h
+	<cstring>
+	"Taller.h"
+	"TallerArchivo.h"
+
+1717021878 c:\users\dream\desktop\proyecto\laboratorio2_proyecto\taller.h
+	<iostream>
+	<string>
+	<cstring>
+	"Fecha.h"
+
+1717021878 c:\users\dream\desktop\proyecto\laboratorio2_proyecto\tallerarchivo.h
+	"taller.h"
+
+1717021878 c:\users\dream\desktop\proyecto\laboratorio2_proyecto\ventamanager.h
+
+1717021878 source:c:\users\dream\desktop\proyecto\laboratorio2_proyecto\prenda.cpp
+	"Prenda.h"
+
+1717021878 c:\users\dream\desktop\proyecto\laboratorio2_proyecto\prenda.h
+	<iostream>
+
+1717025035 source:c:\users\dream\desktop\proyecto\laboratorio2_proyecto\prendaarchivo.cpp
+	"PrendaArchivo.h"
+	<iostream>
+
+1717025035 c:\users\dream\desktop\proyecto\laboratorio2_proyecto\prendaarchivo.h
+	"Prenda.h"
+
+1717021878 source:c:\users\dream\desktop\proyecto\laboratorio2_proyecto\prendamanager.cpp
+	"PrendaManager.h"
+
+1717021878 source:c:\users\dream\desktop\proyecto\laboratorio2_proyecto\taller.cpp
+	<iostream>
+	<cstring>
+	<string>
+	"Taller.h"
+
+1717021878 source:c:\users\dream\desktop\proyecto\laboratorio2_proyecto\tallerarchivo.cpp
+	"TallerArchivo.h"
+	<iostream>
+
+1717021878 source:c:\users\dream\desktop\proyecto\laboratorio2_proyecto\tallermanager.cpp
+
+1717022334 source:c:\users\dream\desktop\proyecto\laboratorio2_proyecto\venta.cpp
+	"Venta.h"
+
+1717021878 c:\users\dream\desktop\proyecto\laboratorio2_proyecto\venta.h
+	"Fecha.h"
+
+1717021878 source:c:\users\dream\desktop\proyecto\laboratorio2_proyecto\ventaarchivo.cpp
+	"VentaArchivo.h"
+	<iostream>
+
+1717021878 c:\users\dream\desktop\proyecto\laboratorio2_proyecto\ventaarchivo.h
+	"Venta.h"
+
+1717021878 source:c:\users\dream\desktop\proyecto\laboratorio2_proyecto\ventamanager.cpp
+	"VentaManager.h"
+
+1717026178 c:\users\dream\desktop\proyecto\laboratorio2_proyecto\menus.h
+	"CostoAgregadoManager.h"
+	"PrendaManager.h"
+	"TallerManager.h"
+	"VentaManager.h"
+	<iostream>
+

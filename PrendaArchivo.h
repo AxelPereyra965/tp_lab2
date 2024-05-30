@@ -10,6 +10,7 @@ public:
     bool GuardarPrenda(Prenda obj);
     Prenda LeerPrenda(int indice);
     int ContarRegistrosPrenda();
+    int NuevoCodigoPrenda();
 };
 
 #endif // PRENDAARCHIVO_H_INCLUDED

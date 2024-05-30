@@ -1,8 +1,5 @@
 #include "Venta.h"
 
-
-#include "Venta.h"
-
 // Constructor
 Venta::Venta(){
     CodigoPrenda =0;

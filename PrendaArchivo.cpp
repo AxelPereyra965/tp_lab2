@@ -50,3 +50,16 @@ int PrendaArchivo :: ContarRegistrosPrenda()
     tam = ftell(p) / sizeof(Prenda);
     return tam;
 }
+
+int PrendaArchivo :: NuevoCodigoPrenda()
+{
+    int cantidad = ContarRegistrosPrenda();
+
+    if(cantidad > 0)
+    {
+        return LeerPrenda(cantidad - 1).getCodigo() + 1;
+    }else
+    {
+        return 1;
+    }
+}

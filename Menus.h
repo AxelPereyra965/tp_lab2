@@ -10,6 +10,7 @@ using namespace std;
 //      MENU DE PRENDA
 
 void Menu1()
+
 {
      int opcion;
     while (true){

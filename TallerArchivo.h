@@ -1,7 +1,8 @@
 #ifndef TALLERARCHIVO_H_INCLUDED
 #define TALLERARCHIVO_H_INCLUDED
-#include "taller.h"
-
+#include "Taller.h"
+#include <iostream>
+using namespace std;
 class TallerArchivo
 {
     private:

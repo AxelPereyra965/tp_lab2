@@ -2,7 +2,8 @@
 #define PRENDA_H_INCLUDED
 #include <iostream>
 using namespace std;
-
+#include <string>
+#include <cstring>
 class Prenda
 {
 private:

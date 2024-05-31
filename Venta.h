@@ -1,7 +1,8 @@
 #ifndef VENTA_H_INCLUDED
 #define VENTA_H_INCLUDED
 #include "Fecha.h"
-
+#include <string>
+#include <cstring>
 class Venta
 {
 private:

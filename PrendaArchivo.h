@@ -1,7 +1,8 @@
 #ifndef PRENDAARCHIVO_H_INCLUDED
 #define PRENDAARCHIVO_H_INCLUDED
 #include "Prenda.h"
-
+#include <iostream>
+using namespace std;
 class PrendaArchivo
 {
 private:

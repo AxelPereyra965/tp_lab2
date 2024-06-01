@@ -7,21 +7,19 @@ Prenda::Prenda(){
     Modelo="";
     Talle="";
     Color="";
-    Campania="";
     Cantidad=0;
-    PorcentajeDeGanancia=0.0f;
+    PrecioVenta=0;
     EstadoDePrenda= false;
 }
-Prenda::Prenda(int _CodigoPrenda, string _NombrePrenda, string _Modelo, string _Talle, string _Color, string _Campania, int _Cantidad, float _PorcentajeDeGanancia, bool _EstadoDePrenda)
+Prenda::Prenda(int _CodigoPrenda, string _NombrePrenda, string _Modelo, string _Talle, string _Color, int _Cantidad,int _PrecioVenta, bool _EstadoDePrenda)
 {
     setCodigoPrenda(_CodigoPrenda);
     setNombrePrenda(_NombrePrenda);
     setModelo(_Modelo);
     setTalle(_Talle);
     setColor(_Color);
-    setCampania(_Campania);
     setCantidad(_Cantidad);
-    setPorcentajeDeGanancia(_PorcentajeDeGanancia);
+    setPrecioVenta(_PrecioVenta);
     setEstadoDePrenda(_EstadoDePrenda);
 }
 
@@ -46,17 +44,15 @@ string Prenda::getColor() {
     return Color;
 }
 
-string Prenda::getCampania() {
-    return Campania;
-}
 
 int Prenda::getCantidad() {
     return Cantidad;
 }
 
-float Prenda::getPorcentajeDeGanancia() {
-    return PorcentajeDeGanancia;
+int Prenda::GetPrecioVenta() {
+    return PrecioVenta;
 }
+
 
 bool Prenda::getEstadoDePrenda() {
     return EstadoDePrenda;
@@ -83,17 +79,15 @@ void Prenda::setColor(string _Color) {
     Color = _Color;
 }
 
-void Prenda::setCampania(string _Campania) {
-    Campania = _Campania;
-}
 
 void Prenda::setCantidad(int _Cantidad) {
     Cantidad = _Cantidad;
 }
 
-void Prenda::setPorcentajeDeGanancia(float _PorcentajeDeGanancia) {
-    PorcentajeDeGanancia = _PorcentajeDeGanancia;
+void Prenda::setPrecioVenta(int _PrecioVenta) {
+    PrecioVenta = _PrecioVenta;
 }
+
 
 void Prenda::setEstadoDePrenda(bool _EstadoDePrenda) {
     EstadoDePrenda = _EstadoDePrenda;

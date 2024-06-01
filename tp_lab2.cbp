@@ -32,12 +32,6 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="CostoAgregado.cpp" />
-		<Unit filename="CostoAgregado.h" />
-		<Unit filename="CostoAgregadoArchivo.cpp" />
-		<Unit filename="CostoAgregadoArchivo.h" />
-		<Unit filename="CostoAgregadoManager.cpp" />
-		<Unit filename="CostoAgregadoManager.h" />
 		<Unit filename="Fecha.cpp" />
 		<Unit filename="Fecha.h" />
 		<Unit filename="Menus.h" />
@@ -47,12 +41,6 @@
 		<Unit filename="PrendaArchivo.h" />
 		<Unit filename="PrendaManager.cpp" />
 		<Unit filename="PrendaManager.h" />
-		<Unit filename="Taller.cpp" />
-		<Unit filename="Taller.h" />
-		<Unit filename="TallerArchivo.cpp" />
-		<Unit filename="TallerArchivo.h" />
-		<Unit filename="TallerManager.cpp" />
-		<Unit filename="TallerManager.h" />
 		<Unit filename="Venta.cpp" />
 		<Unit filename="Venta.h" />
 		<Unit filename="VentaArchivo.cpp" />

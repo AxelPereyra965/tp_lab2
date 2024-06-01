@@ -17,12 +17,10 @@ void Menu1()
         system("cls");
         cout << "PRENDAS" << endl;
         cout << "----------------" << endl;
-        cout << "1) CARGAR AVIOS" << endl;
-        cout << "2) CARGAR PRENDA" << endl;
-        cout << "3) MODIFICAR PRENDA" << endl;
-        cout << "4) BORRAR PRENDA" << endl;
-        cout << "5) ENCARGAR A TALLER" << endl;
-        cout << "6) CARGAR VENTA" << endl;
+        cout << "1) CARGAR PRENDA" << endl;
+        cout << "2) MODIFICAR PRENDA" << endl;
+        cout << "3) BORRAR PRENDA" << endl;
+        cout << "4) CARGAR VENTA" << endl;
         cout << "---------------------------" << endl;
         cout << "0) SALIR" << endl;
 
@@ -82,8 +80,7 @@ void Menu2()
         cout << "INVENTARIO" << endl;
         cout << "----------------" << endl;
         cout << "1) VER INVENTARIO" << endl;
-        cout << "2) ENTREGAS PENDIENTES" << endl;
-        cout << "3) DETALLES DE PRENDA" << endl;
+        cout << "2) DETALLES DE PRENDA" << endl;
         cout << "---------------------------" << endl;
         cout << "0) SALIR" << endl;
 

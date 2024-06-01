@@ -7,19 +7,17 @@ Venta::Venta(){
     Modelo="";
     Talle="";
     Color="";
-    Campania="";
     Cantidad=0;
     FechaDeVenta=Fecha();
 }
 
-Venta::Venta(int _CodigoPrenda, string _NombrePrenda, string _Modelo, string _Talle, string _Color, string _Campania, int _Cantidad, Fecha _FechaDeVenta)
+Venta::Venta(int _CodigoPrenda, string _NombrePrenda, string _Modelo, string _Talle, string _Color, int _Cantidad, Fecha _FechaDeVenta)
 {
     setCodigoPrenda(_CodigoPrenda);
     setNombrePrenda(_NombrePrenda);
     setModelo(_Modelo);
     setTalle(_Talle);
     setColor(_Color);
-    setCampania(_Campania);
     setCantidad(_Cantidad);
     setVentaFecha(_FechaDeVenta);
 }
@@ -45,9 +43,6 @@ string Venta::getColor() {
     return Color;
 }
 
-string Venta::getCampania() {
-    return Campania;
-}
 
 int Venta::getCantidad() {
     return Cantidad;
@@ -78,9 +73,6 @@ void Venta::setColor(string _Color) {
     Color = _Color;
 }
 
-void Venta::setCampania(string _Campania) {
-    Campania = _Campania;
-}
 
 void Venta::setCantidad(int _Cantidad) {
     Cantidad = _Cantidad;

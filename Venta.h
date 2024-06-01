@@ -11,11 +11,10 @@ private:
     string Modelo;
     string Talle;
     string Color;
-    string Campania;
     int Cantidad;
     Fecha FechaDeVenta;
 public:
-    Venta(int _CodigoPrenda, string _NombrePrenda, string _Modelo, string _Talle, string _Color, string _Campania, int _Cantidad, Fecha _FechaDeVenta);
+    Venta(int _CodigoPrenda, string _NombrePrenda, string _Modelo, string _Talle, string _Color, int _Cantidad, Fecha _FechaDeVenta);
     Venta();
     //
     int getCodigo();
@@ -23,7 +22,6 @@ public:
     string getModelo();
     string getTalle();
     string getColor();
-    string getCampania();
     int getCantidad();
     Fecha getVentaFecha();
     //
@@ -32,7 +30,6 @@ public:
     void setModelo(string _Modelo);
     void setTalle(string _Talle);
     void setColor(string _Color);
-    void setCampania(string _Campania);
     void setCantidad(int _Cantidad);
     void setVentaFecha(Fecha _FechaDeVenta);
 };

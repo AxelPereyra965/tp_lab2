@@ -7,6 +7,8 @@ using namespace std;
 
 //      MENU DE PRENDA
 
+PrendaManager obj_de_submenu_prenda;
+
 void Menu1()
 
 {
@@ -17,7 +19,7 @@ void Menu1()
         cout << "----------------" << endl;
         cout << "1) CARGAR PRENDA" << endl;
         cout << "2) MODIFICAR PRENDA" << endl;
-        cout << "3) BORRAR PRENDA" << endl;
+        cout << "3) ELIMINAR PRENDA" << endl;
         cout << "4) CARGAR VENTA" << endl;
         cout << "---------------------------" << endl;
         cout << "0) SALIR" << endl;
@@ -27,30 +29,21 @@ void Menu1()
         switch(opcion){
             case 1:
                 {
-                    //CARGAR AVIOS
+                    obj_de_submenu_prenda.SubmenuCargarPrenda();
                 }
                 break;
             case 2:
                 {
-                    //CARGAR PRENDA
+                    obj_de_submenu_prenda.SubmenuModificarPrenda();
                 }
                 break;
             case 3:
                 {
-                    //MODIFICAR PRENDA
+                    obj_de_submenu_prenda.SubmenuEliminarPrenda();
+                    system("pause");
                 }
                 break;
             case 4:
-                {
-                    //BORRAR PRENDA
-                }
-                break;
-            case 5:
-                {
-                    //ENCARGAR A TALLER
-                }
-                break;
-            case 6:
                 {
                     //CARGAR VENTA
                 }
@@ -87,15 +80,11 @@ void Menu2()
         switch(opcion){
             case 1:
                 {
-                   //VER INVENTARIO
+                   obj_de_submenu_prenda.SubmenuInventario();
+                   system("pause");
                 }
                 break;
             case 2:
-                {
-                    //ENTREGAS PENDIENTES
-                }
-                break;
-            case 3:
                 {
                     //DETALLES DE PRENDA
                 }
@@ -124,7 +113,7 @@ void Menu3()
         cout << "----------------" << endl;
         cout << "1) ESTADISTICAS DE PRODUCTOS" << endl;
         cout << "2) HISTORIAL DE VENTA" << endl;
-        cout << "3) PORCENTAJE DE GANANCIAS CON RESPECTO A LAS VENTAS DEL AÑO " << endl;
+        cout << "3) PORCENTAJE DE GANANCIAS CON RESPECTO A LAS VENTAS DEL AÃ‘O " << endl;
         cout << "---------------------------" << endl;
         cout << "0) SALIR" << endl;
 

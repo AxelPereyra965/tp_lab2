@@ -3,6 +3,7 @@
 #include "Prenda.h"
 #include <iostream>
 using namespace std;
+
 class PrendaArchivo
 {
 private:
@@ -11,6 +12,8 @@ public:
     bool GuardarPrenda(Prenda obj);
     Prenda LeerPrenda(int indice);
     int ContarRegistrosPrenda();
+    int BuscarCodigoPrenda(int Cod);
+    bool SobreescribirArchivoPrenda(int indice, Prenda pren);
     int NuevoCodigoPrenda();
 };
 

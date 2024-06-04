@@ -1,10 +1,17 @@
 #include <iostream>
+#include <windows.h>
 #include "Menus.h"
 
 using namespace std;
 
+void SetColor(int color) {
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hConsole, color);
+}
+
 int main()
 {
+    SetColor(10);
     int opcion;
     while (true){
         system("cls");

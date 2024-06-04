@@ -1,12 +1,13 @@
 #include "Prenda.h"
+#include <cstring>
 
 // Constructor
 Prenda::Prenda(){
     CodigoPrenda=0;
-    NombrePrenda="";
-    Modelo="";
-    Talle="";
-    Color="";
+    strcpy(NombrePrenda, "");
+    strcpy(Modelo, "");
+    strcpy(Talle, "");
+    strcpy(Color, "");
     Cantidad=0;
     PrecioVenta=0;
     EstadoDePrenda= false;
@@ -64,19 +65,19 @@ void Prenda::setCodigoPrenda(int _CodigoPrenda) {
 }
 
 void Prenda::setNombrePrenda(string _NombrePrenda) {
-    NombrePrenda = _NombrePrenda;
+    strcpy(NombrePrenda, _NombrePrenda.c_str());
 }
 
 void Prenda::setModelo(string _Modelo) {
-    Modelo = _Modelo;
+    strcpy(Modelo, _Modelo.c_str());
 }
 
 void Prenda::setTalle(string _Talle) {
-    Talle = _Talle;
+    strcpy(Talle, _Talle.c_str());
 }
 
 void Prenda::setColor(string _Color) {
-    Color = _Color;
+    strcpy(Color, _Color.c_str());
 }
 
 

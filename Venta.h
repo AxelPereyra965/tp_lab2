@@ -7,10 +7,10 @@ class Venta
 {
 private:
     int CodigoPrenda;
-    string NombrePrenda;
-    string Modelo;
-    string Talle;
-    string Color;
+    char NombrePrenda[50];
+    char Modelo[50];
+    char Talle[50];
+    char Color[50];
     int Cantidad;
     Fecha FechaDeVenta;
 public:

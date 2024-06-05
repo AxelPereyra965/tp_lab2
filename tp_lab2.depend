@@ -78,30 +78,35 @@
 	<iostream>
 	<string>
 
-1717257813 source:c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\main.cpp
+1717540319 source:c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\main.cpp
 	<iostream>
+	<windows.h>
 	"Menus.h"
 
-1717257813 source:c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\prenda.cpp
+1717540319 source:c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\prenda.cpp
 	"Prenda.h"
+	<cstring>
 
-1717257813 c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\prenda.h
+1717540319 c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\prenda.h
 	<iostream>
 	<string>
 	<cstring>
 
-1717257813 source:c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\prendaarchivo.cpp
+1717540319 source:c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\prendaarchivo.cpp
 	"PrendaArchivo.h"
 	<iostream>
 
-1717257813 c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\prendaarchivo.h
+1717540319 c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\prendaarchivo.h
 	"Prenda.h"
 	<iostream>
 
-1717257813 source:c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\prendamanager.cpp
+1717540319 source:c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\prendamanager.cpp
 	"PrendaManager.h"
+	<iostream>
 
-1717257813 c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\prendamanager.h
+1717540319 c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\prendamanager.h
+	"Prenda.h"
+	"PrendaArchivo.h"
 
 1717251457 source:c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\taller.cpp
 	<iostream>
@@ -125,10 +130,11 @@
 
 1717251457 source:c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\tallermanager.cpp
 
-1717257813 source:c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\venta.cpp
+1717541581 source:c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\venta.cpp
 	"Venta.h"
+	<cstring>
 
-1717257813 c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\venta.h
+1717541108 c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\venta.h
 	"Fecha.h"
 	<string>
 	<cstring>
@@ -144,7 +150,12 @@
 1717257813 source:c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\ventamanager.cpp
 	"VentaManager.h"
 
-1717257813 c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\ventamanager.h
+1717545996 c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\ventamanager.h
+	"VentaArchivo.h"
+	"PrendaManager.h"
+	"Venta.h"
+	"PrendaArchivo.h"
+	"Prenda.h"
 
 1717251457 c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\tallermanager.h
 	<cstring>
@@ -456,10 +467,8 @@
 	"VentaManager.h"
 	<iostream>
 
-1717257813 c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\menus.h
-	"CostoAgregadoManager.h"
+1717540319 c:\users\usuario\desktop\nueva carpeta\laboratorio2_proyecto\menus.h
 	"PrendaManager.h"
-	"TallerManager.h"
 	"VentaManager.h"
 	<iostream>
 

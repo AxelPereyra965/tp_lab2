@@ -1,12 +1,13 @@
 #include "Venta.h"
+#include <cstring>
 
 // Constructor
 Venta::Venta(){
     CodigoPrenda =0;
-    NombrePrenda="";
-    Modelo="";
-    Talle="";
-    Color="";
+    strcpy(NombrePrenda,"");
+    strcpy(Modelo,"");
+    strcpy(Talle,"");
+    strcpy(Color,"");
     Cantidad=0;
     FechaDeVenta=Fecha();
 }
@@ -58,19 +59,19 @@ void Venta::setCodigoPrenda(int _CodigoPrenda) {
 }
 
 void Venta::setNombrePrenda(string _NombrePrenda) {
-    NombrePrenda = _NombrePrenda;
+    strcpy(NombrePrenda,_NombrePrenda.c_str());
 }
 
 void Venta::setModelo(string _Modelo) {
-    Modelo = _Modelo;
+    strcpy(Modelo,_Modelo.c_str());
 }
 
 void Venta::setTalle(string _Talle) {
-    Talle = _Talle;
+     strcpy(Talle,_Talle.c_str());
 }
 
 void Venta::setColor(string _Color) {
-    Color = _Color;
+    strcpy(Color,_Color.c_str());
 }
 
 

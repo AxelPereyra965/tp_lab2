@@ -2,6 +2,7 @@
 
 void VentaManager::SubMenuCargarVenta(){
     Venta _ven;
+    Fecha obj;
 
     cout << "BIENVENIDO! ESTA USTED POR REALIZAR UNA VENTA" << endl;
     cout << "----------------------------------------------" << endl;
@@ -32,7 +33,9 @@ void VentaManager::SubMenuCargarVenta(){
                 _ven.setColor(_Prenda.getColor());
                 _ven.setCantidad(1);
                 _ven.setColor(_Prenda.getColor());
-                //_ven.setVentaFecha();
+                _ven.setVentaFecha(obj.ReturnFechaActual());
+
+                //SI QUEREMOS MOSTRAR EL OBJETO FECHA:    "_ven.getVentaFecha().MostrarFechaActual();"
 
                 //guarda en archivo
             }
@@ -47,7 +50,6 @@ void VentaManager::SubMenuCargarVenta(){
     }
 
 }
-
 
 
 

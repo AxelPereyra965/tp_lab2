@@ -3,9 +3,13 @@
 
 // Constructor
 Fecha::Fecha(){
-    Dia = 5;
-    Mes = 6;
-    Anio = 2024;
+    time_t t;
+    struct tm *f;
+    time(&t);
+    f = localtime(&t);
+    Dia = f->tm_mday;
+    Mes = f->tm_mon+1;
+    Anio = f->tm_year+1900;
 }
 Fecha::Fecha(int _Dia,int _Mes, int _Anio){
     setDia(_Dia);
@@ -41,10 +45,18 @@ void Fecha::setAnio(int _Anio){
 }
 
 //mostrar fecha
-void Fecha::MostrarFecha() {
-    cout << Dia << "/" << Mes << "/" << Anio << endl;
+void Fecha ::MostrarFechaActual()
+{
+    Fecha obj;
+    cout << obj.getDia() << "/" << obj.getMes() << "/" << obj.getAnio() << endl;
 }
 
+Fecha Fecha:: ReturnFechaActual()
+{
+    return Fecha();
+}
+
+/*
 //cargar fecha
 void Fecha::CargarFecha() {
     int dia, mes, anio;
@@ -59,10 +71,10 @@ void Fecha::CargarFecha() {
         cin >> anio;
 
         // validacion de la fecha ingresaa
-        if (dia >= 1 && dia <= 31 && mes >= 1 && mes <= 12 && anio >= 2020 && anio <= 2030) {//el año lo hice entre 2020 y 2030
+        if (dia >= 1 && dia <= 31 && mes >= 1 && mes <= 12 && anio >= 2020 && anio <= 2030) {//el aÃ±o lo hice entre 2020 y 2030
             fechaValida = true;
         } else {
-            cout << "Fecha no válida. Por favor, ingrese nuevamente.\n";
+            cout << "Fecha no vÃ¡lida. Por favor, ingrese nuevamente.\n";
         }
     }
 
@@ -70,6 +82,4 @@ void Fecha::CargarFecha() {
     setMes(mes);
     setAnio(anio);
 }
-
-
-
+*/

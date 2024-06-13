@@ -6,7 +6,7 @@
 class PrendaManager
 {
 private:
-    PrendaArchivo Arch;
+    PrendaArchivo ObjArchivoPrenDa;//este objeto lo usaremos en el manager.cpp de prenda
     void ModificacionDePrenda(Prenda &obj);
     Prenda CargarPrenda();
     void MostrarPrenda(Prenda obj);

@@ -4,47 +4,89 @@ using namespace std;
 
 //          METODOS COMPLEMENTARIOS
 
-Prenda PrendaManager :: CargarPrenda()
-{
+Prenda PrendaManager::CargarPrenda() {
     Prenda pren;
     int cod_prenda, cantidad;
     string nombre_prenda, modelo, talle, color;
 
     cout << "BIENVENIDO! ESTA USTED POR CARGAR UNA PRENDA" << endl;
     cout << "----------------------------------------------" << endl;
-    cod_prenda = Arch.NuevoCodigoPrenda();
-    pren.setCodigoPrenda(cod_prenda);
-    cout << "CODIGO DE LA PRENDA: " << cod_prenda << endl;
 
-    cout << "NOMBRE DE PRENDA: ";
-    cin >> nombre_prenda;
-    pren.setNombrePrenda(nombre_prenda);
-    cout << endl;
+    int OpcionCargar;
+    cout << "1 - Cargar prenda existente" << endl;
+    cout << "2 - Cargar prenda nueva" << endl;
+    cin >> OpcionCargar;
 
-    cout << "MODELO DE PRENDA: ";
-    cin >> modelo;
-    pren.setModelo(modelo);
-    cout << endl;
+    switch (OpcionCargar) {
+        case 1:
+            SubmenuInventario(); // metodo de la clase para listar el inventario
+            int Codigo, Stock,pos, cant;
 
-    cout << "TALLE DE PRENDA: ";
-    cin >> talle;
-    pren.setTalle(talle);
-    cout << endl;
+            cout << "seleccione el codigo de la prenda a stockear: " << endl;
+            cin >> Codigo;
 
-    cout << "COLOR DE PRENDA: ";
-    cin >> color;
-    pren.setColor(color);
-    cout << endl;
+            cant = ObjArchivoPrenDa.ContarRegistrosPrenda();
 
+            for(int x=0;x<cant;x++){
+                pren = ObjArchivoPrenDa.LeerPrenda(x);
 
-    cout << "CANTIDAD DE "<< nombre_prenda << " QUE USTED ENCARGO: ";
-    cin >> cantidad;
-    pren.setCantidad(cantidad);
-    cout << endl;
+                if(pren.getCodigo()==Codigo){
 
-    pren.setEstadoDePrenda(true);
+                    pos =ObjArchivoPrenDa.BuscarCodigoPrenda(pren.getCodigo());
 
-    return pren;
+                    cout << "indique la cantidad de stock a agregar de esa prenda " << endl;
+                    cin >> Stock;
+                    pren.setCantidad(pren.getCantidad() + Stock);
+                    ObjArchivoPrenDa.SobreescribirArchivoPrenda(pos,pren);
+
+                }
+            }
+
+            cout << "stock agregado" << endl;
+            cout << "precione alguna tecla para continuar" << endl;
+
+            return pren;
+            break;
+        case 2:
+            cod_prenda = ObjArchivoPrenDa.NuevoCodigoPrenda();
+            pren.setCodigoPrenda(cod_prenda);
+            cout << "CODIGO DE LA PRENDA: " << cod_prenda << endl;
+
+            cout << "NOMBRE DE PRENDA: ";
+            cin >> nombre_prenda;
+            pren.setNombrePrenda(nombre_prenda);
+            cout << endl;
+
+            cout << "MODELO DE PRENDA: ";
+            cin >> modelo;
+            pren.setModelo(modelo);
+            cout << endl;
+
+            cout << "TALLE DE PRENDA: ";
+            cin >> talle;
+            pren.setTalle(talle);
+            cout << endl;
+
+            cout << "COLOR DE PRENDA: ";
+            cin >> color;
+            pren.setColor(color);
+            cout << endl;
+
+            cout << "CANTIDAD DE " << nombre_prenda << " QUE USTED ENCARGO: ";
+            cin >> cantidad;
+            pren.setCantidad(cantidad);
+            cout << endl;
+
+            pren.setEstadoDePrenda(true);
+
+           system("cls");
+           if(ObjArchivoPrenDa.GuardarPrenda(pren))
+           {
+              cout << "PRENDA SUBIDA CORRECTAMENTE." << endl;
+              system("pause");
+           }
+            break;
+    }
 }
 
 void PrendaManager :: ModificacionDePrenda(Prenda &obj)
@@ -134,25 +176,20 @@ void PrendaManager :: MostrarPrenda(Prenda obj)
 
 void PrendaManager :: SubmenuCargarPrenda()
 {
-    system("cls");
-    if(Arch.GuardarPrenda(CargarPrenda()))
-    {
-        cout << "PRENDA SUBIDA CORRECTAMENTE." << endl;
-        system("pause");
-    }
+   CargarPrenda();
 }
 
 void PrendaManager ::SubmenuInventario()
 {
     Prenda obj;
 
-    int cantidad = Arch.ContarRegistrosPrenda();
+    int cantidad = ObjArchivoPrenDa.ContarRegistrosPrenda();
 
     if(cantidad > 0)
     {
         for(int x = 0 ; x < cantidad ; x ++)
         {
-            obj = Arch.LeerPrenda(x);
+            obj = ObjArchivoPrenDa.LeerPrenda(x);
             if(obj.getEstadoDePrenda())
             {
                 cout << "=================================================" << endl;
@@ -167,12 +204,13 @@ void PrendaManager ::SubmenuInventario()
     }
 }
 
-void PrendaManager :: SubmenuModificarPrenda()
+void PrendaManager::SubmenuModificarPrenda()
 {
     int seleccion, pos = 0;
-    int cantidad = Arch.ContarRegistrosPrenda();
+    int cantidad = ObjArchivoPrenDa.ContarRegistrosPrenda();
+    Prenda _prenda;
 
-    if(cantidad > 0)
+    if (cantidad > 0)
     {
         system("cls");
         cout << "INGRESE EL CODIGO DE LA PRENDA A MODIFICAR: " << endl;
@@ -180,35 +218,31 @@ void PrendaManager :: SubmenuModificarPrenda()
         cout << endl;
         cout << "(INGRESE '0' EN CASO DE QUERER VOLVER AL MENU PRINCIPAL)" << endl;
         cin >> seleccion;
-        cout << endl;
-        system("cls");
-        if(seleccion != 0)
-        {
-            pos = Arch.BuscarCodigoPrenda(seleccion);
-            if(pos != -1)
-            {
-                Prenda obj = Arch.LeerPrenda(pos);
-                ModificacionDePrenda(obj);
-                if(Arch.SobreescribirArchivoPrenda(pos, obj))
-                {
-                    cout << "EL ARCHIVO SE MODIFICO EXITOSAMENTE" << endl;
-                }else
-                {
-                    cout << "ERROR DE MODIFICACION" << endl;
-                }
-            }else
-            {
-                cout << "PRENDA NO EXISTENTE" << endl;
-            }
-        }else
-        {
-            return;
-        }
-    }else
-    {
-        cout << "NO HAY PRENDAS CARGADAS ACTUALMENTE" << endl;
-    }
+        while (seleccion != 0){
+            system("cls");
+            pos = ObjArchivoPrenDa.BuscarCodigoPrenda(seleccion);
+            if (pos != -2){ // Pregunto si se encontró en el archivo
 
+                for (int x = 0; x < cantidad; x++){ // Recorro todo el archivo de prendas
+
+                    _prenda = ObjArchivoPrenDa.LeerPrenda(x);
+
+                    if (_prenda.getCodigo() == seleccion){// Una vez encontrada modifico y guardo en el archivo
+
+                        ModificacionDePrenda(_prenda);
+                        ObjArchivoPrenDa.SobreescribirArchivoPrenda(pos, _prenda);
+                    }
+                }
+                break; // Salir del bucle una vez realizada la modificacion
+            }else{
+                cout << "Prenda no encontrada. Por favor, ingrese un codigo de prenda valido: " << endl;
+                SubmenuInventario();
+                cin >> seleccion;
+            }
+        }
+    }else{
+        cout << "No hay prendas disponibles para modificar." << endl;
+    }
 }
 
 void PrendaManager :: SubmenuEliminarPrenda()
@@ -216,7 +250,7 @@ void PrendaManager :: SubmenuEliminarPrenda()
     Prenda obj;
     int seleccion, pos = 0;
     bool Eliminar = false;
-    int cantidad = Arch.ContarRegistrosPrenda();
+    int cantidad = ObjArchivoPrenDa.ContarRegistrosPrenda();
 
     if(cantidad > 0)
     {
@@ -232,16 +266,16 @@ void PrendaManager :: SubmenuEliminarPrenda()
             system("cls");
             if(seleccion != 0)
             {
-                pos = Arch.BuscarCodigoPrenda(seleccion);
-                if(pos != -1)
+                pos = ObjArchivoPrenDa.BuscarCodigoPrenda(seleccion);
+                if(pos != -2)
                 {
-                    obj = Arch.LeerPrenda(pos);
+                    obj = ObjArchivoPrenDa.LeerPrenda(pos);
                     cout << "DESEA ELIMINAR ESTA PRENDA? 1 - SI / 0 - NO: ";
                     cin >> Eliminar;
                     if(Eliminar)
                     {
                         obj.setEstadoDePrenda(false);
-                        if(Arch.SobreescribirArchivoPrenda(pos, obj))
+                        if(ObjArchivoPrenDa.SobreescribirArchivoPrenda(pos, obj))
                         {
                             cout << "PRENDA ELIMINADA EXITOSAMENTE" << endl;
                         }else

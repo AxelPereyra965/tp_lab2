@@ -63,7 +63,7 @@ int PrendaArchivo :: NuevoCodigoPrenda()
     }
 }
 
-int PrendaArchivo :: BuscarCodigoPrenda(int Cod)
+int PrendaArchivo :: BuscarCodigoPrenda(int Cod) //(te posiciona en la prenda segun el codigo que le pases)
 {
     FILE *p;
     int pos = 0;
@@ -72,22 +72,22 @@ int PrendaArchivo :: BuscarCodigoPrenda(int Cod)
     if(p == nullptr)
     {
         cout << "ERROR DE ARCHIVO" << endl;
-        return -1;
+        return -1; //retorna -1 en caso de error
     }
-    while(fread(&obj, sizeof(Prenda), 1, p) == 1)
+    while(fread(&obj, sizeof(Prenda), 1, p) == 1) //el ciclo itera hasta encontrar el objeto
     {
         if(obj.getCodigo() == Cod)
         {
             fclose(p);
-            return pos;
+            return pos; //una vez encontrado retorna la posicion
         }
         pos ++;
     }
     fclose(p);
-    return -2;
+    return -2;// retorna -2 en caso de no encontrarlo en el archivo
 }
 
-bool PrendaArchivo :: SobreescribirArchivoPrenda(int indice, Prenda pren)
+bool PrendaArchivo :: SobreescribirArchivoPrenda(int indice, Prenda pren) //para modificar
 {
     bool Resultado;
     FILE *p;
@@ -98,8 +98,18 @@ bool PrendaArchivo :: SobreescribirArchivoPrenda(int indice, Prenda pren)
         cout << "ERROR DE ARCHIVO" << endl;
         return false;
     }
-    fseek(p, sizeof(Prenda) * indice, SEEK_SET);
-    Resultado = fwrite(&pren, sizeof(Prenda), 1, p);
+    fseek(p, sizeof(Prenda) * indice, SEEK_SET);//te posiciona en el obj
+    Resultado = fwrite(&pren, sizeof(Prenda), 1, p); //sobre escribis
     fclose(p);
     return Resultado;
 }
+
+
+
+
+
+
+
+
+
+

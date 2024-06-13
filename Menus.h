@@ -7,7 +7,8 @@ using namespace std;
 
 //      MENU DE PRENDA
 
-PrendaManager obj_de_submenu_prenda;
+PrendaManager obj_de_submenu_prenda; //este objeto lo usamos en el menu de prenda
+VentaManager obj_de_submenu_Venta; //este objeto lo usamos en el menu de venta
 
 void Menu1()
 
@@ -45,7 +46,7 @@ void Menu1()
                 break;
             case 4:
                 {
-                    //CARGAR VENTA
+                    obj_de_submenu_Venta.SubMenuCargarVenta();
                 }
                 break;
             case 0:

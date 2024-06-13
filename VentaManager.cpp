@@ -1,8 +1,10 @@
 #include "VentaManager.h"
 
+
 void VentaManager::SubMenuCargarVenta(){
     Venta _ven;
     Fecha obj;
+
 
     cout << "BIENVENIDO! ESTA USTED POR REALIZAR UNA VENTA" << endl;
     cout << "----------------------------------------------" << endl;
@@ -10,7 +12,7 @@ void VentaManager::SubMenuCargarVenta(){
 
     bool bandera=true;
 
-    while(bandera!=true){
+    while(bandera!=false){
         int CodigoSeleccionado;
         cout<<"seleccione el codigo de la prenda que desea vender"<<endl;
         cin>>CodigoSeleccionado;
@@ -37,9 +39,22 @@ void VentaManager::SubMenuCargarVenta(){
 
                 //SI QUEREMOS MOSTRAR EL OBJETO FECHA:    "_ven.getVentaFecha().MostrarFechaActual();"
 
-                //guarda en archivo
-            }
+                 _ArchVenta.GuardarVenta(_ven); //guardo la venta en el archivo
 
+               for(int x=0;x<CantPrendas;x++){ //recorro el archivo de prendas
+                _Prenda = _ArchiPrenda.LeerPrenda(x);
+
+                if(_Prenda.getCodigo() == _ven.getCodigo()){ //cuando encuentro la prenda seteo en el archivo
+                   int pos = _ArchiPrenda.BuscarCodigoPrenda(x);
+                    _Prenda.setCantidad(_Prenda.getCantidad()-_ven.getCantidad());
+
+                    if(_Prenda.getCantidad()==0){ //si el stock queda en 0 le hago una vaja logica
+                        _Prenda.setEstadoDePrenda(false);
+                    }
+                    _ArchiPrenda.SobreescribirArchivoPrenda(pos,_Prenda);
+                }
+               }
+            }
        }
 
         int continuar;

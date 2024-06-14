@@ -2,9 +2,21 @@
 #include <iostream>
 using namespace std;
 
+/*
+explicacion del cin.ignore, fflush, getline, etc;
+
+cin.ignore() --> ignora a los caracteres separadores, estos separadores
+                estan antes de la secuencia que quieras escribir, y podrian interferir, ignorando el dato a modificar
+
+getline(cin, dato_a_usar) --> permite meter espacios entre caracteres
+
+fflush(stdin) --> limpia el buffer de entrada una vez escrito/rellenado el dato tipo string,
+                    que mas adelante provoque errores en la lectura del dato
+*/
+
 //          METODOS COMPLEMENTARIOS
 
-Prenda PrendaManager::CargarPrenda() {
+void PrendaManager::CargarPrenda() {
     Prenda pren;
     int cod_prenda, cantidad;
     string nombre_prenda, modelo, talle, color;
@@ -13,12 +25,15 @@ Prenda PrendaManager::CargarPrenda() {
     cout << "----------------------------------------------" << endl;
 
     int OpcionCargar;
-    cout << "1 - Cargar prenda existente" << endl;
-    cout << "2 - Cargar prenda nueva" << endl;
+    cout << "1 - CARGAR PRENDA EXISTENTE" << endl;
+    cout << endl;
+    cout << "2 - CARGAR PRENDA NUEVA" << endl;
+    cout << "----------------------------------------------" << endl;
     cin >> OpcionCargar;
 
     switch (OpcionCargar) {
         case 1:
+            system("cls");
             SubmenuInventario(); // metodo de la clase para listar el inventario
             int Codigo, Stock,pos, cant;
 
@@ -44,21 +59,23 @@ Prenda PrendaManager::CargarPrenda() {
 
             cout << "stock agregado" << endl;
             cout << "precione alguna tecla para continuar" << endl;
-
-            return pren;
             break;
         case 2:
+            system("cls");
             cod_prenda = ObjArchivoPrenDa.NuevoCodigoPrenda();
             pren.setCodigoPrenda(cod_prenda);
             cout << "CODIGO DE LA PRENDA: " << cod_prenda << endl;
-
+            cout << endl;
             cout << "NOMBRE DE PRENDA: ";
-            cin >> nombre_prenda;
+            cin.ignore();
+            getline(cin, nombre_prenda);
+            fflush(stdin);
             pren.setNombrePrenda(nombre_prenda);
             cout << endl;
 
             cout << "MODELO DE PRENDA: ";
-            cin >> modelo;
+            getline(cin, modelo);
+            fflush(stdin);
             pren.setModelo(modelo);
             cout << endl;
 
@@ -114,7 +131,9 @@ void PrendaManager :: ModificacionDePrenda(Prenda &obj)
         case 1:
             {
                 cout << "INDIQUE EL NUEVO NOMBRE DE PRENDA: ";
-                cin >> nombre_prenda;
+                cin.ignore();
+                getline(cin, nombre_prenda);
+                fflush(stdin);
                 obj.setNombrePrenda(nombre_prenda);
                 cout << endl;
                 break;
@@ -122,7 +141,9 @@ void PrendaManager :: ModificacionDePrenda(Prenda &obj)
         case 2:
             {
                 cout << "INDIQUE EL NUEVO MODELO DE PRENDA: ";
-                cin >> modelo;
+                cin.ignore();
+                getline(cin, modelo);
+                fflush(stdin);
                 obj.setModelo(modelo);
                 cout << endl;
                 break;
@@ -221,7 +242,7 @@ void PrendaManager::SubmenuModificarPrenda()
         while (seleccion != 0){
             system("cls");
             pos = ObjArchivoPrenDa.BuscarCodigoPrenda(seleccion);
-            if (pos != -2){ // Pregunto si se encontró en el archivo
+            if (pos != -2){ // Pregunto si se encontrÃ³ en el archivo
 
                 for (int x = 0; x < cantidad; x++){ // Recorro todo el archivo de prendas
 
@@ -300,4 +321,53 @@ void PrendaManager :: SubmenuEliminarPrenda()
     {
         cout << "NO HAY PRENDAS CARGADAS ACTUALMENTE" << endl;
     }
+}
+
+void PrendaManager :: SubmenuDetalleDePrenda()
+{
+    bool Fin = false;
+    do
+    {
+        char Selector[30], copia[30];
+        string selector;
+        int cantidad = ObjArchivoPrenDa.ContarRegistrosPrenda();
+        int Resultado, Salir;
+        Prenda obj;
+
+        cout << "INGRESE EL NOMBRE A BUSCAR" << endl;
+        cout << "===========================" << endl;
+        cout << "(INGRESE CERO SI QUIERE DEJAR DE BUSCAR)" << endl;
+        cin.ignore();
+        getline(cin, selector);
+        fflush(stdin);
+        strcpy(Selector, selector.c_str()); //convierto el string a const char para poder meterlo en el strcmp
+
+        for(int x = 0 ; x < cantidad ; x ++)
+        {
+            obj = ObjArchivoPrenDa.LeerPrenda(x);
+            strcpy(copia, obj.getNombrePrenda().c_str()); //convierto el string a const char para poder meterlo en el strcmp
+            Resultado = strcmp(Selector,copia); //comparo las dos cadenas de caracteres
+            if(Resultado == 0 && obj.getEstadoDePrenda()) //el strcmp pide devolver un valor entero, si ese valor es '0', significa que las cadenas son iguales
+            {
+                cout << "=================================" << endl;
+                MostrarPrenda(obj);
+                cout << "=================================" << endl;
+            }
+        }
+        if(Resultado != 0)
+        {
+            cout << "PRENDA NO ENCONTRADA" << endl;
+        }
+        system("pause");
+        system("cls");
+        cout << "DESEA SEGUIR BUSCANDO? (1- NO / CUALQUIER OTRA TECLA - SI)" << endl;
+        cin >> Salir;
+        if(Salir == 1)
+        {
+            Fin = true; //sale del bucle de buscar prendas y termina el metodo
+        }
+        system("cls");
+
+    }while(Fin != true);
+
 }

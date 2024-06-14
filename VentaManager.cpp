@@ -62,9 +62,9 @@ void VentaManager::SubMenuCargarVenta() {
                     break;  // Salimos del bucle una vez que actualizamos la prenda
                 }
                 ///por cada venta encontrada acumule
+                acumVentaxprenda= _ven.getCantidad()* _pren.GetPrecioVenta();
             }
-            ///acum
-            acumVentaxprenda= CantPrendas* _pren.GetPrecioVenta();
+
         }
 
         int continuar;
@@ -75,6 +75,7 @@ void VentaManager::SubMenuCargarVenta() {
     }
 }
 
+//producto más vendido
 void VentaManager::SubMenuEstadisticaProductos() {
     int CantVentas = _ArchVenta.ContarRegistrosVenta();
     Venta Vent;

@@ -2,6 +2,7 @@
 
 
 void VentaManager::SubMenuCargarVenta() {
+    Prenda _pren;
     Venta _ven;
     Fecha obj;
 
@@ -10,6 +11,7 @@ void VentaManager::SubMenuCargarVenta() {
     _PrendManager.SubmenuInventario();
 
     bool bandera = true;
+    int acumVentaxprenda=0;
 
     while (bandera != false) {
         int CodigoSeleccionado;
@@ -59,7 +61,10 @@ void VentaManager::SubMenuCargarVenta() {
                     _ArchiPrenda.SobreescribirArchivoPrenda(pos, _Prenda);
                     break;  // Salimos del bucle una vez que actualizamos la prenda
                 }
+                ///por cada venta encontrada acumule
             }
+            ///acum
+            acumVentaxprenda= CantPrendas* _pren.GetPrecioVenta();
         }
 
         int continuar;

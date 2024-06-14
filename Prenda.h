@@ -13,10 +13,10 @@ private:
     char Talle[50];
     char Color[50];
     int Cantidad;
-    int PrecioVenta;
+    float PrecioVenta;
     bool EstadoDePrenda;
 public:
-    Prenda(int _CodigoPrenda, string _NombrePrenda, string _Modelo, string _Talle, string _Color, int _Cantidad,int _PrecioVenta, bool _EstadoDePrenda);
+    Prenda(int _CodigoPrenda, string _NombrePrenda, string _Modelo, string _Talle, string _Color, int _Cantidad,float _PrecioVenta, bool _EstadoDePrenda);
     Prenda();
     //
     int getCodigo();
@@ -25,7 +25,7 @@ public:
     string getTalle();
     string getColor();
     int getCantidad();
-    int GetPrecioVenta();
+    float GetPrecioVenta();
     bool getEstadoDePrenda();
     //
     void setCodigoPrenda(int _CodigoPrenda);
@@ -34,7 +34,7 @@ public:
     void setTalle(string _Talle);
     void setColor(string _Color);
     void setCantidad(int _Cantidad);
-    void setPrecioVenta(int _PrecioVenta);
+    void setPrecioVenta(float _PrecioVenta);
     void setEstadoDePrenda(bool _EstadoDePrenda);
 };
 

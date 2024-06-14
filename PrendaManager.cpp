@@ -20,6 +20,7 @@ void PrendaManager::CargarPrenda() {
     Prenda pren;
     int cod_prenda, cantidad;
     string nombre_prenda, modelo, talle, color;
+    float precio_unitario;
 
     cout << "BIENVENIDO! ESTA USTED POR CARGAR UNA PRENDA" << endl;
     cout << "----------------------------------------------" << endl;
@@ -79,19 +80,37 @@ void PrendaManager::CargarPrenda() {
             cout << endl;
 
             cout << "TALLE DE PRENDA: ";
-            cin >> talle;
+            getline(cin, talle);
+            //cin >> talle;
             pren.setTalle(talle);
             cout << endl;
 
             cout << "COLOR DE PRENDA: ";
-            cin >> color;
+            getline(cin, color);
+            //cin >> color;
             pren.setColor(color);
+            cout << endl;
+
+            cout << "PRECIO A VENDER PARA " << nombre_prenda << " POR UNIDAD: ";
+            cin >> precio_unitario;
+            while(precio_unitario<0){
+                cout << "DEBE INGRESAR UN NUMERO VALIDO"<<endl<<endl;
+                cout << "PRECIO A VENDER PARA " << nombre_prenda << " POR UNIDAD: ";
+                cin >> precio_unitario;
+            }
+            pren.setPrecioVenta(precio_unitario);
             cout << endl;
 
             cout << "CANTIDAD DE " << nombre_prenda << " QUE USTED ENCARGO: ";
             cin >> cantidad;
+            while(cantidad<0){
+                cout << "DEBE INGRESAR UN NUMERO VALIDO"<<endl<<endl;
+                cout << "CANTIDAD DE " << nombre_prenda << " QUE USTED ENCARGO: ";
+                cin >> cantidad;
+            }
             pren.setCantidad(cantidad);
             cout << endl;
+
 
             pren.setEstadoDePrenda(true);
 

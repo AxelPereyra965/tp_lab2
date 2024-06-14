@@ -9,10 +9,10 @@ Prenda::Prenda(){
     strcpy(Talle, "");
     strcpy(Color, "");
     Cantidad=0;
-    PrecioVenta=0;
+    PrecioVenta=0.0f;
     EstadoDePrenda= false;
 }
-Prenda::Prenda(int _CodigoPrenda, string _NombrePrenda, string _Modelo, string _Talle, string _Color, int _Cantidad,int _PrecioVenta, bool _EstadoDePrenda)
+Prenda::Prenda(int _CodigoPrenda, string _NombrePrenda, string _Modelo, string _Talle, string _Color, int _Cantidad,float _PrecioVenta, bool _EstadoDePrenda)
 {
     setCodigoPrenda(_CodigoPrenda);
     setNombrePrenda(_NombrePrenda);
@@ -50,7 +50,7 @@ int Prenda::getCantidad() {
     return Cantidad;
 }
 
-int Prenda::GetPrecioVenta() {
+float Prenda::GetPrecioVenta() {
     return PrecioVenta;
 }
 
@@ -85,7 +85,7 @@ void Prenda::setCantidad(int _Cantidad) {
     Cantidad = _Cantidad;
 }
 
-void Prenda::setPrecioVenta(int _PrecioVenta) {
+void Prenda::setPrecioVenta(float _PrecioVenta) {
     PrecioVenta = _PrecioVenta;
 }
 

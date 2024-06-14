@@ -23,7 +23,7 @@ void Menu1()
         cout << "3) ELIMINAR PRENDA" << endl;
         cout << "4) CARGAR VENTA" << endl;
         cout << "---------------------------" << endl;
-        cout << "0) SALIR" << endl;
+        cout << "0) MENU ANTERIOR" << endl;
 
         cin >> opcion;
 
@@ -74,7 +74,7 @@ void Menu2()
         cout << "1) VER INVENTARIO" << endl;
         cout << "2) DETALLES DE PRENDA" << endl;
         cout << "---------------------------" << endl;
-        cout << "0) SALIR" << endl;
+        cout << "0) MENU ANTERIOR" << endl;
 
         cin >> opcion;
 
@@ -87,7 +87,7 @@ void Menu2()
                 break;
             case 2:
                 {
-                    //DETALLES DE PRENDA
+                    obj_de_submenu_prenda.SubmenuDetalleDePrenda();
                 }
                 break;
             case 0:
@@ -114,9 +114,9 @@ void Menu3()
         cout << "----------------" << endl;
         cout << "1) ESTADISTICAS DE PRODUCTOS" << endl;
         cout << "2) HISTORIAL DE VENTA" << endl;
-        cout << "3) PORCENTAJE DE GANANCIAS CON RESPECTO A LAS VENTAS DEL AÑO " << endl;
+        cout << "3) PORCENTAJE DE GANANCIAS POR MES" << endl;
         cout << "---------------------------" << endl;
-        cout << "0) SALIR" << endl;
+        cout << "0) MENU ANTERIOR" << endl;
 
         cin >> opcion;
 

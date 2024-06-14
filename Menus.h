@@ -7,8 +7,8 @@ using namespace std;
 
 //      MENU DE PRENDA
 
-PrendaManager obj_de_submenu_prenda; //este objeto lo usamos en el menu de prenda
-VentaManager obj_de_submenu_Venta; //este objeto lo usamos en el menu de venta
+PrendaManager ManagerPrend; //creamos los objetos que usaremos para llamar a las funciones
+VentaManager ManagerVent;
 
 void Menu1()
 
@@ -30,23 +30,23 @@ void Menu1()
         switch(opcion){
             case 1:
                 {
-                    obj_de_submenu_prenda.SubmenuCargarPrenda();
+                    ManagerPrend.SubmenuCargarPrenda();
                 }
                 break;
             case 2:
                 {
-                    obj_de_submenu_prenda.SubmenuModificarPrenda();
+                    ManagerPrend.SubmenuModificarPrenda();
                 }
                 break;
             case 3:
                 {
-                    obj_de_submenu_prenda.SubmenuEliminarPrenda();
+                    ManagerPrend.SubmenuEliminarPrenda();
                     system("pause");
                 }
                 break;
             case 4:
                 {
-                    obj_de_submenu_Venta.SubMenuCargarVenta();
+                    ManagerVent.SubMenuCargarVenta();
                 }
                 break;
             case 0:
@@ -81,13 +81,13 @@ void Menu2()
         switch(opcion){
             case 1:
                 {
-                   obj_de_submenu_prenda.SubmenuInventario();
+                   ManagerPrend.SubmenuInventario();
                    system("pause");
                 }
                 break;
             case 2:
                 {
-                    obj_de_submenu_prenda.SubmenuDetalleDePrenda();
+                    ManagerPrend.SubmenuDetalleDePrenda();
                 }
                 break;
             case 0:
@@ -123,7 +123,7 @@ void Menu3()
         switch(opcion){
             case 1:
                 {
-
+                    ManagerVent.SubMenuEstadisticaProductos();
                 }
                 break;
             case 2:

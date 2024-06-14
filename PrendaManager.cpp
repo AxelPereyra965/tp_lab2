@@ -53,7 +53,6 @@ void PrendaManager::CargarPrenda() {
                     cin >> Stock;
                     pren.setCantidad(pren.getCantidad() + Stock);
                     ObjArchivoPrenDa.SobreescribirArchivoPrenda(pos,pren);
-
                 }
             }
 
@@ -326,7 +325,7 @@ void PrendaManager :: SubmenuEliminarPrenda()
 void PrendaManager :: SubmenuDetalleDePrenda()
 {
     bool Fin = false;
-    do
+    do                        //la cadena que ingresa el us y el nombre de la prend se conierten a char para compararse
     {
         char Selector[30], copia[30];
         string selector;
@@ -340,7 +339,7 @@ void PrendaManager :: SubmenuDetalleDePrenda()
         cin.ignore();
         getline(cin, selector);
         fflush(stdin);
-        strcpy(Selector, selector.c_str()); //convierto el string a const char para poder meterlo en el strcmp
+        strcpy(Selector, selector.c_str()); //convierto el string a const char para poder meterlo en el strcmp (
 
         for(int x = 0 ; x < cantidad ; x ++)
         {
@@ -371,3 +370,4 @@ void PrendaManager :: SubmenuDetalleDePrenda()
     }while(Fin != true);
 
 }
+

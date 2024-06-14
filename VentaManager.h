@@ -14,6 +14,7 @@ private:
     Prenda _Prenda;
 public:
     void SubMenuCargarVenta();
+    void SubMenuEstadisticaProductos();
 
 
 };

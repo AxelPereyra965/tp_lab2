@@ -124,6 +124,7 @@ void Menu3()
             case 1:
                 {
                     ManagerVent.SubMenuEstadisticaProductos();
+                    system("pause");
                 }
                 break;
             case 2:

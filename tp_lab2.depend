@@ -310,7 +310,7 @@
 	"Taller.h"
 	<iostream>
 
-1718380514 c:\users\administrator\downloads\laboratorio2_proyecto\ventamanager.h
+1718501237 c:\users\administrator\downloads\laboratorio2_proyecto\ventamanager.h
 	"VentaArchivo.h"
 	"PrendaManager.h"
 	"Venta.h"
@@ -334,7 +334,7 @@
 	"Prenda.h"
 	<iostream>
 
-1718386861 source:c:\users\administrator\downloads\laboratorio2_proyecto\prendamanager.cpp
+1718386905 source:c:\users\administrator\downloads\laboratorio2_proyecto\prendamanager.cpp
 	"PrendaManager.h"
 	<iostream>
 
@@ -367,7 +367,7 @@
 	"Venta.h"
 	<iostream>
 
-1718380514 source:c:\users\administrator\downloads\laboratorio2_proyecto\ventamanager.cpp
+1718501056 source:c:\users\administrator\downloads\laboratorio2_proyecto\ventamanager.cpp
 	"VentaManager.h"
 
 1717021878 source:c:\users\dream\desktop\proyecto\laboratorio2_proyecto\costoagregado.cpp
@@ -471,7 +471,7 @@
 	"VentaManager.h"
 	<iostream>
 
-1718380514 c:\users\administrator\downloads\laboratorio2_proyecto\menus.h
+1718501227 c:\users\administrator\downloads\laboratorio2_proyecto\menus.h
 	"PrendaManager.h"
 	"VentaManager.h"
 	<iostream>

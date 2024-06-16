@@ -110,7 +110,7 @@ void VentaManager::SubMenuEstadisticaProductos() {
 
     // Imprimir las ventas en orden descendente
     for (int x = 0; x < CantVentas; x++) {
-        cout << "Venta " << x+1 << ": " << vec[x] << std::endl;
+        cout << "Venta " << x+1 << ": " << vec[x] <<endl; //std::endl;
     }
 
     // Liberar la memoria

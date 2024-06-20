@@ -10,7 +10,7 @@ bool VentaArchivo :: GuardarVenta(Venta obj)
     p = fopen("VENTAS.DAT", "ab");
     if(p == nullptr)
     {
-        cout << "NO PUDO ABRIR" << endl;
+        cout << "NO PUDO ABRIR GUARDADO" << endl;
         return false;
     }
     Escritura = fwrite(&obj, sizeof(Venta), 1, p);
@@ -25,7 +25,7 @@ Venta VentaArchivo :: LeerVenta(int indice)
     p = fopen("VENTAS.DAT", "rb");
     if(p == nullptr)
     {
-        cout << "NO PUDO ABRIR" << endl;
+        cout << "NO PUDO ABRIR LECTURA" << endl;
         return obj;
     }
 
@@ -43,10 +43,23 @@ int VentaArchivo :: ContarRegistrosVenta()
     p = fopen("VENTAS.DAT", "rb");
     if(p == nullptr)
     {
-         cout << "NO PUDO ABRIR" << endl;
+        //cout << "NO PUDO ABRIR CONTADOR" << endl;
         return -1;
     }
     fseek(p, 0, SEEK_END);
     tam = ftell(p) / sizeof(Venta);
     return tam;
+}
+
+int VentaArchivo :: NuevoCodigoDeVenta()
+{
+    int cantidad = ContarRegistrosVenta();
+
+    if(cantidad > 0)
+    {
+        return LeerVenta(cantidad - 1).getCodigoVenta() + 1;
+    }else
+    {
+        return 1;
+    }
 }

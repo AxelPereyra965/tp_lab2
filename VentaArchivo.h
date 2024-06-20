@@ -11,6 +11,7 @@ public:
     bool GuardarVenta(Venta obj);
     Venta LeerVenta(int indice);
     int ContarRegistrosVenta();
+    int NuevoCodigoDeVenta();
 };
 
 #endif // VENTAARCHIVO_H_INCLUDED

@@ -7,6 +7,7 @@ class Venta
 {
 private:
     int CodigoPrenda;
+    int CodigoVenta;
     char NombrePrenda[50];
     char Modelo[50];
     char Talle[50];
@@ -14,10 +15,11 @@ private:
     int Cantidad;
     Fecha FechaDeVenta;
 public:
-    Venta(int _CodigoPrenda, string _NombrePrenda, string _Modelo, string _Talle, string _Color, int _Cantidad, Fecha _FechaDeVenta);
+    Venta(int _CodigoPrenda, int _CodigoVenta, string _NombrePrenda, string _Modelo, string _Talle, string _Color, int _Cantidad, Fecha _FechaDeVenta);
     Venta();
     //
     int getCodigo();
+    int getCodigoVenta();
     string getNombrePrenda();
     string getModelo();
     string getTalle();
@@ -26,6 +28,7 @@ public:
     Fecha getVentaFecha();
     //
     void setCodigoPrenda(int _CodigoPrenda);
+    void setCodigoDeVenta(int _CodigoVenta);
     void setNombrePrenda(string _NombrePrenda);
     void setModelo(string _Modelo);
     void setTalle(string _Talle);

@@ -47,6 +47,7 @@ void Menu1()
             case 4:
                 {
                     ManagerVent.SubMenuCargarVenta();
+                    system("pause");
                 }
                 break;
             case 0:
@@ -88,6 +89,7 @@ void Menu2()
             case 2:
                 {
                     ManagerPrend.SubmenuDetalleDePrenda();
+                    system("pause");
                 }
                 break;
             case 0:
@@ -129,7 +131,8 @@ void Menu3()
                 break;
             case 2:
                 {
-
+                    ManagerVent.SubMenuHistorialDeVenta();
+                    system("pause");
                 }
                 break;
             case 3:

@@ -4,6 +4,7 @@
 // Constructor
 Venta::Venta(){
     CodigoPrenda =0;
+    CodigoVenta = 0;
     strcpy(NombrePrenda,"");
     strcpy(Modelo,"");
     strcpy(Talle,"");
@@ -12,9 +13,10 @@ Venta::Venta(){
     FechaDeVenta=Fecha();
 }
 
-Venta::Venta(int _CodigoPrenda, string _NombrePrenda, string _Modelo, string _Talle, string _Color, int _Cantidad, Fecha _FechaDeVenta)
+Venta::Venta(int _CodigoPrenda, int _CodigoVenta, string _NombrePrenda, string _Modelo, string _Talle, string _Color, int _Cantidad, Fecha _FechaDeVenta)
 {
     setCodigoPrenda(_CodigoPrenda);
+    setCodigoDeVenta(_CodigoVenta);
     setNombrePrenda(_NombrePrenda);
     setModelo(_Modelo);
     setTalle(_Talle);
@@ -26,6 +28,10 @@ Venta::Venta(int _CodigoPrenda, string _NombrePrenda, string _Modelo, string _Ta
 //getters
 int Venta::getCodigo() {
     return CodigoPrenda;
+}
+
+int Venta :: getCodigoVenta(){
+    return CodigoVenta;
 }
 
 string Venta::getNombrePrenda() {
@@ -56,6 +62,10 @@ Fecha Venta::getVentaFecha() {
 //setters
 void Venta::setCodigoPrenda(int _CodigoPrenda) {
     CodigoPrenda = _CodigoPrenda;
+}
+
+void Venta :: setCodigoDeVenta(int _CodigoVenta){
+    CodigoVenta = _CodigoVenta;
 }
 
 void Venta::setNombrePrenda(string _NombrePrenda) {

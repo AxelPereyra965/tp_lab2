@@ -48,6 +48,7 @@ int VentaArchivo :: ContarRegistrosVenta()
     }
     fseek(p, 0, SEEK_END);
     tam = ftell(p) / sizeof(Venta);
+    fclose(p);
     return tam;
 }
 
@@ -62,4 +63,20 @@ int VentaArchivo :: NuevoCodigoDeVenta()
     {
         return 1;
     }
+}
+bool VentaArchivo:: SobreescribirArchivoVenta(int indice, Venta ven)
+{
+    bool Resultado;
+    FILE *p;
+
+    p = fopen("VENTAS.DAT", "rb+");
+    if(p == nullptr)
+    {
+        cout << "ERROR DE ARCHIVO" << endl;
+        return false;
+    }
+    fseek(p, sizeof ven * indice, SEEK_SET);//te posiciona en el obj
+    Resultado = fwrite(&ven, sizeof ven, 1, p); //sobre escribis
+    fclose(p);
+    return Resultado;
 }

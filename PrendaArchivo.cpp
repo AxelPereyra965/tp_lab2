@@ -47,6 +47,7 @@ int PrendaArchivo :: ContarRegistrosPrenda()
     }
     fseek(p, 0, SEEK_END);
     tam = ftell(p) / sizeof(Prenda);
+    fclose(p);
     return tam;
 }
 
@@ -87,7 +88,7 @@ int PrendaArchivo :: BuscarCodigoPrenda(int Cod) //(te posiciona en la prenda se
     return -2;// retorna -2 en caso de no encontrarlo en el archivo
 }
 
-bool PrendaArchivo :: SobreescribirArchivoPrenda(int indice, Prenda pren) //para modificar
+bool PrendaArchivo :: SobreescribirArchivoPrenda(int indice, Prenda obj) //para modificar
 {
     bool Resultado;
     FILE *p;
@@ -98,8 +99,8 @@ bool PrendaArchivo :: SobreescribirArchivoPrenda(int indice, Prenda pren) //para
         cout << "ERROR DE ARCHIVO" << endl;
         return false;
     }
-    fseek(p, sizeof(Prenda) * indice, SEEK_SET);//te posiciona en el obj
-    Resultado = fwrite(&pren, sizeof(Prenda), 1, p); //sobre escribis
+    fseek(p, sizeof obj * indice, SEEK_SET);//te posiciona en el obj
+    Resultado = fwrite(&obj, sizeof obj, 1, p); //sobre escribis
     fclose(p);
     return Resultado;
 }

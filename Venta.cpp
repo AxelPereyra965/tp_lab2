@@ -10,10 +10,11 @@ Venta::Venta(){
     strcpy(Talle,"");
     strcpy(Color,"");
     Cantidad=0;
+    PrecioVenta= 0.0f;
     FechaDeVenta=Fecha();
 }
 
-Venta::Venta(int _CodigoPrenda, int _CodigoVenta, string _NombrePrenda, string _Modelo, string _Talle, string _Color, int _Cantidad, Fecha _FechaDeVenta)
+Venta::Venta(int _CodigoPrenda, int _CodigoVenta, string _NombrePrenda, string _Modelo, string _Talle, string _Color, float _PrecioVenta ,int _Cantidad, Fecha _FechaDeVenta)
 {
     setCodigoPrenda(_CodigoPrenda);
     setCodigoDeVenta(_CodigoVenta);
@@ -22,6 +23,7 @@ Venta::Venta(int _CodigoPrenda, int _CodigoVenta, string _NombrePrenda, string _
     setTalle(_Talle);
     setColor(_Color);
     setCantidad(_Cantidad);
+    setPrecioVenta(_PrecioVenta);
     setVentaFecha(_FechaDeVenta);
 }
 
@@ -50,6 +52,9 @@ string Venta::getColor() {
     return Color;
 }
 
+float Venta::getPrecioVenta(){
+    return PrecioVenta;
+}
 
 int Venta::getCantidad() {
     return Cantidad;
@@ -84,6 +89,10 @@ void Venta::setColor(string _Color) {
     strcpy(Color,_Color.c_str());
 }
 
+
+void Venta::setPrecioVenta(float _PrecioVenta) {
+    PrecioVenta = _PrecioVenta;
+}
 
 void Venta::setCantidad(int _Cantidad) {
     Cantidad = _Cantidad;

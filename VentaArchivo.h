@@ -12,6 +12,7 @@ public:
     Venta LeerVenta(int indice);
     int ContarRegistrosVenta();
     int NuevoCodigoDeVenta();
+    bool SobreescribirArchivoVenta(int indice, Venta ven);
 };
 
 #endif // VENTAARCHIVO_H_INCLUDED

@@ -128,6 +128,7 @@ void PrendaManager :: ModificacionDePrenda(Prenda &obj)
 {
     int cantidad, opcion;
     string nombre_prenda, modelo, talle, color;
+    float price;
 
         do
         {
@@ -140,7 +141,8 @@ void PrendaManager :: ModificacionDePrenda(Prenda &obj)
         cout << "2) MODIFICAR MODELO" << endl;
         cout << "3) MODIFICAR TALLE" << endl;
         cout << "4) MODIFICAR COLOR" << endl;
-        cout << "5) MODIFICAR CANTIDAD DE PRENDAS CARGADAS" << endl;
+        cout << "5) MODIFICAR PRECIO UNITARIO" << endl;
+        cout << "6) MODIFICAR CANTIDAD DE PRENDAS CARGADAS" << endl;
         cout << "---------------------------------------------" << endl;
         cout << "0) SALIR" << endl;
         cin >> opcion;
@@ -184,6 +186,19 @@ void PrendaManager :: ModificacionDePrenda(Prenda &obj)
             }
         case 5:
             {
+                cout << "INDIQUE EL PRECIO NUEVO: ";
+                cin >> price;
+            while(price<0){
+                cout << "DEBE INGRESAR UN NUMERO VALIDO"<<endl<<endl;
+                cout << "INDIQUE EL PRECIO NUEVO: ";
+                cin >> price;
+                }
+            obj.setPrecioVenta(price);
+            cout << endl;
+            break;
+            }
+        case 6:
+            {
                 cout << "INDIQUE EL NUEVO NUMERO DE STOCK: ";
                 cin >> cantidad;
                 obj.setCantidad(cantidad);
@@ -207,6 +222,7 @@ void PrendaManager :: MostrarPrenda(Prenda obj)
     cout << "TALLE: " << obj.getTalle() << endl;
     cout << "MODELO: " << obj.getModelo() << endl;
     cout << "COLOR: " << obj.getColor() << endl;
+    cout << "PRECIO: " << obj.GetPrecioVenta() << endl;
     cout << "CANTIDAD DE STOCK: " << obj.getCantidad() << endl;
     cout << "DISPONIBLE: " << (obj.getEstadoDePrenda() ? "SI" : "NO")<< endl;
 }

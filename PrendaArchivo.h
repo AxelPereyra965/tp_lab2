@@ -13,7 +13,7 @@ public:
     Prenda LeerPrenda(int indice);
     int ContarRegistrosPrenda();
     int BuscarCodigoPrenda(int Cod);
-    bool SobreescribirArchivoPrenda(int indice, Prenda pren);
+    bool SobreescribirArchivoPrenda(int indice, Prenda obj);
     int NuevoCodigoPrenda();
 };
 

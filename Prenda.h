@@ -6,7 +6,7 @@ using namespace std;
 #include <cstring>
 class Prenda
 {
-private:
+protected:
     int CodigoPrenda;
     char NombrePrenda[50];
     char Modelo[50];
@@ -16,7 +16,7 @@ private:
     float PrecioVenta;
     bool EstadoDePrenda;
 public:
-    Prenda(int _CodigoPrenda, string _NombrePrenda, string _Modelo, string _Talle, string _Color, int _Cantidad,float _PrecioVenta, bool _EstadoDePrenda);
+    Prenda(int _CodigoPrenda, string _NombrePrenda, string _Modelo, string _Talle, string _Color, int _Cantidad, float _PrecioVenta , bool _EstadoDePrenda);
     Prenda();
     //
     int getCodigo();

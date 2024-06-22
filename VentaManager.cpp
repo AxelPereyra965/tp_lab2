@@ -123,6 +123,7 @@ void VentaManager::SubMenuCargarVenta() {
                     prendaEncontrada = true;  // Marcamos que encontramos la prenda
                     cInicial++;
                     _ven.setCantidad(cInicial);
+                    totalVendido+= _Prenda.GetPrecioVenta();
                      //Guardamos la venta una sola vez
                     _ArchVenta.GuardarVenta(_ven);
                     cout<<"se guardo correctamente la prenda en ven "<<_ven.getCantidad() <<endl;
@@ -142,13 +143,11 @@ void VentaManager::SubMenuCargarVenta() {
 
                         _Prenda.setCantidad(_Prenda.getCantidad() - cInicial);
 
-                        cout<<"queda al final "<<cInicial<< " con precio "<< _Prenda.GetPrecioVenta() <<endl;
-
                         if (_Prenda.getCantidad() <= 0) {  // Si el stock queda en 0 le hacemos una baja lógica
                             _Prenda.setEstadoDePrenda(false);
                         }
 
-                         totalVendido+= _ven.getCantidad() * _Prenda.GetPrecioVenta();
+
                         //_ArchVenta.GuardarVenta(_ven);
                          cout<<"este es el precio actualizado: "<<totalVendido<<endl;
                         _ArchiPrenda.SobreescribirArchivoPrenda(pos, _Prenda);
@@ -158,7 +157,7 @@ void VentaManager::SubMenuCargarVenta() {
                 }
             }
 
-            _ven.setPrecioVenta(totalVendido);
+
             ///hacer un for para sobreescrir la venta actualizada
 
 

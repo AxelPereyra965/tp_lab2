@@ -138,7 +138,7 @@ void VentaManager::SubMenuCargarVenta() {
                 if (_Prenda.getCodigo() == _ven.getCodigo()) {  // Corregimos aquí el código
                     int pos = _ArchiPrenda.BuscarCodigoPrenda(x);
 
-                    _Prenda.setCantidad(_Prenda.getCantidad() - totalVendido);
+                    _Prenda.setCantidad(_Prenda.getCantidad() - cInicial);
 
                     cout<<"queda al final "<<cInicial<< " con precio "<< _Prenda.GetPrecioVenta() <<endl;
 

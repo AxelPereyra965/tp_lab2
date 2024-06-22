@@ -2,23 +2,33 @@
 
 //////////////////////////////   METODOS DE SUBMENUS   ///////////////////////////////////////////
 
-void VentaManager :: ListarVenta()
+void VentaManager::ListarVenta()
 {
     Venta obj;
-    int cantidad = _ArchVenta.ContarRegistrosVenta(); //calcula la cantidad de registros de venta
+    int cantidad = _ArchVenta.ContarRegistrosVenta(); // calcula la cantidad de registros de venta
 
-    for(int x = 0 ; x < cantidad ; x ++) //recorre todas las ventas registradas
-    {
-        obj = _ArchVenta.LeerVenta(x); //se para en los objetos
+    int codigoActual = -1; // para almacenar el codigo de venta actual
+
+    for(int x = 0; x < cantidad; x++) {
+        obj = _ArchVenta.LeerVenta(x); // me paro en las ventas
+        int codigoVenta = obj.getCodigoVenta();
+
+        if (codigoVenta != codigoActual) { //si es un nuevo grupo de venta
             cout << "=================================================" << endl;
-            cout << "VENTA NRO " << obj.getCodigoVenta() << endl;
-            cout << "FECHA DE COMPROBANTE: " << obj.getVentaFecha().getDia() << "/" << obj.getVentaFecha().getMes() << "/" << obj.getVentaFecha().getAnio() << endl;
-            cout << "---------------------------------------------------" << endl;
-            cout << "PRENDA: " << obj.getNombrePrenda() << endl;
-            cout << "CANTIDAD: " << obj.getCantidad() << endl;
-            cout << "=================================================" << endl;
+            cout << "VENTA NRO " << codigoVenta << endl;
+            cout << "FECHA DE COMPROBANTE: "
+                 << obj.getVentaFecha().getDia() << "/"
+                 << obj.getVentaFecha().getMes() << "/"
+                 << obj.getVentaFecha().getAnio() << endl;
+            codigoActual = codigoVenta;
+            cout << endl;
+        }//si es de la misma venta imprime
+        cout << "PRENDA: " << obj.getNombrePrenda() << endl;
+        cout << "CANTIDAD: " << obj.getCantidad() << endl;
+        cout << endl;
     }
 }
+
 
 void VentaManager :: BuscarVentaPorFecha()
 {

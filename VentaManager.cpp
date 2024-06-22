@@ -1,13 +1,15 @@
 #include "VentaManager.h"
 
+//////////////////////////////   METODOS DE SUBMENUS   ///////////////////////////////////////////
+
 void VentaManager :: ListarVenta()
 {
     Venta obj;
-    int cantidad = _ArchVenta.ContarRegistrosVenta();
+    int cantidad = _ArchVenta.ContarRegistrosVenta(); //calcula la cantidad de registros de venta
 
-    for(int x = 0 ; x < cantidad ; x ++)
+    for(int x = 0 ; x < cantidad ; x ++) //recorre todas las ventas registradas
     {
-        obj = _ArchVenta.LeerVenta(x);
+        obj = _ArchVenta.LeerVenta(x); //se para en los objetos
             cout << "=================================================" << endl;
             cout << "VENTA NRO " << obj.getCodigoVenta() << endl;
             cout << "FECHA DE COMPROBANTE: " << obj.getVentaFecha().getDia() << "/" << obj.getVentaFecha().getMes() << "/" << obj.getVentaFecha().getAnio() << endl;
@@ -21,8 +23,8 @@ void VentaManager :: ListarVenta()
 void VentaManager :: BuscarVentaPorFecha()
 {
     int dia, mes, anio;
-    bool Encontro = false;
-    char Salir = 'n';
+    bool Encontro;  //detecta si se encontro o no una venta en esa fecha
+    char Salir = 'n';       //usamos char para evitar que se rompa al tocar cualquier tecla
     int cantidad = _ArchVenta.ContarRegistrosVenta();
     Venta obj;
 
@@ -45,13 +47,14 @@ void VentaManager :: BuscarVentaPorFecha()
 
         for(int x = 0 ; x < cantidad ; x ++)
         {
+            Encontro = false;
             obj = _ArchVenta.LeerVenta(x);
             if(obj.getVentaFecha().getDia() == dia && obj.getVentaFecha().getMes() == mes && obj.getVentaFecha().getAnio() == anio)
             {
                 Encontro = true;
                 ListarVenta();
                 system("pause");
-                break;
+                break;  //para evitar que entre en un bucle infinito
             }
         }
         if(!Encontro)
@@ -68,10 +71,11 @@ void VentaManager :: BuscarVentaPorFecha()
 
 }
 
-////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////   DESARROLLO DE SUBMENUS   ///////////////////////////////////////////
 
 void VentaManager::SubMenuCargarVenta() {
     Venta _ven;
+    int cod_venta;
     Fecha obj;
 
     cout << "BIENVENIDO! ESTA USTED POR REALIZAR UNA VENTA" << endl;
@@ -82,6 +86,8 @@ void VentaManager::SubMenuCargarVenta() {
 
 
     int totalVendido=0; ///acumulador de lo q se vendio total
+    cod_venta = _ArchVenta.NuevoCodigoDeVenta();
+    _ven.setCodigoDeVenta(cod_venta); //codigo de venta unico, lo genero aca porque dentro de algun bucle puede generar un numero erroneo
     while (bandera != false) {
 
 

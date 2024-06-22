@@ -77,102 +77,107 @@ void VentaManager::SubMenuCargarVenta() {
     Venta _ven;
     int cod_venta;
     Fecha obj;
+    int CantPrendas = _ArchiPrenda.ContarRegistrosPrenda();
 
-    cout << "BIENVENIDO! ESTA USTED POR REALIZAR UNA VENTA" << endl;
-    cout << "----------------------------------------------" << endl;
-    _PrendManager.SubmenuInventario();
+    if(CantPrendas > 0)
+    {
+        cout << "BIENVENIDO! ESTA USTED POR REALIZAR UNA VENTA" << endl;
+        cout << "----------------------------------------------" << endl;
+        _PrendManager.SubmenuInventario();
 
-    bool bandera = true;
-
-
-    int totalVendido=0; ///acumulador de lo q se vendio total
-    cod_venta = _ArchVenta.NuevoCodigoDeVenta();
-    _ven.setCodigoDeVenta(cod_venta); //codigo de venta unico, lo genero aca porque dentro de algun bucle puede generar un numero erroneo
-    while (bandera != false) {
+        bool bandera = true;
 
 
-        int CodigoSeleccionado;
-        cout << "Seleccione el código de la prenda que desea vender" << endl;
-        cin >> CodigoSeleccionado;
+        int totalVendido=0; ///acumulador de lo q se vendio total
+        cod_venta = _ArchVenta.NuevoCodigoDeVenta();
+        _ven.setCodigoDeVenta(cod_venta); //codigo de venta unico, lo genero aca porque dentro de algun bucle puede generar un numero erroneo
+        while (bandera != false) {
 
-        // Entramos al archivo de prenda y recorremos todas las prendas
-        // Filtramos por el código elegido
-        // seteamos el objeto que creamos
-        // lo subimos al archivo de venta
 
-        int CantPrendas = _ArchiPrenda.ContarRegistrosPrenda();
-        bool prendaEncontrada = false;  // bandera para controlar el guardado de la venta
-        //lo de prendaEncontrada es por q al modificar me duolicaba la prenda
+            int CodigoSeleccionado;
+            cout << "Seleccione el código de la prenda que desea vender" << endl;
+            cin >> CodigoSeleccionado;
 
-        int cInicial=0; //cantidad de ventas segun prenda
+            // Entramos al archivo de prenda y recorremos todas las prendas
+            // Filtramos por el código elegido
+            // seteamos el objeto que creamos
+            // lo subimos al archivo de venta
 
-        for (int x = 0; x < CantPrendas; x++) {
-            _Prenda= _ArchiPrenda.LeerPrenda(x);
-            ///cout<<"entro el codigo dentro del for"<<endl;
+            bool prendaEncontrada = false;  // bandera para controlar el guardado de la venta
+            //lo de prendaEncontrada es por q al modificar me duolicaba la prenda
 
-            if (_Prenda.getCodigo() == CodigoSeleccionado) {
-                _ven.setCodigoPrenda(_Prenda.getCodigo());
-                _ven.setNombrePrenda(_Prenda.getNombrePrenda());
-                _ven.setModelo(_Prenda.getModelo());
-                _ven.setTalle(_Prenda.getTalle());
-                _ven.setColor(_Prenda.getColor());
-                _ven.setPrecioVenta(_Prenda.GetPrecioVenta());
-                _ven.setVentaFecha(obj.ReturnFechaActual());
-                prendaEncontrada = true;  // Marcamos que encontramos la prenda
-                cInicial++;
-                _ven.setCantidad(cInicial);
-                 //Guardamos la venta una sola vez
-                _ArchVenta.GuardarVenta(_ven);
-                cout<<"se guardo correctamente la prenda en ven "<<_ven.getCantidad() <<endl;
-
-                break;  // Salimos del bucle una vez que encontramos la prenda
-            }
-
-        }
-
-        if (prendaEncontrada) {  // Solo si encontramos la prenda actualizamos el stock
+            int cInicial=0; //cantidad de ventas segun prenda
 
             for (int x = 0; x < CantPrendas; x++) {
                 _Prenda= _ArchiPrenda.LeerPrenda(x);
+                ///cout<<"entro el codigo dentro del for"<<endl;
 
-                if (_Prenda.getCodigo() == _ven.getCodigo()) {  // Corregimos aquí el código
-                    int pos = _ArchiPrenda.BuscarCodigoPrenda(x);
+                if (_Prenda.getCodigo() == CodigoSeleccionado) {
+                    _ven.setCodigoPrenda(_Prenda.getCodigo());
+                    _ven.setNombrePrenda(_Prenda.getNombrePrenda());
+                    _ven.setModelo(_Prenda.getModelo());
+                    _ven.setTalle(_Prenda.getTalle());
+                    _ven.setColor(_Prenda.getColor());
+                    _ven.setPrecioVenta(_Prenda.GetPrecioVenta());
+                    _ven.setVentaFecha(obj.ReturnFechaActual());
+                    prendaEncontrada = true;  // Marcamos que encontramos la prenda
+                    cInicial++;
+                    _ven.setCantidad(cInicial);
+                     //Guardamos la venta una sola vez
+                    _ArchVenta.GuardarVenta(_ven);
+                    cout<<"se guardo correctamente la prenda en ven "<<_ven.getCantidad() <<endl;
 
-                    _Prenda.setCantidad(_Prenda.getCantidad() - cInicial);
+                    break;  // Salimos del bucle una vez que encontramos la prenda
+                }
 
-                    cout<<"queda al final "<<cInicial<< " con precio "<< _Prenda.GetPrecioVenta() <<endl;
+            }
 
-                    if (_Prenda.getCantidad() <= 0) {  // Si el stock queda en 0 le hacemos una baja lógica
-                        _Prenda.setEstadoDePrenda(false);
+            if (prendaEncontrada) {  // Solo si encontramos la prenda actualizamos el stock
+
+                for (int x = 0; x < CantPrendas; x++) {
+                    _Prenda= _ArchiPrenda.LeerPrenda(x);
+
+                    if (_Prenda.getCodigo() == _ven.getCodigo()) {  // Corregimos aquí el código
+                        int pos = _ArchiPrenda.BuscarCodigoPrenda(x + 1);
+
+                        _Prenda.setCantidad(_Prenda.getCantidad() - cInicial);
+
+                        cout<<"queda al final "<<cInicial<< " con precio "<< _Prenda.GetPrecioVenta() <<endl;
+
+                        if (_Prenda.getCantidad() <= 0) {  // Si el stock queda en 0 le hacemos una baja lógica
+                            _Prenda.setEstadoDePrenda(false);
+                        }
+
+                         totalVendido+= _ven.getCantidad() * _Prenda.GetPrecioVenta();
+                        //_ArchVenta.GuardarVenta(_ven);
+                         cout<<"este es el precio actualizado: "<<totalVendido<<endl;
+                        _ArchiPrenda.SobreescribirArchivoPrenda(pos, _Prenda);
+                        system("pause");
+                        break;  // Salimos del bucle una vez que actualizamos la prenda
                     }
-
-                     totalVendido+= _ven.getCantidad() * _Prenda.GetPrecioVenta();
-                    //_ArchVenta.GuardarVenta(_ven);
-                     cout<<"este es el precio actualizado: "<<_ven.getPrecioVenta()<<endl;
-                    _ArchiPrenda.SobreescribirArchivoPrenda(pos, _Prenda);
-                    cout<<"se guardo correctamen"<<endl;
-                    system("pause");
-                    break;  // Salimos del bucle una vez que actualizamos la prenda
                 }
             }
+
+            _ven.setPrecioVenta(totalVendido);
+            ///hacer un for para sobreescrir la venta actualizada
+
+
+            int continuar;
+
+            ///cout<<"queda al final cham cham"<<_Prenda.getCantidad()<<endl;
+            ///_PrendManager.SubmenuInventario();
+            cout << "¿Desea agregar otro producto a la venta? 1-si 2-no" << endl;
+            cin >> continuar;
+
+
+
+            if (continuar == 2) {
+                    bandera = false;
+            }
         }
-
-        _ven.setPrecioVenta(totalVendido);
-        ///hacer un for para sobreescrir la venta actualizada
-
-
-        int continuar;
-
-        ///cout<<"queda al final cham cham"<<_Prenda.getCantidad()<<endl;
-        ///_PrendManager.SubmenuInventario();
-        cout << "¿Desea agregar otro producto a la venta? 1-si 2-no" << endl;
-        cin >> continuar;
-
-
-
-        if (continuar == 2) {
-                bandera = false;
-        }
+    }else
+    {
+        cout << "NO SE REGISTRAN VENTAS" << endl;
     }
 
 }

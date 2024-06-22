@@ -48,6 +48,7 @@ int main()
                 break;
             default:
                 cout << "OPCION INCORRECTA" << endl;
+                system("pause");
             break;
         }
 

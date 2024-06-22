@@ -57,6 +57,7 @@ void Menu1()
                 break;
             default:
                 cout << "OPCION INCORRECTA" << endl;
+                system("pause");
             break;
         }
 
@@ -99,6 +100,7 @@ void Menu2()
                 break;
             default:
                 cout << "OPCION INCORRECTA" << endl;
+                system("pause");
             break;
         }
 
@@ -147,6 +149,7 @@ void Menu3()
                 break;
             default:
                 cout << "OPCION INCORRECTA" << endl;
+                system("pause");
             break;
         }
 

@@ -2,24 +2,27 @@
 
 //////////////////////////////   METODOS DE SUBMENUS   ///////////////////////////////////////////
 
-void VentaManager::ListarVenta()
+void VentaManager :: ListarVenta()
 {
-    Venta obj;
+     Venta obj;
     int cantidad = _ArchVenta.ContarRegistrosVenta(); // calcula la cantidad de registros de venta
 
     int codigoActual = -1; // para almacenar el codigo de venta actual
 
-    for(int x = 0; x < cantidad; x++) {
+    for(int x = 0; x < cantidad; x++)
+    {
         obj = _ArchVenta.LeerVenta(x); // me paro en las ventas
         int codigoVenta = obj.getCodigoVenta();
 
-        if (codigoVenta != codigoActual) { //si es un nuevo grupo de venta
-            cout << "=================================================" << endl;
+        if (codigoVenta != codigoActual)
+        { //si es un nuevo grupo de venta
+            cout << "==========================================" << endl;
             cout << "VENTA NRO " << codigoVenta << endl;
             cout << "FECHA DE COMPROBANTE: "
                  << obj.getVentaFecha().getDia() << "/"
                  << obj.getVentaFecha().getMes() << "/"
                  << obj.getVentaFecha().getAnio() << endl;
+            cout << "------------------------------------" << endl;
             codigoActual = codigoVenta;
             cout << endl;
         }//si es de la misma venta imprime
@@ -27,8 +30,8 @@ void VentaManager::ListarVenta()
         cout << "CANTIDAD: " << obj.getCantidad() << endl;
         cout << endl;
     }
+        cout << "==========================================" << endl;
 }
-
 
 void VentaManager :: BuscarVentaPorFecha()
 {
@@ -83,9 +86,11 @@ void VentaManager :: BuscarVentaPorFecha()
 
 //////////////////////////////   DESARROLLO DE SUBMENUS   ///////////////////////////////////////////
 
-void VentaManager::SubMenuCargarVenta() {
+void VentaManager::SubMenuCargarVenta()
+{
     Venta _ven;
-    int cod_venta;
+    int cod_venta, continuar, CodigoSeleccionado;
+    char Salir = 'n';
     Fecha obj;
     int CantPrendas = _ArchiPrenda.ContarRegistrosPrenda();
 
@@ -93,20 +98,18 @@ void VentaManager::SubMenuCargarVenta() {
     {
         cout << "BIENVENIDO! ESTA USTED POR REALIZAR UNA VENTA" << endl;
         cout << "----------------------------------------------" << endl;
-        _PrendManager.SubmenuInventario();
-
-        bool bandera = true;
-
 
         int totalVendido=0; ///acumulador de lo q se vendio total
         cod_venta = _ArchVenta.NuevoCodigoDeVenta();
         _ven.setCodigoDeVenta(cod_venta); //codigo de venta unico, lo genero aca porque dentro de algun bucle puede generar un numero erroneo
-        while (bandera != false) {
-
-
-            int CodigoSeleccionado;
-            cout << "Seleccione el código de la prenda que desea vender" << endl;
+        while (Salir != '1')
+        {
+            _PrendManager.SubmenuInventario();
+            cout << endl;
+            cout << "SELECCIONE EL CODIGO DE PRENDA A VENDER: ";
+            cout<<"(TOTAL ACUMULADO AL MOMENTO EN ESTA VENTA : $"<< totalVendido <<")" << endl;
             cin >> CodigoSeleccionado;
+            cout << endl;
 
             // Entramos al archivo de prenda y recorremos todas las prendas
             // Filtramos por el código elegido
@@ -118,11 +121,12 @@ void VentaManager::SubMenuCargarVenta() {
 
             int cInicial=0; //cantidad de ventas segun prenda
 
-            for (int x = 0; x < CantPrendas; x++) {
+            for (int x = 0; x < CantPrendas; x++)
+            {
                 _Prenda= _ArchiPrenda.LeerPrenda(x);
-                ///cout<<"entro el codigo dentro del for"<<endl;
 
-                if (_Prenda.getCodigo() == CodigoSeleccionado) {
+                if (_Prenda.getCodigo() == CodigoSeleccionado && _Prenda.getEstadoDePrenda())
+                {
                     _ven.setCodigoPrenda(_Prenda.getCodigo());
                     _ven.setNombrePrenda(_Prenda.getNombrePrenda());
                     _ven.setModelo(_Prenda.getModelo());
@@ -136,54 +140,56 @@ void VentaManager::SubMenuCargarVenta() {
                     totalVendido+= _Prenda.GetPrecioVenta();
                      //Guardamos la venta una sola vez
                     _ArchVenta.GuardarVenta(_ven);
-                    cout<<"se guardo correctamente la prenda en ven "<<_ven.getCantidad() <<endl;
+                    system("cls");
+                    cout << "----------------------------------------------" << endl << endl;
+                    cout <<"CODIGO DE VENTA NUMERO: "<<_ven.getCodigoVenta() << endl;
 
                     break;  // Salimos del bucle una vez que encontramos la prenda
                 }
 
             }
 
-            if (prendaEncontrada) {  // Solo si encontramos la prenda actualizamos el stock
+            if (prendaEncontrada) // Solo si encontramos la prenda actualizamos el stock
+            {
 
-                for (int x = 0; x < CantPrendas; x++) {
+                for (int x = 0; x < CantPrendas; x++)
+                {
                     _Prenda= _ArchiPrenda.LeerPrenda(x);
 
-                    if (_Prenda.getCodigo() == _ven.getCodigo()) {  // Corregimos aquí el código
+                    if (_Prenda.getCodigo() == _ven.getCodigo()) // Corregimos aquí el código
+                    {
                         int pos = _ArchiPrenda.BuscarCodigoPrenda(x + 1);
 
                         _Prenda.setCantidad(_Prenda.getCantidad() - cInicial);
 
-                        if (_Prenda.getCantidad() <= 0) {  // Si el stock queda en 0 le hacemos una baja lógica
+                        if (_Prenda.getCantidad() <= 0)
+                        {  // Si el stock queda en 0 le hacemos una baja lógica
                             _Prenda.setEstadoDePrenda(false);
                         }
 
-
-                        //_ArchVenta.GuardarVenta(_ven);
-                         cout<<"este es el precio actualizado: "<<totalVendido<<endl;
+                        cout <<"EN ESTA VENTA: $"<<totalVendido<< endl << endl;
+                        cout << "----------------------------------------------" << endl;
                         _ArchiPrenda.SobreescribirArchivoPrenda(pos, _Prenda);
                         system("pause");
                         break;  // Salimos del bucle una vez que actualizamos la prenda
                     }
                 }
+            }else
+            {
+                system("cls");
+                cout << "PRENDA NO ENCONTRADA" << endl;
+                system("pause");
             }
-
 
             ///hacer un for para sobreescrir la venta actualizada
+            system("cls");
+            cout << "DESEA AGREGAR OTRO PRODUCTO A LA VENTA? CUALQUIER TECLA - SI / 1 - NO" << endl;
+            cout<<"(TOTAL ACUMULADO AL MOMENTO EN ESTA VENTA : $"<< totalVendido <<")" << endl;
+            cin >> Salir;
+            system("cls");
 
-
-            int continuar;
-
-            ///cout<<"queda al final cham cham"<<_Prenda.getCantidad()<<endl;
-            ///_PrendManager.SubmenuInventario();
-            cout << "¿Desea agregar otro producto a la venta? 1-si 2-no" << endl;
-            cin >> continuar;
-
-
-
-            if (continuar == 2) {
-                    bandera = false;
-            }
         }
+
     }else
     {
         cout << "NO SE REGISTRAN VENTAS" << endl;
@@ -210,12 +216,12 @@ void VentaManager::SubMenuEstadisticaProductos()
         // leo las ventas y acumulo
         for (int x = 0; x < CantVentas; x++) {
             Vent = _ArchVenta.LeerVenta(x);
-            vec[Vent.getCodigo()-1] += Vent.getCantidad();
+            vec[CantVentas] += Vent.getCantidad();
         }
 
         // ordeno el vector en orden descendente usando un algoritmo de selección
             int maxIndex = 0;
-        for (int i = 1; i < CantVentas; i++) {
+        for (int i = 1; i <= CantVentas; i++) {
             for (int j = i + 1; j < CantVentas; j++) {
                 if (vec[j] > vec[maxIndex]) {
                     maxIndex = j;
@@ -281,7 +287,6 @@ void VentaManager :: SubMenuHistorialDeVenta()
     }else
     {
         cout << "NO SE REGISTRAN VENTAS" << endl;
-        system("pause");
         return;
     }
 }

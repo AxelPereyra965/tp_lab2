@@ -18,11 +18,13 @@ fflush(stdin) --> limpia el buffer de entrada una vez escrito/rellenado el dato 
 
 void PrendaManager::CargarPrenda() {
     Prenda pren;
-    int cod_prenda, cantidad, OpcionCargar;
+    int cod_prenda, cantidad, OpcionCargar, Codigo, Stock, pos;
     string nombre_prenda, modelo, talle, color;
     float precio_unitario;
-    int cant = ObjArchivoPrenDa.ContarRegistrosPrenda();
+    bool Encontro = false;
+    int Cantidad_Registros = ObjArchivoPrenDa.ContarRegistrosPrenda();
 
+    system("cls");
     cout << "BIENVENIDO! ESTA USTED POR CARGAR UNA PRENDA" << endl;
     cout << "----------------------------------------------" << endl;
     cout << "1 - CARGAR PRENDA EXISTENTE" << endl;
@@ -35,27 +37,27 @@ void PrendaManager::CargarPrenda() {
 
     switch (OpcionCargar) {
         case 1:
-                if(cant > 0)
+                if(Cantidad_Registros > 0)
                 {
                     system("cls");
-                    for(int x = 0 ; x < cant ; x ++)
+                    for(int x = 0 ; x < Cantidad_Registros ; x ++)
                     {
                         pren = ObjArchivoPrenDa.LeerPrenda(x);
                         cout << "=================================================" << endl;
                         MostrarPrenda(pren);
                         cout << "=================================================" << endl;
                     }
-                    int Codigo, Stock,pos, cant;
-                    bool Encontro = false;
 
                     cout << "SELECCIONE EL CODIGO DE LA PRENDA A STOCKEAR: " << endl;
                     cin >> Codigo;
+                    system("cls");
 
-                    for(int x=0;x<cant;x++){
+                    for(int x = 0 ; x < Cantidad_Registros ; x++)
+                    {
                         pren = ObjArchivoPrenDa.LeerPrenda(x);
 
-                        if(pren.getCodigo()==Codigo){
-
+                        if(pren.getCodigo()==Codigo)
+                        {
                             pos =ObjArchivoPrenDa.BuscarCodigoPrenda(pren.getCodigo());
                             Encontro = true;
                             cout << "INDIQUE LA CANTIDAD CON LA QUE SE VA A STOCKEAR: ";
@@ -67,17 +69,16 @@ void PrendaManager::CargarPrenda() {
                                 pren.setEstadoDePrenda(true);
                             }
                             ObjArchivoPrenDa.SobreescribirArchivoPrenda(pos,pren);
+                            system("cls");
+                            cout << "- STOCK ACTUALIZADO DE " << pren.getNombrePrenda() <<" -" << endl;
+                            system("pause");
                         }
                     }
-                    if(!Encontro)
+                    if(Encontro == false)
                     {
                         cout << "PRENDA NO ENCONTRADA" << endl;
                         system("pause");
-                        break;
                     }
-
-                    cout << "- STOCK ACTUALIZADO -" << endl;
-                    system("pause");
                     break;
                 }else
                 {
@@ -220,7 +221,7 @@ void PrendaManager :: ModificacionDePrenda(Prenda &obj)
             }
         case 5:
             {
-                cout << "INDIQUE EL PRECIO NUEVO: ";
+                cout << "INDIQUE EL PRECIO NUEVO: $";
                 cin >> price;
             while(price<0){
                 cout << "DEBE INGRESAR UN NUMERO VALIDO"<<endl<<endl;
@@ -256,7 +257,7 @@ void PrendaManager :: MostrarPrenda(Prenda obj)
     cout << "TALLE: " << obj.getTalle() << endl;
     cout << "MODELO: " << obj.getModelo() << endl;
     cout << "COLOR: " << obj.getColor() << endl;
-    cout << "PRECIO: " << obj.GetPrecioVenta() << endl;
+    cout << "PRECIO: $" << obj.GetPrecioVenta() << endl;
     cout << "CANTIDAD DE STOCK: " << obj.getCantidad() << endl;
     cout << "DISPONIBLE: " << (obj.getEstadoDePrenda() ? "SI" : "NO")<< endl;
 }

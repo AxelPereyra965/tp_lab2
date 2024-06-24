@@ -13,10 +13,11 @@ private:
     char Talle[50];
     char Color[50];
     float PrecioVenta;
+    float PrecioTotal;
     int Cantidad;
     Fecha FechaDeVenta;
 public:
-    Venta(int _CodigoPrenda, int _CodigoVenta, string _NombrePrenda, string _Modelo, string _Talle, string _Color, float _PrecioVenta , int _Cantidad, Fecha _FechaDeVenta);
+    Venta(int _CodigoPrenda, int _CodigoVenta, string _NombrePrenda, string _Modelo, string _Talle, string _Color, float _PrecioVenta, float _PrecioTotal , int _Cantidad, Fecha _FechaDeVenta);
     Venta();
     //
     int getCodigo();
@@ -26,6 +27,7 @@ public:
     string getTalle();
     string getColor();
     float getPrecioVenta();
+    float getPrecioTotal();
     int getCantidad();
     Fecha getVentaFecha();
     //
@@ -36,6 +38,7 @@ public:
     void setTalle(string _Talle);
     void setColor(string _Color);
     void setPrecioVenta(float _PrecioVenta);
+    void setPrecioTotal(float _PrecioTotal);
     void setCantidad(int _Cantidad);
     void setVentaFecha(Fecha _FechaDeVenta);
 };

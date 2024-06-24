@@ -98,6 +98,7 @@ void VentaManager::SubMenuCargarVenta()
 
     if(CantPrendas > 0)
     {
+        system("cls");
         cout << "BIENVENIDO! ESTA USTED POR REALIZAR UNA VENTA" << endl;
         cout << "----------------------------------------------" << endl;
 

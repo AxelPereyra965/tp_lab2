@@ -15,13 +15,18 @@ int main()
     int opcion;
     while (true){
         system("cls");
-        cout << "MENU PRINCIPAL" << endl;
-        cout << "----------------" << endl;
-        cout << "1) PRENDA" << endl;
-        cout << "2) INVENTARIO" << endl;
-        cout << "3) ESTADISTICAS" << endl;
-        cout << "---------------------------" << endl;
-        cout << "0) SALIR" << endl;
+        cout << "     MENU PRINCIPAL" << endl;
+        cout << "------------------------" << endl;
+        cout << endl;
+        cout << "1)     PRENDA" << endl;
+        cout << endl;
+        cout << "2)    INVENTARIO" << endl;
+        cout << endl;
+        cout << "3)    ESTADISTICAS" << endl;
+        cout << endl;
+        cout << "------------------------" << endl;
+        cout << endl;
+        cout << "0)       SALIR" << endl;
 
         cin >> opcion;
 

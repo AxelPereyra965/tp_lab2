@@ -30,6 +30,8 @@ void VentaManager :: ListarVenta()
         cout << "CANTIDAD: " << obj.getCantidad() << endl;
         cout << endl;
     }
+        cout << "TOTAL DE ESTA VENTA: $" << obj.getPrecioTotal() << endl; //LO PONGO AFUERA DEL FOR PARA QUE SOLO MUESTRE EL RESULTADO FINAL
+        cout << endl;
         cout << "==========================================" << endl;
 }
 
@@ -89,7 +91,7 @@ void VentaManager :: BuscarVentaPorFecha()
 void VentaManager::SubMenuCargarVenta()
 {
     Venta _ven;
-    int cod_venta, continuar, CodigoSeleccionado;
+    int cod_venta, CodigoSeleccionado;
     char Salir = 'n';
     Fecha obj;
     int CantPrendas = _ArchiPrenda.ContarRegistrosPrenda();
@@ -99,7 +101,7 @@ void VentaManager::SubMenuCargarVenta()
         cout << "BIENVENIDO! ESTA USTED POR REALIZAR UNA VENTA" << endl;
         cout << "----------------------------------------------" << endl;
 
-        int totalVendido=0; ///acumulador de lo q se vendio total
+        float totalVendido= 0; ///acumulador de lo q se vendio total
         cod_venta = _ArchVenta.NuevoCodigoDeVenta();
         _ven.setCodigoDeVenta(cod_venta); //codigo de venta unico, lo genero aca porque dentro de algun bucle puede generar un numero erroneo
         while (Salir != '1')
@@ -138,6 +140,7 @@ void VentaManager::SubMenuCargarVenta()
                     cInicial++;
                     _ven.setCantidad(cInicial);
                     totalVendido+= _Prenda.GetPrecioVenta();
+                    _ven.setPrecioTotal(totalVendido);
                      //Guardamos la venta una sola vez
                     _ArchVenta.GuardarVenta(_ven);
                     system("cls");
@@ -202,12 +205,12 @@ void VentaManager::SubMenuEstadisticaProductos()
 {
     int CantVentas = _ArchVenta.ContarRegistrosVenta();
     Venta Vent;
+
     if(CantVentas > 0)
     {
-
         cout << "CANTIDAD DE VENTAS " << CantVentas << endl;
         // creo un vector dinámico de enteros con el tamaño de la cantidad de ventas
-        int* vec = new int[CantVentas];
+        float * vec = new float[CantVentas];
         if (vec == nullptr) {
             cout << "Error de memoria" << endl;
             return;
@@ -216,11 +219,11 @@ void VentaManager::SubMenuEstadisticaProductos()
         // leo las ventas y acumulo
         for (int x = 0; x < CantVentas; x++) {
             Vent = _ArchVenta.LeerVenta(x);
-            vec[CantVentas] += Vent.getCantidad();
+            vec[CantVentas] += Vent.getPrecioTotal();
         }
 
         // ordeno el vector en orden descendente usando un algoritmo de selección
-            int maxIndex = 0;
+        int maxIndex = 0;
         for (int i = 1; i <= CantVentas; i++) {
             for (int j = i + 1; j < CantVentas; j++) {
                 if (vec[j] > vec[maxIndex]) {

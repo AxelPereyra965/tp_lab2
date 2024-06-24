@@ -8,7 +8,7 @@ void SetColor(int color) {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(hConsole, color);
 }
-
+//prueba
 int main()
 {
     SetColor(10);

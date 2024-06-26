@@ -36,6 +36,10 @@ int Venta :: getCodigoVenta(){
     return CodigoVenta;
 }
 
+int Venta :: getCodigoPrenda(){
+    return CodigoPrenda;
+}
+
 string Venta::getNombrePrenda() {
     return NombrePrenda;
 }

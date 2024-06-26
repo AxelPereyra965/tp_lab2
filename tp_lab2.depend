@@ -553,38 +553,39 @@
 1718375383 source:c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyecto lab\laboratorio2_proyecto\ventamanager.cpp
 	"VentaManager.h"
 
-1719075065 source:c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\fecha.cpp
+1719419568 source:c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\fecha.cpp
 	"Fecha.h"
 	<ctime>
 
-1719075065 c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\fecha.h
+1719419568 c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\fecha.h
 	<iostream>
 	<string>
 
-1719075065 source:c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\main.cpp
+1719419568 source:c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\main.cpp
 	<iostream>
 	<windows.h>
 	"Menus.h"
 
-1719075065 c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\menus.h
+1719419568 c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\menus.h
+	<iostream>
+	<cstdlib>
 	"PrendaManager.h"
 	"VentaManager.h"
-	<iostream>
 
-1719075065 c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\prendamanager.h
+1719419568 c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\prendamanager.h
 	"Prenda.h"
 	"PrendaArchivo.h"
 
-1719075065 c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\prenda.h
+1719419568 c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\prenda.h
 	<iostream>
 	<string>
 	<cstring>
 
-1719075065 c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\prendaarchivo.h
+1719419568 c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\prendaarchivo.h
 	"Prenda.h"
 	<iostream>
 
-1719075065 c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\ventamanager.h
+1719419568 c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\ventamanager.h
 	"VentaArchivo.h"
 	"PrendaManager.h"
 	"Venta.h"
@@ -592,35 +593,35 @@
 	"Prenda.h"
 	"Fecha.h"
 
-1719075065 c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\ventaarchivo.h
+1719419568 c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\ventaarchivo.h
 	"Venta.h"
 	<iostream>
 
-1719075065 c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\venta.h
+1719433666 c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\venta.h
 	"Fecha.h"
 	<string>
 	<cstring>
 
-1719075065 source:c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\prenda.cpp
+1719419568 source:c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\prenda.cpp
 	"Prenda.h"
 	<cstring>
 
-1719075065 source:c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\prendaarchivo.cpp
+1719419568 source:c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\prendaarchivo.cpp
 	"PrendaArchivo.h"
 	<iostream>
 
-1719075065 source:c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\prendamanager.cpp
+1719419568 source:c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\prendamanager.cpp
 	"PrendaManager.h"
 	<iostream>
 
-1719075065 source:c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\venta.cpp
+1719433826 source:c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\venta.cpp
 	"Venta.h"
 	<cstring>
 
-1719075065 source:c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\ventaarchivo.cpp
+1719419568 source:c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\ventaarchivo.cpp
 	"VentaArchivo.h"
 	<iostream>
 
-1719083825 source:c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\ventamanager.cpp
+1719434183 source:c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\ventamanager.cpp
 	"VentaManager.h"
 

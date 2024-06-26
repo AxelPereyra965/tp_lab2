@@ -1,4 +1,5 @@
 #include "VentaManager.h"
+#include <algorithm>
 
 //////////////////////////////   METODOS DE SUBMENUS   ///////////////////////////////////////////
 
@@ -230,54 +231,38 @@ void VentaManager::SubMenuCargarVenta()
 
 }
 
-//producto más vendido
-void VentaManager::SubMenuEstadisticaProductos()
-{
+void VentaManager::SubMenuEstadisticaProductos() {
     int CantVentas = _ArchVenta.ContarRegistrosVenta();
-    Venta Vent;
-
-    if(CantVentas > 0)
-    {
-        cout << "CANTIDAD DE VENTAS " << CantVentas << endl;
-        // creo un vector dinámico de enteros con el tamaño de la cantidad de ventas
-        float * vec = new float[CantVentas];
-        if (vec == nullptr) {
-            cout << "Error de memoria" << endl;
-            return;
-        }
-
-        // leo las ventas y acumulo
-        for (int x = 0; x < CantVentas; x++) {
-            Vent = _ArchVenta.LeerVenta(x);
-            vec[CantVentas];
-        }
-
-        // ordeno el vector en orden descendente usando un algoritmo de selección
-        int maxIndex = 0;
-        for (int i = 1; i <= CantVentas; i++) {
-            for (int j = i + 1; j < CantVentas; j++) {
-                if (vec[j] > vec[maxIndex]) {
-                    maxIndex = j;
-                }
-            }
-            if (maxIndex != 0) {
-                int temp = vec[i];
-                vec[i] = vec[maxIndex];
-                vec[maxIndex] = temp;
-            }
-        }
-
-        // Imprimir las ventas en orden descendente
-        for (int x = 0; x < CantVentas; x++) {
-            cout << "Venta " << x+1 << ": " << vec[x] <<endl; //std::endl;
-        }
-
-        // Liberar la memoria
-        delete[] vec;
-    }else
-    {
+    if (CantVentas <= 0) {
         cout << "NO SE REGISTRARON VENTAS HASTA EL MOMENTO" << endl;
+        return;
     }
+
+     cout << "Productos Mas Vendidos" << endl;
+
+    // Crear vector dinámico para almacenar las cantidades vendidas por producto
+    float *vec = new float[CantVentas]();
+    Venta _venta;
+
+    // Leer las ventas y acumular las cantidades vendidas por producto
+    for (int x = 0; x < CantVentas; x++) {
+        _venta = _ArchVenta.LeerVenta(x);
+        vec[_venta.getCodigoPrenda() - 1] += _venta.getCantidad();
+    }
+
+    //se usa sort para ordenar vec en orden descendente
+    sort(vec, vec + CantVentas, [](float a, float b) {
+        return a > b; // Comparador para ordenar de mayor a menor
+    });
+
+    // Mostrar las estadísticas de ventas ordenadas
+    for (int x = 0; x < CantVentas; x++) {
+        _venta = _ArchVenta.LeerVenta(x);
+        cout << _venta.getNombrePrenda() << ": " << vec[x] << endl;
+    }
+
+    // Liberar la memoria del vector dinámico
+    delete[] vec;
 }
 
 void VentaManager :: SubMenuHistorialDeVenta()

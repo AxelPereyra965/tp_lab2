@@ -21,6 +21,7 @@ public:
     //
     int getCodigo();
     int getCodigoVenta();
+    int getCodigoPrenda();
     string getNombrePrenda();
     string getModelo();
     string getTalle();

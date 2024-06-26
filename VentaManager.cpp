@@ -1,5 +1,4 @@
 #include "VentaManager.h"
-#include <algorithm>
 
 //////////////////////////////   METODOS DE SUBMENUS   ///////////////////////////////////////////
 
@@ -238,30 +237,23 @@ void VentaManager::SubMenuEstadisticaProductos() {
         return;
     }
 
-     cout << "Productos Mas Vendidos" << endl;
-
-    // Crear vector dinámico para almacenar las cantidades vendidas por producto
+    // Crear vector dinamico
     float *vec = new float[CantVentas]();
     Venta _venta;
 
-    // Leer las ventas y acumular las cantidades vendidas por producto
+    // Leer las ventas y almacenar en el vector
     for (int x = 0; x < CantVentas; x++) {
         _venta = _ArchVenta.LeerVenta(x);
-        vec[_venta.getCodigoPrenda() - 1] += _venta.getCantidad();
+        vec[_venta.getCodigoPrenda() - 1] += _venta.getCantidad(); // Acumular las ventas de ese producto
     }
 
-    //se usa sort para ordenar vec en orden descendente
-    sort(vec, vec + CantVentas, [](float a, float b) {
-        return a > b; // Comparador para ordenar de mayor a menor
-    });
-
-    // Mostrar las estadísticas de ventas ordenadas
+    // Mostrar las estadisticas de ventas
     for (int x = 0; x < CantVentas; x++) {
         _venta = _ArchVenta.LeerVenta(x);
-        cout << _venta.getNombrePrenda() << ": " << vec[x] << endl;
+        cout << _venta.getNombrePrenda() << ": " << vec[_venta.getCodigoPrenda() - 1] << endl;
     }
 
-    // Liberar la memoria del vector dinámico
+    // Liberar la memoria del vector dinamico
     delete[] vec;
 }
 

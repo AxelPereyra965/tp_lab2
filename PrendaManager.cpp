@@ -275,6 +275,7 @@ void PrendaManager ::SubmenuInventario()
 
     int cantidad = ObjArchivoPrenDa.ContarRegistrosPrenda();
 
+    system("cls");
     if(cantidad > 0)
     {
         for(int x = 0 ; x < cantidad ; x ++)
@@ -398,12 +399,14 @@ void PrendaManager :: SubmenuDetalleDePrenda()
     bool Fin = false;
     int cantidad = ObjArchivoPrenDa.ContarRegistrosPrenda();
 
+    system("cls");
     if(cantidad > 0)
     {
         do                        //la cadena que ingresa el us y el nombre de la prend se conierten a char para compararse
         {
             char Selector[30], copia[30];
             string selector;
+            bool EncontrePrenda = false;
             int Resultado, Salir;
             Prenda obj;
 
@@ -412,32 +415,41 @@ void PrendaManager :: SubmenuDetalleDePrenda()
             cout << "(INGRESE CERO SI QUIERE DEJAR DE BUSCAR)" << endl;
             cin.ignore();
             getline(cin, selector);
-            fflush(stdin);
-            strcpy(Selector, selector.c_str()); //convierto el string a const char para poder meterlo en el strcmp (
+            if(selector != "0")
+            {
+                fflush(stdin);
+                strcpy(Selector, selector.c_str()); //convierto el string a const char para poder meterlo en el strcmp (
 
-            for(int x = 0 ; x < cantidad ; x ++)
-            {
-                obj = ObjArchivoPrenDa.LeerPrenda(x);
-                strcpy(copia, obj.getNombrePrenda().c_str()); //convierto el string a const char para poder meterlo en el strcmp
-                Resultado = strcmp(Selector,copia); //comparo las dos cadenas de caracteres
-                if(Resultado == 0 && obj.getEstadoDePrenda()) //el strcmp pide devolver un valor entero, si ese valor es '0', significa que las cadenas son iguales
+                for(int x = 0 ; x < cantidad ; x ++)
                 {
-                    cout << "=================================" << endl;
-                    MostrarPrenda(obj);
-                    cout << "=================================" << endl;
+                    obj = ObjArchivoPrenDa.LeerPrenda(x);
+                    strcpy(copia, obj.getNombrePrenda().c_str()); //convierto el string a const char para poder meterlo en el strcmp
+                    Resultado = strcmp(Selector,copia); //comparo las dos cadenas de caracteres
+                    if(Resultado == 0 && obj.getEstadoDePrenda()) //el strcmp pide devolver un valor entero, si ese valor es '0', significa que las cadenas son iguales
+                    {
+                        EncontrePrenda = true;
+                        cout << "=================================" << endl;
+                        MostrarPrenda(obj);
+                        cout << "=================================" << endl;
+                    }
                 }
-            }
-            if(Resultado != 0)
+                if(!EncontrePrenda)
+                {
+                    system("cls");
+                    cout << "PRENDA NO ENCONTRADA" << endl;
+                }
+                system("pause");
+                system("cls");
+                cout << "DESEA SEGUIR BUSCANDO? (1- NO / CUALQUIER OTRA TECLA - SI)" << endl;
+                cin >> Salir;
+                if(Salir == 1)
+                {
+                    Fin = true; //sale del bucle de buscar prendas y termina el metodo
+                }
+            }else
             {
-                cout << "PRENDA NO ENCONTRADA" << endl;
-            }
-            system("pause");
-            system("cls");
-            cout << "DESEA SEGUIR BUSCANDO? (1- NO / CUALQUIER OTRA TECLA - SI)" << endl;
-            cin >> Salir;
-            if(Salir == 1)
-            {
-                Fin = true; //sale del bucle de buscar prendas y termina el metodo
+                system("cls");
+                return;
             }
             system("cls");
 

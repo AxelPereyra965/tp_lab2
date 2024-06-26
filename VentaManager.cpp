@@ -4,33 +4,64 @@
 
 void VentaManager :: ListarVenta()
 {
-     Venta obj;
-    int cantidad = _ArchVenta.ContarRegistrosVenta(); // calcula la cantidad de registros de venta
-
+    Venta ven;
+    Prenda pren;
+    bool SeparadorDeRemitos = false; //BANDERA QUE PERMITE PONER EL PRECIO AL FINAL SIN REPETIRSE ENTRE OBJETOS PRENDAS
+    float totalVendido= 0;
+    int Reg_Ventas = _ArchVenta.ContarRegistrosVenta(); // calcula la cantidad de registros de venta
+    int Reg_Prendas = _ArchiPrenda.ContarRegistrosPrenda();
     int codigoActual = -1; // para almacenar el codigo de venta actual
 
-    for(int x = 0; x < cantidad; x++)
+    for(int x = 0; x < Reg_Ventas; x++) //RECORRO LAS VENTAS POR SU CODIGO Y MUESTRO TODAS LAS EXISTENTES
     {
-        obj = _ArchVenta.LeerVenta(x); // me paro en las ventas
-        int codigoVenta = obj.getCodigoVenta();
+        ven = _ArchVenta.LeerVenta(x); // me paro en las ventas
+        int codigoVenta = ven.getCodigoVenta();
 
-        if (codigoVenta != codigoActual)
+        if (codigoVenta != codigoActual && SeparadorDeRemitos == false) //ACA SOLO SE MOSTRARA EL CODIGO DE VENTA 1
         { //si es un nuevo grupo de venta
             cout << "==========================================" << endl;
             cout << "VENTA NRO " << codigoVenta << endl;
             cout << "FECHA DE COMPROBANTE: "
-                 << obj.getVentaFecha().getDia() << "/"
-                 << obj.getVentaFecha().getMes() << "/"
-                 << obj.getVentaFecha().getAnio() << endl;
+                 << ven.getVentaFecha().getDia() << "/"
+                 << ven.getVentaFecha().getMes() << "/"
+                 << ven.getVentaFecha().getAnio() << endl;
+            cout << "------------------------------------------" << endl;
+            codigoActual = codigoVenta;
+            SeparadorDeRemitos = true; //BANDERA SEPARADORA ACTIVADA
+            cout << endl;
+        }//si es de la misma venta imprime
+
+        for(int i = 0 ; i < Reg_Prendas ; i ++) //RECORRO TODAS LAS PRENDAS, Y MUESTRO SOLO LAS QUE SE VENDIERON
+        {
+            pren = _ArchiPrenda.LeerPrenda(i);
+            if(pren.getCodigo() == ven.getCodigo()) //LAS RELACIONO POR SU CODIGO
+            {
+                cout << "PRENDA: " << ven.getNombrePrenda() << endl;
+                cout << "CANTIDAD: " << ven.getCantidad() << endl;
+                cout << "PRECIO DE LA PRENDA: $" << ven.getPrecioVenta() << endl;
+                totalVendido+= pren.GetPrecioVenta(); //ACUMULO LO GASTADO, LA PROPIEDAD DE VENTATOTAL NO FUNCIONABA CORRECTAMENTE
+                cout << endl;
+            }
+        }
+
+        if (codigoVenta != codigoActual && SeparadorDeRemitos == true) //VENTAS QUE LE SIGUEN A LA UNO SE MUESTRAN ACA
+        { //si es un nuevo grupo de venta
+            cout << "TOTAL DE ESTA VENTA: $" << totalVendido << endl; //LO PONGO AFUERA DEL FOR PARA QUE SOLO MUESTRE EL RESULTADO FINAL
+            totalVendido = 0; // REINICIO EL CONTADOR PARA LA SIGUIENTE VENTA
+            cout << endl;
+            cout << "==========================================" << endl;
+            cout << "VENTA NRO " << codigoVenta << endl;
+            cout << "FECHA DE COMPROBANTE: "
+                 << ven.getVentaFecha().getDia() << "/"
+                 << ven.getVentaFecha().getMes() << "/"
+                 << ven.getVentaFecha().getAnio() << endl;
             cout << "------------------------------------" << endl;
             codigoActual = codigoVenta;
             cout << endl;
-        }//si es de la misma venta imprime
-        cout << "PRENDA: " << obj.getNombrePrenda() << endl;
-        cout << "CANTIDAD: " << obj.getCantidad() << endl;
-        cout << endl;
+        }
+
     }
-        cout << "TOTAL DE ESTA VENTA: $" << obj.getPrecioTotal() << endl; //LO PONGO AFUERA DEL FOR PARA QUE SOLO MUESTRE EL RESULTADO FINAL
+        cout << "TOTAL DE ESTA VENTA: $" << totalVendido << endl; // ESTE COUT MOSTRARA EL RESULTADO DE LA ULTIMO REGISTRO VENTA UBICADO EN EL ARCHIVO DE VENTAS
         cout << endl;
         cout << "==========================================" << endl;
 }
@@ -98,7 +129,6 @@ void VentaManager::SubMenuCargarVenta()
 
     if(CantPrendas > 0)
     {
-        system("cls");
         cout << "BIENVENIDO! ESTA USTED POR REALIZAR UNA VENTA" << endl;
         cout << "----------------------------------------------" << endl;
 
@@ -141,7 +171,6 @@ void VentaManager::SubMenuCargarVenta()
                     cInicial++;
                     _ven.setCantidad(cInicial);
                     totalVendido+= _Prenda.GetPrecioVenta();
-                    _ven.setPrecioTotal(totalVendido);
                      //Guardamos la venta una sola vez
                     _ArchVenta.GuardarVenta(_ven);
                     system("cls");
@@ -220,7 +249,7 @@ void VentaManager::SubMenuEstadisticaProductos()
         // leo las ventas y acumulo
         for (int x = 0; x < CantVentas; x++) {
             Vent = _ArchVenta.LeerVenta(x);
-            vec[CantVentas] += Vent.getPrecioTotal();
+            vec[CantVentas];
         }
 
         // ordeno el vector en orden descendente usando un algoritmo de selección

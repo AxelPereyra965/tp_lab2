@@ -233,27 +233,42 @@ void VentaManager::SubMenuCargarVenta()
 void VentaManager::SubMenuEstadisticaProductos() {
     int CantVentas = _ArchVenta.ContarRegistrosVenta();
     if (CantVentas <= 0) {
-        cout << "NO SE REGISTRARON VENTAS HASTA EL MOMENTO" << endl;
+        std::cout << "NO SE REGISTRARON VENTAS HASTA EL MOMENTO" << std::endl;
         return;
     }
 
-    // Crear vector dinamico
-    float *vec = new float[CantVentas]();
+    // Crear vector dinámico
+    Venta *vec = new Venta[CantVentas];
     Venta _venta;
 
     // Leer las ventas y almacenar en el vector
     for (int x = 0; x < CantVentas; x++) {
         _venta = _ArchVenta.LeerVenta(x);
-        vec[_venta.getCodigoPrenda() - 1] += _venta.getCantidad(); // Acumular las ventas de ese producto
+        bool existe = false;
+
+        // Comprobar si la venta ya está en el vector (la primera vez de cada venta no va a entrar)
+        for (int y = 0; y < x; y++) {
+            if (vec[y].getCodigoPrenda() == _venta.getCodigoPrenda()){
+                    vec[y].setCantidad(vec[y].getCantidad() + _venta.getCantidad());
+                    existe = true;
+                    break;
+            }
+        }
+
+        // Si la venta no existe, agregarla al vector (la primera vez de cada venta entra aca)
+        if (!existe) {
+            vec[x] = _venta;
+        }
     }
 
-    // Mostrar las estadisticas de ventas
+    // Mostrar las estadísticas de ventas
     for (int x = 0; x < CantVentas; x++) {
-        _venta = _ArchVenta.LeerVenta(x);
-        cout << _venta.getNombrePrenda() << ": " << vec[_venta.getCodigoPrenda() - 1] << endl;
+        if (vec[x].getCantidad() > 0) {
+            std::cout << vec[x].getNombrePrenda() << ": " << vec[x].getCantidad() << std::endl;
+        }
     }
 
-    // Liberar la memoria del vector dinamico
+    // Liberar la memoria del vector dinámico
     delete[] vec;
 }
 

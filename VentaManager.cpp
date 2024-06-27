@@ -17,6 +17,7 @@ void VentaManager :: ListarVenta()
         ven = _ArchVenta.LeerVenta(x); // me paro en las ventas
         int codigoVenta = ven.getCodigoVenta();
 
+
         if (codigoVenta != codigoActual && SeparadorDeRemitos == false) //ACA SOLO SE MOSTRARA EL CODIGO DE VENTA 1
         { //si es un nuevo grupo de venta
             cout << "==========================================" << endl;
@@ -43,26 +44,16 @@ void VentaManager :: ListarVenta()
                 cout << endl;
             }
         }
+        SeparadorDeRemitos = false; //RESETEO BANDERA
 
-        if (codigoVenta != codigoActual && SeparadorDeRemitos == true) //VENTAS QUE LE SIGUEN A LA UNO SE MUESTRAN ACA
-        { //si es un nuevo grupo de venta
-            cout << "TOTAL DE ESTA VENTA: $" << totalVendido << endl; //LO PONGO AFUERA DEL FOR PARA QUE SOLO MUESTRE EL RESULTADO FINAL
-            totalVendido = 0; // REINICIO EL CONTADOR PARA LA SIGUIENTE VENTA
-            cout << endl;
-            cout << "==========================================" << endl;
-            cout << "VENTA NRO " << codigoVenta << endl;
-            cout << "FECHA DE COMPROBANTE: "
-                 << ven.getVentaFecha().getDia() << "/"
-                 << ven.getVentaFecha().getMes() << "/"
-                 << ven.getVentaFecha().getAnio() << endl;
-            cout << "------------------------------------" << endl;
-            codigoActual = codigoVenta;
-            cout << endl;
+        if (x == Reg_Ventas - 1 || _ArchVenta.LeerVenta(x + 1).getCodigoVenta() != codigoActual)
+        {
+            cout << "TOTAL VENDIDO: $" << totalVendido << endl;
+            cout << endl << endl;
+            totalVendido = 0;
         }
 
     }
-        cout << "TOTAL DE ESTA VENTA: $" << totalVendido << endl; // ESTE COUT MOSTRARA EL RESULTADO DE LA ULTIMO REGISTRO VENTA UBICADO EN EL ARCHIVO DE VENTAS
-        cout << endl;
         cout << "==========================================" << endl;
 }
 

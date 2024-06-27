@@ -233,14 +233,13 @@ void VentaManager::SubMenuCargarVenta()
 void VentaManager::SubMenuEstadisticaProductos() {
     int CantVentas = _ArchVenta.ContarRegistrosVenta();
     if (CantVentas <= 0) {
-        std::cout << "NO SE REGISTRARON VENTAS HASTA EL MOMENTO" << std::endl;
+        cout << "NO SE REGISTRARON VENTAS HASTA EL MOMENTO" << endl;
         return;
     }
 
     // Crear vector dinámico
     Venta *vec = new Venta[CantVentas];
-    Venta _venta;
-
+    Venta _venta, aux;
     // Leer las ventas y almacenar en el vector
     for (int x = 0; x < CantVentas; x++) {
         _venta = _ArchVenta.LeerVenta(x);
@@ -260,11 +259,24 @@ void VentaManager::SubMenuEstadisticaProductos() {
             vec[x] = _venta;
         }
     }
+    system("cls");
+    cout<<"------------------------------------------"<<endl;
+    cout<<"SUS VENTAS ORDENADAS DE MAYOR A MENOR"<<endl;
+    cout<<"------------------------------------------"<<endl;
+    for (int x=0; x<CantVentas; x++) {
+        for (int y=0; y<CantVentas; y++){
+            if (vec[y].getCantidad() < vec[y+1].getCantidad()) {
+                aux=vec[y+1];
+                vec[y+1]= vec[y];
+                vec[y]= aux;
+            }
+        }
+    }
 
     // Mostrar las estadísticas de ventas
     for (int x = 0; x < CantVentas; x++) {
         if (vec[x].getCantidad() > 0) {
-            std::cout << vec[x].getNombrePrenda() << ": " << vec[x].getCantidad() << std::endl;
+            cout << vec[x].getNombrePrenda() << ": " << vec[x].getCantidad() << endl;
         }
     }
 

@@ -222,57 +222,178 @@ void VentaManager::SubMenuCargarVenta()
 }
 
 void VentaManager::SubMenuEstadisticaProductos() {
+
     int CantVentas = _ArchVenta.ContarRegistrosVenta();
+
     if (CantVentas <= 0) {
         cout << "NO SE REGISTRARON VENTAS HASTA EL MOMENTO" << endl;
         return;
     }
 
-    // Crear vector dinámico
-    Venta *vec = new Venta[CantVentas];
-    Venta _venta, aux;
-    // Leer las ventas y almacenar en el vector
-    for (int x = 0; x < CantVentas; x++) {
-        _venta = _ArchVenta.LeerVenta(x);
-        bool existe = false;
+    int opcion;
+    cout << "1 - Filtrar por mes y anio" << endl;
+    cout << "2 - Filtrar por anio" << endl;
+    cin >> opcion;
 
-        // Comprobar si la venta ya está en el vector (la primera vez de cada venta no va a entrar)
-        for (int y = 0; y < x; y++) {
-            if (vec[y].getCodigoPrenda() == _venta.getCodigoPrenda()){
-                    vec[y].setCantidad(vec[y].getCantidad() + _venta.getCantidad());
-                    existe = true;
-                    break;
-            }
-        }
+    switch (opcion) {
+        case 1: {
+            int mes, anio;
+            bool ventasEncontradas = false;
 
-        // Si la venta no existe, agregarla al vector (la primera vez de cada venta entra aca)
-        if (!existe) {
-            vec[x] = _venta;
+            do { // el do while es para validar que se encuentren fechas validas
+                cout << "Ingrese el mes (1-12): ";
+                cin >> mes;
+                cout << "Ingrese el anio: ";
+                cin >> anio;
+
+                // Crear vector dinámico
+                Venta *vec = new Venta[CantVentas]; // pedimos memoria por la cantidad de ventas
+                Venta _venta, aux;
+
+                int contador = 0;
+
+                // Leer las ventas
+                for (int x = 0; x < CantVentas; x++) {
+                    _venta = _ArchVenta.LeerVenta(x);
+
+                    // Filtrar por mes y año
+                    if (_venta.getVentaFecha().getMes() == mes && _venta.getVentaFecha().getAnio() == anio) {
+                        bool existe = false;
+
+                        // Comprobar si la venta ya esta en el vector (la primera vez de cada venta no va a entrar)
+                        for (int y = 0; y < contador; y++) {
+                            if (vec[y].getCodigoPrenda() == _venta.getCodigoPrenda()) {
+                                vec[y].setCantidad(vec[y].getCantidad() + _venta.getCantidad());
+                                existe = true;
+                                break;
+                            }
+                        }
+
+                        // Si la venta no existe, agregarla al vector (la primera vez de cada venta entra aca)
+                        if (!existe) {
+                            vec[contador] = _venta;
+                            contador++;
+                        }
+                    }
+                }
+
+                if (contador == 0) { // sino se encontro fecha valida tira el cartel y libera memoria
+                    cout << "NO SE REGISTRARON VENTAS PARA EL MES Y ANIO INGRESADOS" << endl;
+                    cout << "INTENTE CON OTRAS FECHAS VALIDAS" << endl;
+                    delete[] vec;
+                } else { // si se encontro fecha muestra todo
+                    ventasEncontradas = true; // filtro para terminar el ciclo
+
+                    system("cls");
+                    cout << "------------------------------------------" << endl;
+                    cout << "PRODUCTOS MAS VENDIDOS DEL MES #" << mes << " DEL " << anio << endl;
+                    cout << "------------------------------------------" << endl;
+
+                    // Ordenar las ventas por cantidad en orden descendente
+                    for (int x = 0; x < contador - 1; x++) {
+                        for (int y = 0; y < contador - x - 1; y++) {
+                            if (vec[y].getCantidad() < vec[y + 1].getCantidad()) {
+                                aux = vec[y + 1];
+                                vec[y + 1] = vec[y];
+                                vec[y] = aux;
+                            }
+                        }
+                    }
+
+                    // Mostrar las estadísticas de ventas
+                    for (int x = 0; x < contador; x++) {
+                        if (vec[x].getCantidad() > 0) {
+                            cout << vec[x].getNombrePrenda()<<" "<<vec[x].getModelo() << ": " << vec[x].getCantidad() << endl;
+                        }
+                    }
+
+                    // Liberar la memoria del vector dinámico
+                    delete[] vec;
+                }
+            } while (!ventasEncontradas);
+
+            break;
         }
+        case 2: {
+            int anio;
+            bool ventasEncontradas = false;
+
+            do { // el do while es para validar que el año sea valido
+                cout << "Ingrese el anio: ";
+                cin >> anio;
+
+                // Crear vector dinámico
+                Venta *vec = new Venta[CantVentas]; // pedimos memoria por la cantidad de ventas
+                Venta _venta, aux;
+
+                int contador = 0;
+
+                // Leer las ventas
+                for (int x = 0; x < CantVentas; x++) {
+                    _venta = _ArchVenta.LeerVenta(x);
+
+                    // Filtrar por año
+                    if (_venta.getVentaFecha().getAnio() == anio) {
+                        bool existe = false;
+
+                        // Comprobar si la venta ya esta en el vector (la primera vez de cada venta no va a entrar)
+                        for (int y = 0; y < contador; y++) {
+                            if (vec[y].getCodigoPrenda() == _venta.getCodigoPrenda()) {
+                                vec[y].setCantidad(vec[y].getCantidad() + _venta.getCantidad());
+                                existe = true;
+                                break;
+                            }
+                        }
+
+                        // Si la venta no existe, agregarla al vector (la primera vez de cada venta entra aca)
+                        if (!existe) {
+                            vec[contador] = _venta;
+                            contador++;
+                        }
+                    }
+                }
+
+                if (contador == 0) { // sino se encontro fecha valida tira el cartel y libera memoria
+                    cout << "NO SE REGISTRARON VENTAS PARA EL ANIO INGRESADO" << endl;
+                    cout << "INTENTE CON OTRO ANIO VALIDO" << endl;
+                    delete[] vec;
+                } else { // si se encontro fecha muestra todo
+                    ventasEncontradas = true; // filtro para terminar el ciclo
+
+                    system("cls");
+                    cout << "------------------------------------------" << endl;
+                    cout << "PRODUCTOS MAS VENDIDOS DEL ANIO #" << anio << endl;
+                    cout << "------------------------------------------" << endl;
+
+                    // Ordenar las ventas por cantidad en orden descendente
+                    for (int x = 0; x < contador - 1; x++) {
+                        for (int y = 0; y < contador - x - 1; y++) {
+                            if (vec[y].getCantidad() < vec[y + 1].getCantidad()) {
+                                aux = vec[y + 1];
+                                vec[y + 1] = vec[y];
+                                vec[y] = aux;
+                            }
+                        }
+                    }
+
+                    // Mostrar las estadísticas de ventas
+                    for (int x = 0; x < contador; x++) {
+                        if (vec[x].getCantidad() > 0) {
+                            cout << vec[x].getNombrePrenda() <<" "<<vec[x].getModelo() << ": " << vec[x].getCantidad() << endl;
+                        }
+                    }
+
+                    // Liberar la memoria del vector dinámico
+                    delete[] vec;
+                }
+            } while (!ventasEncontradas);
+
+            break;
+        }
+        default:
+            cout << "Opcion no valida. Intente de nuevo." << endl;
+            break;
     }
-    system("cls");
-    cout<<"------------------------------------------"<<endl;
-    cout<<"SUS VENTAS ORDENADAS DE MAYOR A MENOR"<<endl;
-    cout<<"------------------------------------------"<<endl;
-    for (int x=0; x<CantVentas; x++) {
-        for (int y=0; y<CantVentas; y++){
-            if (vec[y].getCantidad() < vec[y+1].getCantidad()) {
-                aux=vec[y+1];
-                vec[y+1]= vec[y];
-                vec[y]= aux;
-            }
-        }
-    }
-
-    // Mostrar las estadísticas de ventas
-    for (int x = 0; x < CantVentas; x++) {
-        if (vec[x].getCantidad() > 0) {
-            cout << vec[x].getNombrePrenda() << ": " << vec[x].getCantidad() << endl;
-        }
-    }
-
-    // Liberar la memoria del vector dinámico
-    delete[] vec;
 }
 
 void VentaManager :: SubMenuHistorialDeVenta()

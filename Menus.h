@@ -138,7 +138,7 @@ void Menu3()
         cout << "      ESTADISTICA" << endl;
         cout << "-------------------------" << endl;
         cout << endl;
-        cout << "1)  ESTADISTICAS DE PRODUCTOS" << endl;
+        cout << "1)  VER PRODUCTOS MAS VENDIDOS" << endl;
         cout << endl;
         cout << "2)   HISTORIAL DE VENTA" << endl;
         cout << endl;

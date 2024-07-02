@@ -59,14 +59,16 @@ void VentaManager :: ListarVenta()
 
 void VentaManager :: BuscarVentaPorFecha()
 {
-    int dia, mes, anio;
+    int dia, mes, anio, totalVendido;
     bool Encontro;  //detecta si se encontro o no una venta en esa fecha
     char Salir = 'n';       //usamos char para evitar que se rompa al tocar cualquier tecla
     int cantidad = _ArchVenta.ContarRegistrosVenta();
-    Venta obj;
+    int Reg_Prendas = _ArchiPrenda.ContarRegistrosPrenda();
+    Venta ven;
 
     do
     {
+        int codigoActual = -1;
         system("cls");
         cout << "INGRESE LA FECHA EN LA QUE DESEA BUSCAR UNA VENTA" << endl;
         cout << "--------------------------------------------------" << endl;
@@ -82,31 +84,86 @@ void VentaManager :: BuscarVentaPorFecha()
         cin >> anio;
         cout << endl;
 
-        for(int x = 0 ; x < cantidad ; x ++)
+        if(dia <= 31 && dia >= 1 && mes <= 12 && mes >= 1 && anio >= 1986 && anio <= 2024)
         {
+            system("cls");
             Encontro = false;
-            obj = _ArchVenta.LeerVenta(x);
-            if(obj.getVentaFecha().getDia() == dia && obj.getVentaFecha().getMes() == mes && obj.getVentaFecha().getAnio() == anio)
+            for(int x = 0 ; x < cantidad ; x ++)
             {
-                Encontro = true;
-                ListarVenta();
-                system("pause");
-                break;  //para evitar que entre en un bucle infinito
+                ven = _ArchVenta.LeerVenta(x);
+                if(ven.getVentaFecha().getDia() == dia && ven.getVentaFecha().getMes() == mes && ven.getVentaFecha().getAnio() == anio)
+                {
+                    if(!Encontro)
+                    {
+                    cout << "|     VENTAS DE LA FECHA ' " << dia << "/" << mes << "/" << anio << " '     |" << endl << endl;
+                    }
+                    int codigoVenta = ven.getCodigoVenta();
+                    Encontro = true;
+                    if (codigoVenta != codigoActual) //ACA SOLO SE MOSTRARA EL CODIGO DE VENTA 1
+                    { //si es un nuevo grupo de venta
+                        cout << "==========================================" << endl;
+                        cout << "VENTA NRO " << codigoVenta << endl;
+                        cout << "FECHA DE COMPROBANTE: "
+                             << ven.getVentaFecha().getDia() << "/"
+                             << ven.getVentaFecha().getMes() << "/"
+                             << ven.getVentaFecha().getAnio() << endl;
+                        cout << "------------------------------------------" << endl;
+                        codigoActual = codigoVenta;
+                        cout << endl;
+                    }//si es de la misma venta imprime
+
+                    for(int i = 0 ; i < Reg_Prendas ; i ++) //RECORRO TODAS LAS PRENDAS, Y MUESTRO SOLO LAS QUE SE VENDIERON
+                    {
+                        Prenda pren = _ArchiPrenda.LeerPrenda(i);
+                        if(pren.getCodigo() == ven.getCodigo()) //LAS RELACIONO POR SU CODIGO
+                        {
+                            cout << "PRENDA: " << ven.getNombrePrenda() << endl;
+                            cout << "CANTIDAD: " << ven.getCantidad() << endl;
+                            cout << "PRECIO DE LA PRENDA: $" << ven.getPrecioVenta() << endl;
+                            totalVendido+= pren.GetPrecioVenta(); //ACUMULO LO GASTADO, LA PROPIEDAD DE VENTATOTAL NO FUNCIONABA CORRECTAMENTE
+                            cout << endl;
+                        }
+                    }
+
+                    Venta Prox_Venta = _ArchVenta.LeerVenta(x + 1);
+
+                    if (x == cantidad - 1 || Prox_Venta.getCodigoVenta() != codigoActual)
+                    {
+                        cout << "TOTAL VENDIDO: $" << totalVendido << endl;
+                        cout << endl << endl;
+                        totalVendido = 0;
+                    }
+                }
             }
-        }
-        if(!Encontro)
-        {
-            cout << "NO SE ENCONTRARON VENTAS EN LA FECHA ' " << dia << "/" << mes << "/" << anio << " '" << endl;
+            if(!Encontro)
+            {
+                cout << "NO SE ENCONTRARON VENTAS EN LA FECHA ' " << dia << "/" << mes << "/" << anio << " '" << endl;
+                system("pause");
+            }else
+            {
+            cout << "==========================================" << endl;
             system("pause");
+            }
+
+            system("cls");
+            cout << "DESEA SEGUIR BUSCANDO? '1' - NO / CUALQUIER OTRA TECLA - SI" << endl;
+            cout << "------------------------------------------------------------" << endl;
+            cin >> Salir;
+        }else
+        {
+            cout << "FECHA ERRONEA, INTRODUZCA VALORES LOGICOS." << endl;
+            system("pause");
+            system("cls");
+            cout << "DESEA SEGUIR BUSCANDO? '1' - NO / CUALQUIER OTRA TECLA - SI" << endl;
+            cout << "------------------------------------------------------------" << endl;
+            cin >> Salir;
         }
 
-        system("cls");
-        cout << "DESEA SEGUIR BUSCANDO? '1' - NO / CUALQUIER OTRA TECLA - SI" << endl;
-        cin >> Salir;
 
     }while(Salir != '1');
 
 }
+
 
 //////////////////////////////   DESARROLLO DE SUBMENUS   ///////////////////////////////////////////
 

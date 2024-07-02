@@ -151,7 +151,13 @@ void VentaManager :: BuscarVentaPorFecha()
             cin >> Salir;
         }else
         {
+            system("cls");
             cout << "FECHA ERRONEA, INTRODUZCA VALORES LOGICOS." << endl;
+            if(cin.fail()) //funciona de forma booleana, si devuelve true significa que hubo un error o lo que se ingreso no corresponde con el tipo de dato
+            {
+                cin.clear(); //limpia el error en la entrada
+                cin.ignore(); //ignora el resto de caracteres que puedan molestar para seguir el flujo del programa
+            }
             system("pause");
             system("cls");
             cout << "DESEA SEGUIR BUSCANDO? '1' - NO / CUALQUIER OTRA TECLA - SI" << endl;

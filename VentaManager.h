@@ -15,6 +15,7 @@ private:
     Prenda _Prenda;
     void ListarVenta();
     void BuscarVentaPorFecha();
+    void CalculatorPorMes();
 public:
     void SubMenuCargarVenta();
     void SubMenuEstadisticaProductos();

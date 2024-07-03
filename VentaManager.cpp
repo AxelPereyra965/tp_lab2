@@ -170,6 +170,17 @@ void VentaManager :: BuscarVentaPorFecha()
 
 }
 
+void VentaManager :: CalculatorPorMes()
+{
+    Venta ven;
+    int mes;
+    ///sacar el total de precios de todas las ventas en el mes que indique el usuario
+        cout<<endl<<"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"<<endl;
+        cout<<"Ingrese el mes en el que invirtio numericamente: "<<endl;
+        cout<<"ejempo: 1=Enero 2=Febrero 3=Marzo 4=Abril 5=Mayo 6=Junio 7=Julio 8=Agosto 9=Septimebre 10=Octubre"<<endl;
+        cout<<"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"<<endl;
+        cin>>mes;
+}
 
 //////////////////////////////   DESARROLLO DE SUBMENUS   ///////////////////////////////////////////
 
@@ -523,7 +534,7 @@ void VentaManager::SubMenuPorcentaDeInversion()
 {
     int cantidad_registros = _ArchVenta.ContarRegistrosVenta();
     char option;
-    int inversion, mes, anio;
+    int inversion;
     system("cls");
     cout<<"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"<<endl;
     cout<<"Ingrese el monto invertido: "<<endl;
@@ -537,11 +548,7 @@ void VentaManager::SubMenuPorcentaDeInversion()
         {
         case '1':
             {
-                cout<<endl<<"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"<<endl;
-            cout<<"Ingrese el mes en el que invirtio numericamente: "<<endl;
-            cout<<"ejempo: 1=Enero 2=Febrero 3=Marzo 4=Abril 5=Mayo 6=Junio 7=Julio 8=Agosto 9=Septimebre 10=Octubre"<<endl;
-            cout<<"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"<<endl;
-            cin>>mes;
+                CalculatorPorMes();
                 break;
             }
         case '2':

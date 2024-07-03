@@ -14,14 +14,152 @@ fflush(stdin) --> limpia el buffer de entrada una vez escrito/rellenado el dato 
                     que mas adelante provoque errores en la lectura del dato
 */
 
+//          FUNCIONES COMPLEMENTARIAS (LAS TRES DEVUELVEN UN STRING QUE POSTERIORMENTE LO CARGARA EN EL SET DEL METODO CARGARPRENDA)
+
+string SeleccionDeModelo()
+{
+    int selector;
+    string modelo;
+
+    cout << "SELECCIONE EL MODELO DE PRENDA" << endl;
+    cout << "----------------------------------------------" << endl;
+    cout << "1 -    AJUSTADO" << endl;
+    cout << endl;
+    cout << "2 -     OVERSIZE" << endl;
+    cout << endl;
+    cout << "3 -     REGULAR" << endl;
+    cout << "----------------------------------------------" << endl;
+    cin >> selector;
+    switch(selector)
+    {
+    case 1:
+        modelo = "AJUSTADO";
+        break;
+    case 2:
+        modelo = "OVERSIZE";
+        break;
+    case 3:
+        modelo = "REGULAR";
+        break;
+    default:
+        cout << "OPCION INCORRECTA" << endl;
+        break;
+    }
+    if(cin.fail())
+    {
+        cin.clear();
+        cin.ignore();
+        cout << "INGRESO NO COINCIDE CON LO ESTRUCTURADO. INMINENTE VUELTA AL MENU PRINCIPAL." << endl;
+    }
+    return modelo;
+}
+
+string SeleccionDeTalle()
+{
+    int selector;
+    string talle;
+
+    cout << "SELECCIONE EL TIPO DE TALLE" << endl;
+    cout << "----------------------------------------------" << endl;
+    cout << "1 -    S (Small)" << endl;
+    cout << endl;
+    cout << "2 -    M (Medium)" << endl;
+    cout << endl;
+    cout << "3 -    L (Large)" << endl;
+    cout << endl;
+    cout << "4 -    XL (Extra Large)" << endl;
+    cout << endl;
+    cout << "5 -    XXL (Double Extra Large)" << endl;
+    cout << "----------------------------------------------" << endl;
+    cin >> selector;
+    switch(selector)
+    {
+    case 1:
+        talle = "S (Small)";
+        break;
+    case 2:
+        talle = "M (Medium)";
+        break;
+    case 3:
+        talle = "L (Large)";
+        break;
+    case 4:
+        talle = "XL (Extra Large)";
+        break;
+    case 5:
+        talle = "XXL (Double Extra Large)";
+        break;
+    default:
+        cout << "OPCION INCORRECTA" << endl;
+        break;
+    }
+    if(cin.fail())
+    {
+        cin.clear();
+        cin.ignore();
+        cout << "INGRESO NO COINCIDE CON LO ESTRUCTURADO. INMINENTE VUELTA AL MENU PRINCIPAL." << endl;
+    }
+    return talle;
+}
+
+string  SeleccionDeColor()
+{
+    int selector;
+    string color;
+
+    cout << "SELECCIONE EL COLOR DE LA PRENDA" << endl;
+    cout << "----------------------------------------------" << endl;
+    cout << "1 -    NEGRO" << endl;
+    cout << endl;
+    cout << "2 -    GRIS" << endl;
+    cout << endl;
+    cout << "3 -    BEIGE" << endl;
+    cout << endl;
+    cout << "4 -    BLANCO" << endl;
+    cout << "----------------------------------------------" << endl;
+    cin >> selector;
+    switch(selector)
+    {
+    case 1:
+        color = "NEGRO";
+        break;
+    case 2:
+        color = "GRIS";
+        break;
+    case 3:
+        color = "BEIGE";
+        break;
+    case 4:
+        color = "BLANCO";
+        break;
+    default:
+        cout << "OPCION INCORRECTA" << endl;
+        if(cin.fail())
+        {
+            cin.clear();
+            cin.ignore();
+        }
+        break;
+    }
+    if(cin.fail())
+    {
+        cin.clear();
+        cin.ignore();
+        cout << "INGRESO NO COINCIDE CON LO ESTRUCTURADO. INMINENTE VUELTA AL MENU PRINCIPAL." << endl;
+    }
+    return color;
+}
+
+
 //          METODOS COMPLEMENTARIOS
 
 void PrendaManager::CargarPrenda() {
     Prenda pren;
-    int cod_prenda, cantidad, OpcionCargar, Codigo, Stock, pos;
+    int cod_prenda, cantidad, OpcionCargar, Codigo, Stock, pos, comp1 = -1;
     string nombre_prenda, modelo, talle, color;
+    char string_casteado[30];
     float precio_unitario;
-    bool Encontro = false;
+    bool Encontro = false, AntiBug = false;
     int Cantidad_Registros = ObjArchivoPrenDa.ContarRegistrosPrenda();
 
     system("cls");
@@ -92,31 +230,52 @@ void PrendaManager::CargarPrenda() {
             pren.setCodigoPrenda(cod_prenda);
             cout << "CODIGO DE LA PRENDA: " << cod_prenda << endl;
             cout << endl;
+            cout << "=============================================================="<< endl;
+            cout << endl;
             cout << "NOMBRE DE PRENDA: ";
             cin.ignore();
             getline(cin, nombre_prenda);
             fflush(stdin);
             pren.setNombrePrenda(nombre_prenda);
             cout << endl;
-
+            cout << "=============================================================="<< endl;
+            cout << endl;
             cout << "MODELO DE PRENDA: ";
-            getline(cin, modelo);
-            fflush(stdin);
+            modelo = SeleccionDeModelo();
+            strcpy(string_casteado, modelo.c_str());
+            comp1 = strcmp(string_casteado, "");
+            if(comp1 == 0)
+            {
+                AntiBug = true;
+            }
             pren.setModelo(modelo);
             cout << endl;
-
+            cout << "=============================================================="<< endl;
+            cout << endl;
             cout << "TALLE DE PRENDA: ";
-            getline(cin, talle);
-            //cin >> talle;
+            talle = SeleccionDeTalle();
+            strcpy(string_casteado, talle.c_str());
+            comp1 = strcmp(string_casteado, "");
+            if(comp1 == 0)
+            {
+                AntiBug = true;
+            }
             pren.setTalle(talle);
             cout << endl;
-
+            cout << "=============================================================="<< endl;
+            cout << endl;
             cout << "COLOR DE PRENDA: ";
-            getline(cin, color);
-            //cin >> color;
+            color = SeleccionDeColor();
+            strcpy(string_casteado, color.c_str());
+            comp1 = strcmp(string_casteado, "");
+            if(comp1 == 0)
+            {
+                AntiBug = true;
+            }
             pren.setColor(color);
             cout << endl;
-
+            cout << "=============================================================="<< endl;
+            cout << endl;
             cout << "PRECIO A VENDER PARA " << nombre_prenda << " POR UNIDAD: $";
             cin >> precio_unitario;
             while(precio_unitario<0){
@@ -126,7 +285,8 @@ void PrendaManager::CargarPrenda() {
             }
             pren.setPrecioVenta(precio_unitario);
             cout << endl;
-
+            cout << "=============================================================="<< endl;
+            cout << endl;
             cout << "CANTIDAD DE " << nombre_prenda << " QUE USTED ENCARGO: ";
             cin >> cantidad;
             while(cantidad<0){
@@ -136,14 +296,25 @@ void PrendaManager::CargarPrenda() {
             }
             pren.setCantidad(cantidad);
             cout << endl;
+            cout << "=============================================================="<< endl;
+            cout << endl;
 
-
-            pren.setEstadoDePrenda(true);
+            if(!AntiBug)
+            {
+                pren.setEstadoDePrenda(true);
+            }else
+            {
+                pren.setEstadoDePrenda(false);
+            }
 
            system("cls");
-           if(ObjArchivoPrenDa.GuardarPrenda(pren))
+           if(ObjArchivoPrenDa.GuardarPrenda(pren) && (!AntiBug))
            {
               cout << "PRENDA SUBIDA CORRECTAMENTE." << endl;
+              system("pause");
+           }else
+           {
+              cout << "ALGO SALIO MAL..." << endl;
               system("pause");
            }
             break;
@@ -164,6 +335,7 @@ void PrendaManager :: ModificacionDePrenda(Prenda &obj)
     int cantidad, opcion;
     string nombre_prenda, modelo, talle, color;
     float price;
+
 
         do
         {
@@ -196,9 +368,7 @@ void PrendaManager :: ModificacionDePrenda(Prenda &obj)
         case 2:
             {
                 cout << "INDIQUE EL NUEVO MODELO DE PRENDA: ";
-                cin.ignore();
-                getline(cin, modelo);
-                fflush(stdin);
+                modelo = SeleccionDeModelo();
                 obj.setModelo(modelo);
                 cout << endl;
                 break;
@@ -206,7 +376,7 @@ void PrendaManager :: ModificacionDePrenda(Prenda &obj)
         case 3:
             {
                 cout << "INDIQUE EL NUEVO TALLE DE PRENDA: ";
-                cin >> talle;
+                talle = SeleccionDeTalle();
                 obj.setTalle(talle);
                 cout << endl;
                 break;
@@ -214,7 +384,7 @@ void PrendaManager :: ModificacionDePrenda(Prenda &obj)
         case 4:
             {
                 cout << "INDIQUE EL NUEVO COLOR DE PRENDA: ";
-                cin >> color;
+                color = SeleccionDeColor();
                 obj.setColor(color);
                 cout << endl;
                 break;
@@ -236,6 +406,11 @@ void PrendaManager :: ModificacionDePrenda(Prenda &obj)
             {
                 cout << "INDIQUE EL NUEVO NUMERO DE STOCK: ";
                 cin >> cantidad;
+                while(cantidad<0){
+                cout << "DEBE INGRESAR UN NUMERO VALIDO"<<endl<<endl;
+                cout << "INDIQUE EL NUEVO NUMERO DE STOCK: ";
+                cin >> cantidad;
+                }
                 obj.setCantidad(cantidad);
                 cout << endl;
                 break;
@@ -245,6 +420,12 @@ void PrendaManager :: ModificacionDePrenda(Prenda &obj)
                 cout << "OPCION INCORRECTA" << endl;
                 }
             break;
+        }
+        if(cin.fail())
+        {
+            cin.clear();
+            cin.ignore();
+            cout << "INGRESO NO COINCIDE CON LO ESTRUCTURADO. INMINENTE VUELTA AL MENU PRINCIPAL." << endl;
         }
         system("pause");
         }while(opcion != 0);

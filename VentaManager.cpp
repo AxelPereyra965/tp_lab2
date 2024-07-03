@@ -293,21 +293,35 @@ void VentaManager::SubMenuEstadisticaProductos() {
         return;
     }
 
-    int opcion;
+    char opcion[10];
+    system("cls");
+    cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
     cout << "1 - Filtrar por mes y anio" << endl;
+    cout << "                              " << endl;
     cout << "2 - Filtrar por anio" << endl;
+    cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
     cin >> opcion;
 
-    switch (opcion) {
-        case 1: {
+    switch (opcion[0]) {
+        case '1': {
             int mes, anio;
             bool ventasEncontradas = false;
 
             do { // el do while es para validar que se encuentren fechas validas
                 cout << "Ingrese el mes (1-12): ";
                 cin >> mes;
+                while(mes>12 ||mes<1){
+                    cout << "Debe ingresar un numero entre 1 al 12 "<<endl;
+                    cout<< "(--ingrese nuevamente--)" <<endl;
+                    cin>> mes;
+                }
                 cout << "Ingrese el anio: ";
                 cin >> anio;
+                while(anio<2024 || anio>2030 ){
+                    cout<< "Estas insertando un anio invalido "<<endl;
+                    cout<<"(--por favor, Ingrese un número entre el 2024 y 2030--)" <<endl;
+                    cin>> anio;
+                }
 
                 // Crear vector dinámico
                 Venta *vec = new Venta[CantVentas]; // pedimos memoria por la cantidad de ventas
@@ -489,6 +503,7 @@ void VentaManager :: SubMenuHistorialDeVenta()
                 BuscarVentaPorFecha();
                 break;
             }
+
         case 0:
             {
                 return;
@@ -501,4 +516,46 @@ void VentaManager :: SubMenuHistorialDeVenta()
         cout << "NO SE REGISTRAN VENTAS" << endl;
         return;
     }
+}
+
+
+void VentaManager::SubMenuPorcentaDeInversion()
+{
+    int cantidad_registros = _ArchVenta.ContarRegistrosVenta();
+    char option;
+    int inversion, mes, anio;
+    system("cls");
+    cout<<"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"<<endl;
+    cout<<"Ingrese el monto invertido: "<<endl;
+    cout<<"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"<<endl;
+    cout<<"$ ";
+    cin>>inversion;
+
+    cout<<"Desea calcular su porcentaje por: "<<endl;
+    cout<< "1 = mes o 2 = anio "<<endl;
+    switch(option)
+        {
+        case '1':
+            {
+                cout<<endl<<"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"<<endl;
+            cout<<"Ingrese el mes en el que invirtio numericamente: "<<endl;
+            cout<<"ejempo: 1=Enero 2=Febrero 3=Marzo 4=Abril 5=Mayo 6=Junio 7=Julio 8=Agosto 9=Septimebre 10=Octubre"<<endl;
+            cout<<"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"<<endl;
+            cin>>mes;
+                break;
+            }
+        case '2':
+            {
+
+            }
+        case '0':
+            {
+                return;
+                break;
+            }
+
+        default:
+            cout<<"ingresaste un numero invalido, volve a intenttarlo"<<endl;
+            break;
+        }
 }

@@ -164,7 +164,8 @@ void Menu3()
                 break;
             case 3:
                 {
-
+                    ManagerVent.SubMenuPorcentaDeInversion();
+                    system("pause");
                 }
                 break;
             case 0:

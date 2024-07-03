@@ -19,6 +19,7 @@ public:
     void SubMenuCargarVenta();
     void SubMenuEstadisticaProductos();
     void SubMenuHistorialDeVenta();
+    void SubMenuPorcentaDeInversion();
 
 };
 

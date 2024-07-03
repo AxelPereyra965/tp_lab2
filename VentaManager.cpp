@@ -1,4 +1,5 @@
 #include "VentaManager.h"
+#include <limits>
 
 //////////////////////////////   METODOS DE SUBMENUS   ///////////////////////////////////////////
 
@@ -170,32 +171,138 @@ void VentaManager :: BuscarVentaPorFecha()
 
 }
 
-void VentaManager :: CalculatorPorMes()
-{
+void VentaManager::CalcularPorMes() {
     int cantidad_registros = _ArchVenta.ContarRegistrosVenta();
     Venta ven;
     int mes;
-    bool igualdad= false;
-    ///sacar el total de precios de todas las ventas en el mes que indique el usuario
-    if(cantidad_registros>0){
-        cout<<endl<<"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"<<endl;
-        cout<<"Ingrese el mes en el que invirtio numericamente: "<<endl;
-        cout<<"ejempo: 1=Enero 2=Febrero 3=Marzo 4=Abril 5=Mayo 6=Junio 7=Julio "<<endl;
-        cout<<"8=Agosto 9=Septimebre 10=Octubre 11=Noviembre 12=Diciembre"<<endl;
-        cout<<"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"<<endl;
-        cin>>mes;
-        for(int x=0; x<cantidad_registros; x++){
+    bool igualdad = false;
+    int inversion;
+    int TotalGenerado = 0;
+
+    // Sacar el total de precios de todas las ventas en el mes que indique el usuario
+    if (cantidad_registros > 0) {
+        do {
+            cout << endl;
+            cout << "Seleccione el mes: " << endl;
+            cout << "1=Enero 2=Febrero 3=Marzo 4=Abril 5=Mayo 6=Junio 7=Julio " << endl;
+            cout << "8=Agosto 9=Septiembre 10=Octubre 11=Noviembre 12=Diciembre" << endl;
+            cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
+            cout << "Ingrese el numero correspondiente al mes: ";
+            cout << endl;
+
+            // Leer la entrada del usuario
+            cin >> mes;
+
+            // Validar si la entrada es un numero y esta en el rango correcto (1 a 12)
+            if (cin.fail() || mes < 1 || mes > 12) {
+                cout << "Por favor, ingrese un numero valido de mes (1 a 12)." << endl;
+                // Limpiar el estado de error de cin y descartar la entrada incorrecta
+                cin.clear(); // Limpia el buffer de entrada
+                cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignorar la entrada incorrecta
+            } else {
+                break; // Salir del bucle si la entrada es valida
+            }
+        } while (true);
+
+        // Verificar si hay ventas en el mes elegido y calcular el total generado
+        for (int x = 0; x < cantidad_registros; x++) {
             ven = _ArchVenta.LeerVenta(x);
-            if(ven.getVentaFecha().getMes()==mes){
-                igualdad=true;
+            if (ven.getVentaFecha().getMes() == mes) {
+                igualdad = true;
+                TotalGenerado += ven.getPrecioVenta();
             }
         }
-        if(igualdad)
-        {
 
+        if (igualdad) { // Si hay ventas en ese mes
+            do {
+                cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
+                cout << "Ingrese el monto invertido: ";
+                cin >> inversion;
+
+                if (cin.fail() || inversion <= 0) {
+                    cout << "Monto incorrecto. Intentelo de nuevo." << endl;
+                    // Limpiar el estado de error de cin y descartar la entrada incorrecta
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                } else {
+                    break; // Salir del bucle si la entrada es valida
+                }
+            } while (true);
+
+            while (inversion <= 0) {
+                if (inversion < 0) {
+                    cout << "xxxx Usted esta ingresando un numero invalido xxxx" << endl;
+                } else {
+                    cout << "xxxx El monto debe ser mayor a cero xxxx" << endl;
+                }
+                cout << "Ingreselo nuevamente" << endl << "$ ";
+                cin >> inversion;
+            }
+
+            system("cls");
+            cout << "Genial! Tu monto invertido es " << inversion << endl;
+
+            int ganancia_neta = TotalGenerado - inversion;
+            int porcentaje_ganancia = (ganancia_neta / inversion) * 100;
+            cout << "El total generado por ventas en el mes es: $" << TotalGenerado << endl;
+            cout << "La ganancia neta es: $" << ganancia_neta << endl;
+            cout << "El porcentaje de ganancia es: " << porcentaje_ganancia << "%" << endl;
+
+        } else {
+            cout << "No se pudo realizar la estadistica porque no hay ventas registradas en ese mes" << endl;
         }
 
+    } else {
+        cout << "No se registraron ventas en el programa..." << endl;
     }
+}
+
+void VentaManager::CalcularPorAnio() {
+    int cantidad_registros = _ArchVenta.ContarRegistrosVenta();
+    Venta ven;
+    int inversion;
+    int VecMeses[12]{0};
+    int TotalGenerado = 0;
+    int VecTotalGenerado[12]{0};
+
+    if (cantidad_registros > 0) {
+        for (int x = 0; x < cantidad_registros; x++) {
+            ven = _ArchVenta.LeerVenta(x);
+            VecMeses[ven.getVentaFecha().getMes() - 1] += ven.getPrecioVenta();
+            VecTotalGenerado[ven.getVentaFecha().getMes() - 1]+= ven.getPrecioVenta();
+            TotalGenerado += ven.getPrecioVenta();
+        }
+    }
+
+        do {
+            cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
+            cout << "Ingrese el monto invertido: ";
+            cin >> inversion;
+
+            if (cin.fail() || inversion <= 0) {
+                cout << "Monto incorrecto. Intentelo de nuevo." << endl;
+                // Limpiar el estado de error de cin y descartar la entrada incorrecta
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            } else {
+                break; // Salir del bucle si la entrada es valida
+            }
+        } while (true);
+
+        system("cls");
+        cout << "Tu monto invertido es " << inversion << endl;
+        cout << "Porcentaje de ganancia en todos los meses del anio:" << inversion << endl;
+
+        // Calcular y mostrar porcentaje de ganancia por mes
+        for (int i = 0; i < 12; ++i) {
+            int ganancia_neta=VecTotalGenerado[i]-inversion;
+            int PorcentajeGananciaMes = (ganancia_neta / inversion) * 100;
+            if(VecTotalGenerado[i]==0){
+                cout << "Mes " << (i + 1) << ": " << 0 << "%" << endl;
+            }else{
+                 cout << "Mes " << (i + 1) << ": " << PorcentajeGananciaMes << "%" << endl;
+            }
+        }
 }
 
 //////////////////////////////   DESARROLLO DE SUBMENUS   ///////////////////////////////////////////
@@ -549,33 +656,22 @@ void VentaManager :: SubMenuHistorialDeVenta()
 void VentaManager::SubMenuPorcentaDeInversion()
 {
     char option;
-    int inversion;
-    system("cls");
-    cout<<"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"<<endl;
-    cout<<"Ingrese el monto invertido: "<<endl;
-    cout<<"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"<<endl<<"$ ";
-    cin>>inversion;
-    while(inversion<0){
-        cout<<"xxxx Usted esta ingresando un numero invalido xxxx"<<endl;
-        cout<<"Ingreselo nuevamente"<<endl<<"$ ";
-        cin>>inversion;
-    }
 
     system("cls");
-    cout<<"Genial! tu monto invertido es "<<inversion<<endl;
     cout<<endl<<"Desea calcular su porcentaje por: "<<endl;
-    cout<< "1 = mes o 2 = anio "<<endl;
+    cout<< "1 = mes espesifico o 2 = todo el anio "<<endl;
     cin>>option;
     switch(option)
         {
         case '1':
             {
-                CalculatorPorMes();
+                CalcularPorMes();
                 break;
             }
         case '2':
             {
-
+                CalcularPorAnio();
+                break;
             }
         case '0':
             {

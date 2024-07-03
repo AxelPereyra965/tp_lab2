@@ -172,14 +172,30 @@ void VentaManager :: BuscarVentaPorFecha()
 
 void VentaManager :: CalculatorPorMes()
 {
+    int cantidad_registros = _ArchVenta.ContarRegistrosVenta();
     Venta ven;
     int mes;
+    bool igualdad= false;
     ///sacar el total de precios de todas las ventas en el mes que indique el usuario
+    if(cantidad_registros>0){
         cout<<endl<<"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"<<endl;
         cout<<"Ingrese el mes en el que invirtio numericamente: "<<endl;
-        cout<<"ejempo: 1=Enero 2=Febrero 3=Marzo 4=Abril 5=Mayo 6=Junio 7=Julio 8=Agosto 9=Septimebre 10=Octubre"<<endl;
+        cout<<"ejempo: 1=Enero 2=Febrero 3=Marzo 4=Abril 5=Mayo 6=Junio 7=Julio "<<endl;
+        cout<<"8=Agosto 9=Septimebre 10=Octubre 11=Noviembre 12=Diciembre"<<endl;
         cout<<"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"<<endl;
         cin>>mes;
+        for(int x=0; x<cantidad_registros; x++){
+            ven = _ArchVenta.LeerVenta(x);
+            if(ven.getVentaFecha().getMes()==mes){
+                igualdad=true;
+            }
+        }
+        if(igualdad)
+        {
+
+        }
+
+    }
 }
 
 //////////////////////////////   DESARROLLO DE SUBMENUS   ///////////////////////////////////////////
@@ -532,18 +548,24 @@ void VentaManager :: SubMenuHistorialDeVenta()
 
 void VentaManager::SubMenuPorcentaDeInversion()
 {
-    int cantidad_registros = _ArchVenta.ContarRegistrosVenta();
     char option;
     int inversion;
     system("cls");
     cout<<"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"<<endl;
     cout<<"Ingrese el monto invertido: "<<endl;
-    cout<<"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"<<endl;
-    cout<<"$ ";
+    cout<<"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"<<endl<<"$ ";
     cin>>inversion;
+    while(inversion<0){
+        cout<<"xxxx Usted esta ingresando un numero invalido xxxx"<<endl;
+        cout<<"Ingreselo nuevamente"<<endl<<"$ ";
+        cin>>inversion;
+    }
 
-    cout<<"Desea calcular su porcentaje por: "<<endl;
+    system("cls");
+    cout<<"Genial! tu monto invertido es "<<inversion<<endl;
+    cout<<endl<<"Desea calcular su porcentaje por: "<<endl;
     cout<< "1 = mes o 2 = anio "<<endl;
+    cin>>option;
     switch(option)
         {
         case '1':

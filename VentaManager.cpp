@@ -176,8 +176,8 @@ void VentaManager::CalcularPorMes() {
     Venta ven;
     int mes;
     bool igualdad = false;
-    int inversion;
-    int TotalGenerado = 0;
+    float inversion;
+    float TotalGenerado = 0;
 
     // Sacar el total de precios de todas las ventas en el mes que indique el usuario
     if (cantidad_registros > 0) {
@@ -230,27 +230,16 @@ void VentaManager::CalcularPorMes() {
                 }
             } while (true);
 
-            while (inversion <= 0) {
-                if (inversion < 0) {
-                    cout << "xxxx Usted esta ingresando un numero invalido xxxx" << endl;
-                } else {
-                    cout << "xxxx El monto debe ser mayor a cero xxxx" << endl;
-                }
-                cout << "Ingreselo nuevamente" << endl << "$ ";
-                cin >> inversion;
-            }
-
             system("cls");
             cout << "Genial! Tu monto invertido es " << inversion << endl;
 
-            int ganancia_neta = TotalGenerado - inversion;
-            if(ganancia_neta<0){
-                ganancia_neta=0;
+            float ganancia_neta = TotalGenerado - inversion;
+            if (ganancia_neta < 0) {
+                ganancia_neta = 0;
             }
-            int porcentaje_ganancia = ganancia_neta *100 / TotalGenerado ;
-            if(porcentaje_ganancia>100){
-                porcentaje_ganancia=100;
-            }
+
+            float porcentaje_ganancia = (ganancia_neta / inversion) * 100;
+
             cout << "El total generado por ventas en el mes es: $" << TotalGenerado << endl;
             cout << "La ganancia neta es: $" << ganancia_neta << endl;
             cout << "El porcentaje de ganancia es: " << porcentaje_ganancia << "%" << endl;
@@ -264,53 +253,59 @@ void VentaManager::CalcularPorMes() {
     }
 }
 
+
+
 void VentaManager::CalcularPorAnio() {
     int cantidad_registros = _ArchVenta.ContarRegistrosVenta();
     Venta ven;
-    int inversion;
-    int VecMeses[12]{0};
-    int TotalGenerado = 0;
-    int VecTotalGenerado[12]{0};
+    float inversion;
+    int VecMeses[12] = {0};
+    float TotalGenerado = 0;
+    float VecTotalGenerado[12] = {0};
 
     if (cantidad_registros > 0) {
         for (int x = 0; x < cantidad_registros; x++) {
             ven = _ArchVenta.LeerVenta(x);
             VecMeses[ven.getVentaFecha().getMes() - 1] += ven.getPrecioVenta();
-            VecTotalGenerado[ven.getVentaFecha().getMes() - 1]+= ven.getPrecioVenta();
+            VecTotalGenerado[ven.getVentaFecha().getMes() - 1] += ven.getPrecioVenta();
             TotalGenerado += ven.getPrecioVenta();
         }
     }
 
-        do {
-            cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
-            cout << "Ingrese el monto invertido: ";
-            cin >> inversion;
+    do {
+        cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
+        cout << "Ingrese el monto invertido de todo el anio: ";
+        cin >> inversion;
 
-            if (cin.fail() || inversion <= 0) {
-                cout << "Monto incorrecto. Intentelo de nuevo." << endl;
-                // Limpiar el estado de error de cin y descartar la entrada incorrecta
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            } else {
-                break; // Salir del bucle si la entrada es valida
-            }
-        } while (true);
-
-        system("cls");
-        cout << "Tu monto invertido es " << inversion << endl;
-        cout << "Porcentaje de ganancia en todos los meses del anio:" << inversion << endl;
-
-        // Calcular y mostrar porcentaje de ganancia por mes
-        for (int i = 0; i < 12; ++i) {
-            int ganancia_neta=VecTotalGenerado[i]-inversion;
-            int PorcentajeGananciaMes = (ganancia_neta / inversion) * 100;
-            if(VecTotalGenerado[i]==0){
-                cout << "Mes " << (i + 1) << ": " << 0 << "%" << endl;
-            }else{
-                 cout << "Mes " << (i + 1) << ": " << PorcentajeGananciaMes << "%" << endl;
-            }
+        if (cin.fail() || inversion <= 0) {
+            cout << "Monto incorrecto. Intentelo de nuevo." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        } else {
+            break;
         }
+    } while (true);
+
+    system("cls");
+    cout << "Tu monto invertido es " << inversion << endl;
+    cout << "Porcentaje de ganancia y total generado en todos los meses del anio:" << endl;
+    cout <<endl;
+
+    for (int i = 0; i < 12; ++i) {
+        float inversionMensual = inversion / 12;
+        float ganancia_neta = VecTotalGenerado[i] - inversionMensual;
+        float PorcentajeGananciaMes = (ganancia_neta / inversionMensual) * 100;
+
+        if (VecTotalGenerado[i] == 0) {
+            cout << "Mes " << (i + 1) << ": " << 0 << "%, Total Generado: " << VecTotalGenerado[i] << endl;
+            cout <<endl;
+        } else {
+             cout << "Mes " << (i + 1) << ": " << "Ganancia Neta: " << ganancia_neta<<"$" << ",  Porcentaje de Ganancia: " << PorcentajeGananciaMes << "%,  Total Generado: " << VecTotalGenerado[i]<<"$" << endl;
+             cout <<endl;
+        }
+    }
 }
+
 
 //////////////////////////////   DESARROLLO DE SUBMENUS   ///////////////////////////////////////////
 

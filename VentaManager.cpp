@@ -243,7 +243,13 @@ void VentaManager::CalcularPorMes() {
             cout << "Genial! Tu monto invertido es " << inversion << endl;
 
             int ganancia_neta = TotalGenerado - inversion;
+            if(ganancia_neta<0){
+                ganancia_neta=0;
+            }
             int porcentaje_ganancia = (ganancia_neta / inversion) * 100;
+            if(porcentaje_ganancia>100){
+                porcentaje_ganancia=100;
+            }
             cout << "El total generado por ventas en el mes es: $" << TotalGenerado << endl;
             cout << "La ganancia neta es: $" << ganancia_neta << endl;
             cout << "El porcentaje de ganancia es: " << porcentaje_ganancia << "%" << endl;
@@ -680,7 +686,7 @@ void VentaManager::SubMenuPorcentaDeInversion()
             }
 
         default:
-            cout<<"ingresaste un numero invalido, volve a intenttarlo"<<endl;
+            cout<<"Ingresaste un numero invalido, volve a intenttarlo"<<endl;
             break;
         }
 }

@@ -638,7 +638,7 @@
 	<iostream>
 	<string>
 
-1720118066 source:c:\users\aapan\downloads\laboratorio2_proyecto\main.cpp
+1720119946 source:c:\users\aapan\downloads\laboratorio2_proyecto\main.cpp
 	<iostream>
 	<windows.h>
 	"Menus.h"
@@ -701,7 +701,7 @@
 	"VentaArchivo.h"
 	<iostream>
 
-1720118364 source:c:\users\aapan\downloads\laboratorio2_proyecto\ventamanager.cpp
+1720119736 source:c:\users\aapan\downloads\laboratorio2_proyecto\ventamanager.cpp
 	"VentaManager.h"
 	<limits>
 

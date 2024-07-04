@@ -462,11 +462,13 @@ void VentaManager::SubMenuEstadisticaProductos() {
             bool ventasEncontradas = false;
 
             do { // el do while es para validar que se encuentren fechas validas
+                system("cls");
                 cout << "Ingrese el mes (1-12): ";
                 cin >> mes;
                 while(cin.fail()||mes>12 ||mes<1 ){
                         cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    system("cls");
                     cout << "Debe ingresar un numero entre 1 al 12 "<<endl;
                     cout<< "(--ingrese nuevamente--)" <<endl;
                     cin>> mes;
@@ -475,7 +477,8 @@ void VentaManager::SubMenuEstadisticaProductos() {
                 cin >> anio;
                 while(cin.fail()||anio<2024 || anio>2030 ){
                     cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    system("cls");
                     cout<< "Estas insertando un anio invalido "<<endl;
                     cout<<"(--por favor, Ingrese un número entre el 2024 y 2030--)" <<endl;
                     cin>> anio;
@@ -642,7 +645,7 @@ void VentaManager::SubMenuEstadisticaProductos() {
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     cout <<endl<< "DEBES TOCAR CUALQUIER TECLA PARA VOLVER E INTENTARLO DE NUEVO" << endl;
                     system("pause");
-                }3
+                }
             break;
     }
 }

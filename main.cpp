@@ -53,6 +53,13 @@ int main()
                 break;
             default:
                 cout << "OPCION INCORRECTA" << endl;
+                if(cin.fail())
+                {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cout <<endl<< "DEBES TOCAR CUALQUIER TECLA PARA VOLVER E INTENTARLO DE NUEVO" << endl;
+                    //system("pause");
+                }
                 system("pause");
             break;
         }

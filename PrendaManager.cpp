@@ -17,54 +17,6 @@ fflush(stdin) --> limpia el buffer de entrada una vez escrito/rellenado el dato 
 
 //          FUNCIONES COMPLEMENTARIAS (LAS TRES DEVUELVEN UN STRING QUE POSTERIORMENTE LO CARGARA EN EL SET DEL METODO CARGARPRENDA)
 
-string SeleccionDeModelo()
-{
-    int selector;
-    string modelo;
-    bool Error = false;
-
-    do
-    {
-
-        cout << "SELECCIONE EL MODELO DE PRENDA" << endl;
-        cout << "----------------------------------------------" << endl;
-        cout << "1 -    AJUSTADO" << endl;
-        cout << endl;
-        cout << "2 -     OVERSIZE" << endl;
-        cout << endl;
-        cout << "3 -     REGULAR" << endl;
-        cout << "----------------------------------------------" << endl;
-        cin >> selector;
-        switch(selector)
-        {
-        case 1:
-            modelo = "AJUSTADO";
-            Error = true;
-            break;
-        case 2:
-            modelo = "OVERSIZE";
-            Error = true;
-            break;
-        case 3:
-            modelo = "REGULAR";
-            Error = true;
-            break;
-        default:
-            cout << "OPCION INCORRECTA. INDIQUE NUEVAMENTE ALGUNA DE LAS OPCIONES." << endl;
-            system("pause");
-            system("cls");
-            if(cin.fail())
-            {
-                cin.clear();
-                cin.ignore();
-            }
-            break;
-        }
-
-
-    }while(Error != true);
-    return modelo;
-}
 
 string SeleccionDeTalle()
 {
@@ -117,7 +69,7 @@ string SeleccionDeTalle()
             if(cin.fail())
             {
                 cin.clear();
-                cin.ignore();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
             }
             break;
         }
@@ -171,7 +123,7 @@ string  SeleccionDeColor()
             if(cin.fail())
             {
                 cin.clear();
-                cin.ignore();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
             }
             break;
         }
@@ -270,7 +222,9 @@ void PrendaManager::CargarPrenda() {
             cout << "=============================================================="<< endl;
             cout << endl;
             cout << "MODELO DE PRENDA: ";
-            modelo = SeleccionDeModelo();
+            cin.ignore();
+            getline(cin, modelo);
+            fflush(stdin);
             pren.setModelo(modelo);
             cout << endl;
             cout << "=============================================================="<< endl;
@@ -289,9 +243,16 @@ void PrendaManager::CargarPrenda() {
             cout << endl;
             cout << "PRECIO A VENDER PARA " << nombre_prenda << " POR UNIDAD: $";
             cin >> precio_unitario;
-            while(precio_unitario<0){
+            while(precio_unitario<0 || cin.fail()){
+                if(cin.fail())
+                {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
                 cout << "DEBE INGRESAR UN NUMERO VALIDO"<<endl<<endl;
-                cout << "PRECIO A VENDER PARA " << nombre_prenda << " POR UNIDAD: ";
+                system("pause");
+                system("cls");
+                cout << "PRECIO A VENDER PARA " << nombre_prenda << " POR UNIDAD: $";
                 cin >> precio_unitario;
             }
             pren.setPrecioVenta(precio_unitario);
@@ -300,8 +261,15 @@ void PrendaManager::CargarPrenda() {
             cout << endl;
             cout << "CANTIDAD DE " << nombre_prenda << " QUE USTED ENCARGO: ";
             cin >> cantidad;
-            while(cantidad<0){
+            while(cantidad<0 || cin.fail()){
+                if(cin.fail())
+                {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
                 cout << "DEBE INGRESAR UN NUMERO VALIDO"<<endl<<endl;
+                system("pause");
+                system("cls");
                 cout << "CANTIDAD DE " << nombre_prenda << " QUE USTED ENCARGO: ";
                 cin >> cantidad;
             }
@@ -378,7 +346,9 @@ void PrendaManager :: ModificacionDePrenda(Prenda &obj)
         case 2:
             {
                 cout << "INDIQUE EL NUEVO MODELO DE PRENDA: ";
-                modelo = SeleccionDeModelo();
+                cin.ignore();
+                getline(cin, modelo);
+                fflush(stdin);
                 obj.setModelo(modelo);
                 cout << endl;
                 break;
@@ -432,10 +402,10 @@ void PrendaManager :: ModificacionDePrenda(Prenda &obj)
         default:
               if(opcion != 0){
                 cout << "OPCION INCORRECTA" << endl;
-                if(cin.fail())
+                if(cin.fail()) // booleano que detecta si hay un error en la entrada
                 {
-                cin.clear();
-                cin.ignore();
+                cin.clear(); // limpia la entrada
+                cin.ignore(); //ignora el caracter erroneo
                 }
                 }
             break;
@@ -515,14 +485,18 @@ void PrendaManager::SubmenuModificarPrenda()
 
                     _prenda = ObjArchivoPrenDa.LeerPrenda(x);
 
-                    if (_prenda.getCodigo() == seleccion && _prenda.getEstadoDePrenda()){// Una vez encontrada modifico y guardo en el archivo
+                    if(_prenda.getEstadoDePrenda())
+                    {
+                        if (_prenda.getCodigo() == seleccion){// Una vez encontrada modifico y guardo en el archivo
 
-                        ModificacionDePrenda(_prenda);
-                        ObjArchivoPrenDa.SobreescribirArchivoPrenda(pos, _prenda);
+                            ModificacionDePrenda(_prenda);
+                            ObjArchivoPrenDa.SobreescribirArchivoPrenda(pos, _prenda);
+                        }
                     }else
                     {
-                        cout << "CODIGO NO DISPONIBLE." << endl;
+                        cout << "CODIGO NO DISPONIBLE" << endl;
                         system("pause");
+                        system("cls");
                         break;
                     }
                 }

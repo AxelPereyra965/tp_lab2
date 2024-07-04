@@ -9,11 +9,11 @@ void SetColor(int color) {
     SetConsoleTextAttribute(hConsole, color);
 }
 //prueba
-int main()
-{
+int main() {
     SetColor(10);
     int opcion;
-    while (true){
+
+    do {
         system("cls");
         cout << "     MENU PRINCIPAL" << endl;
         cout << "------------------------" << endl;
@@ -28,41 +28,47 @@ int main()
         cout << endl;
         cout << "0)       SALIR" << endl;
 
-        cin >> opcion;
-
-        switch(opcion){
-            case 1:
-                {
-                    Menu1();
-                }
-                break;
-            case 2:
-                {
-                    Menu2();
-                }
-                break;
-            case 3:
-                {
-                    Menu3();
-                }
-                break;
-            case 0:
-                {
-                    return 0;
-                }
-                break;
-            default:
-                cout << "OPCION INCORRECTA" << endl;
-                if(cin.fail())
-                {
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                    cout <<endl<< "DEBES TOCAR CUALQUIER TECLA PARA VOLVER E INTENTARLO DE NUEVO" << endl;
-                    //system("pause");
-                }
-                system("pause");
-            break;
+        while (!(cin >> opcion)) { //por si se ingresa una letra
+            cin.clear(); // Limpia el error
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignora el input incorrecto
+            system("cls");
+            cout << "por favor ingrese solo numeros...."<<endl;
+            system("pause");
+            system("cls");
+             cout << "     MENU PRINCIPAL" << endl;
+             cout << "------------------------" << endl;
+             cout << endl;
+             cout << "1)     PRENDA" << endl;
+             cout << endl;
+             cout << "2)    INVENTARIO" << endl;
+             cout << endl;
+             cout << "3)    ESTADISTICAS" << endl;
+             cout << endl;
+             cout << "------------------------" << endl;
+             cout << endl;
+             cout << "0)       SALIR" << endl;
         }
 
-    }
+        switch (opcion) {
+            case 1:
+                Menu1();
+                break;
+            case 2:
+                Menu2();
+                break;
+            case 3:
+                Menu3();
+                break;
+            case 0:
+                return 0;
+            default:
+                cout << "OPCION INCORRECTA" << endl;
+                system("pause");
+                break;
+        }
+
+    } while (true);
+
+    return 0;
 }
+

@@ -193,14 +193,15 @@ void Menu3()
                 }
                 break;
             default:
+                system("cls");
                     cout << "OPCION INCORRECTA. INDIQUE NUEVAMENTE ALGUNA DE LAS OPCIONES." << endl;
-                    system("pause");
-                    system("cls");
+                    //system("pause");
+
                 if(cin.fail())
                 {
                     cin.clear();
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                    cout << "DEBES TOCAR CUALQUIER TECLA PARA VOLVER E INTENTARLO DE NUEVO" << endl;
+                    cout <<endl<< "DEBES TOCAR CUALQUIER TECLA PARA VOLVER E INTENTARLO DE NUEVO" << endl;
                     system("pause");
                 }
                 break;

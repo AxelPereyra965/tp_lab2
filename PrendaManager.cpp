@@ -143,169 +143,184 @@ void PrendaManager::CargarPrenda() {
     bool Encontro = false;
     int Cantidad_Registros = ObjArchivoPrenDa.ContarRegistrosPrenda();
 
-    system("cls");
-    cout << "BIENVENIDO! ESTA USTED POR CARGAR UNA PRENDA" << endl;
-    cout << "----------------------------------------------" << endl;
-    cout << "1 - CARGAR PRENDA EXISTENTE" << endl;
-    cout << endl;
-    cout << "2 - CARGAR PRENDA NUEVA" << endl;
-    cout << endl;
-    cout << "0 - MENU ANTERIOR" << endl;
-    cout << "----------------------------------------------" << endl;
-    cin >> OpcionCargar;
+    do
+    {
 
-    switch (OpcionCargar) {
-        case 1:
-                if(Cantidad_Registros > 0)
-                {
-                    system("cls");
-                    for(int x = 0 ; x < Cantidad_Registros ; x ++)
+        system("cls");
+        cout << "BIENVENIDO! ESTA USTED POR CARGAR UNA PRENDA" << endl;
+        cout << "----------------------------------------------" << endl;
+        cout << "1 - CARGAR PRENDA EXISTENTE" << endl;
+        cout << endl;
+        cout << "2 - CARGAR PRENDA NUEVA" << endl;
+        cout << endl;
+        cout << "0 - MENU ANTERIOR" << endl;
+        cout << "----------------------------------------------" << endl;
+
+        while (!(cin >> OpcionCargar)) { //por si se ingresa una letra
+            cin.clear(); // Limpia el error
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignora el input incorrecto
+            system("cls");
+            cout << "por favor ingrese solo numeros...."<<endl;
+            system("pause");
+        system("cls");
+            cout << "BIENVENIDO! ESTA USTED POR CARGAR UNA PRENDA" << endl;
+            cout << "----------------------------------------------" << endl;
+            cout << "1 - CARGAR PRENDA EXISTENTE" << endl;
+            cout << endl;
+            cout << "2 - CARGAR PRENDA NUEVA" << endl;
+            cout << endl;
+            cout << "0 - MENU ANTERIOR" << endl;
+            cout << "----------------------------------------------" << endl;
+        }
+
+        switch (OpcionCargar) {
+            case 1:
+                    if(Cantidad_Registros > 0)
                     {
-                        pren = ObjArchivoPrenDa.LeerPrenda(x);
-                        cout << "=================================================" << endl;
-                        MostrarPrenda(pren);
-                        cout << "=================================================" << endl;
-                    }
-
-                    cout << "SELECCIONE EL CODIGO DE LA PRENDA A STOCKEAR: " << endl;
-                    cin >> Codigo;
-                    system("cls");
-
-                    for(int x = 0 ; x < Cantidad_Registros ; x++)
-                    {
-                        pren = ObjArchivoPrenDa.LeerPrenda(x);
-
-                        if(pren.getCodigo()==Codigo)
+                        system("cls");
+                        for(int x = 0 ; x < Cantidad_Registros ; x ++)
                         {
-                            pos =ObjArchivoPrenDa.BuscarCodigoPrenda(pren.getCodigo());
-                            Encontro = true;
-                            cout << "INDIQUE LA CANTIDAD CON LA QUE SE VA A STOCKEAR: ";
-                            cin >> Stock;
-                            cout << endl;
-                            pren.setCantidad(pren.getCantidad() + Stock);
-                            if(pren.getEstadoDePrenda() == false || pren.getCantidad() > 0)
+                            pren = ObjArchivoPrenDa.LeerPrenda(x);
+                            cout << "=================================================" << endl;
+                            MostrarPrenda(pren);
+                            cout << "=================================================" << endl;
+                        }
+
+                        cout << "SELECCIONE EL CODIGO DE LA PRENDA A STOCKEAR: " << endl;
+                        cin >> Codigo;
+                        system("cls");
+
+                        for(int x = 0 ; x < Cantidad_Registros ; x++)
+                        {
+                            pren = ObjArchivoPrenDa.LeerPrenda(x);
+
+                            if(pren.getCodigo()==Codigo)
                             {
-                                pren.setEstadoDePrenda(true);
+                                pos =ObjArchivoPrenDa.BuscarCodigoPrenda(pren.getCodigo());
+                                Encontro = true;
+                                cout << "INDIQUE LA CANTIDAD CON LA QUE SE VA A STOCKEAR: ";
+                                cin >> Stock;
+                                cout << endl;
+                                pren.setCantidad(pren.getCantidad() + Stock);
+                                if(pren.getEstadoDePrenda() == false || pren.getCantidad() > 0)
+                                {
+                                    pren.setEstadoDePrenda(true);
+                                }
+                                ObjArchivoPrenDa.SobreescribirArchivoPrenda(pos,pren);
+                                system("cls");
+                                cout << "- STOCK ACTUALIZADO DE " << pren.getNombrePrenda() <<" -" << endl;
+                                system("pause");
                             }
-                            ObjArchivoPrenDa.SobreescribirArchivoPrenda(pos,pren);
-                            system("cls");
-                            cout << "- STOCK ACTUALIZADO DE " << pren.getNombrePrenda() <<" -" << endl;
+                        }
+                        if(Encontro == false)
+                        {
+                            cout << "PRENDA NO ENCONTRADA" << endl;
                             system("pause");
                         }
-                    }
-                    if(Encontro == false)
+                        break;
+                    }else
                     {
-                        cout << "PRENDA NO ENCONTRADA" << endl;
+                        cout << "NO EXISTEN PRENDAS REGISTRADAS" << endl;
                         system("pause");
+                        break;
                     }
-                    break;
-                }else
-                {
-                    cout << "NO EXISTEN PRENDAS REGISTRADAS" << endl;
-                    system("pause");
-                    break;
-                }
-        case 2:
-            system("cls");
-            cod_prenda = ObjArchivoPrenDa.NuevoCodigoPrenda();
-            pren.setCodigoPrenda(cod_prenda);
-            cout << "CODIGO DE LA PRENDA: " << cod_prenda << endl;
-            cout << endl;
-            cout << "=============================================================="<< endl;
-            cout << endl;
-            cout << "NOMBRE DE PRENDA: ";
-            cin.ignore();
-            getline(cin, nombre_prenda);
-            fflush(stdin);
-            pren.setNombrePrenda(nombre_prenda);
-            cout << endl;
-            cout << "=============================================================="<< endl;
-            cout << endl;
-            cout << "MODELO DE PRENDA: ";
-            cin.ignore();
-            getline(cin, modelo);
-            fflush(stdin);
-            pren.setModelo(modelo);
-            cout << endl;
-            cout << "=============================================================="<< endl;
-            cout << endl;
-            cout << "TALLE DE PRENDA: ";
-            talle = SeleccionDeTalle();
-            pren.setTalle(talle);
-            cout << endl;
-            cout << "=============================================================="<< endl;
-            cout << endl;
-            cout << "COLOR DE PRENDA: ";
-            color = SeleccionDeColor();
-            pren.setColor(color);
-            cout << endl;
-            cout << "=============================================================="<< endl;
-            cout << endl;
-            cout << "PRECIO A VENDER PARA " << nombre_prenda << " POR UNIDAD: $";
-            cin >> precio_unitario;
-            while(precio_unitario<0 || cin.fail()){
-                if(cin.fail())
-                {
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                }
-                cout << "DEBE INGRESAR UN NUMERO VALIDO"<<endl<<endl;
-                system("pause");
+            case 2:
                 system("cls");
+                cod_prenda = ObjArchivoPrenDa.NuevoCodigoPrenda();
+                pren.setCodigoPrenda(cod_prenda);
+                cout << "CODIGO DE LA PRENDA: " << cod_prenda << endl;
+                cout << endl;
+                cout << "=============================================================="<< endl;
+                cout << endl;
+                cout << "NOMBRE DE PRENDA: ";
+                cin.ignore();
+                getline(cin, nombre_prenda);
+                fflush(stdin);
+                pren.setNombrePrenda(nombre_prenda);
+                cout << endl;
+                cout << "=============================================================="<< endl;
+                cout << endl;
+                cout << "MODELO DE PRENDA: ";
+                cin.ignore();
+                getline(cin, modelo);
+                fflush(stdin);
+                pren.setModelo(modelo);
+                cout << endl;
+                cout << "=============================================================="<< endl;
+                cout << endl;
+                cout << "TALLE DE PRENDA: ";
+                talle = SeleccionDeTalle();
+                pren.setTalle(talle);
+                cout << endl;
+                cout << "=============================================================="<< endl;
+                cout << endl;
+                cout << "COLOR DE PRENDA: ";
+                color = SeleccionDeColor();
+                pren.setColor(color);
+                cout << endl;
+                cout << "=============================================================="<< endl;
+                cout << endl;
                 cout << "PRECIO A VENDER PARA " << nombre_prenda << " POR UNIDAD: $";
                 cin >> precio_unitario;
-            }
-            pren.setPrecioVenta(precio_unitario);
-            cout << endl;
-            cout << "=============================================================="<< endl;
-            cout << endl;
-            cout << "CANTIDAD DE " << nombre_prenda << " QUE USTED ENCARGO: ";
-            cin >> cantidad;
-            while(cantidad<0 || cin.fail()){
-                if(cin.fail())
-                {
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                while(precio_unitario<0 || cin.fail()){
+                    if(cin.fail())
+                    {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
+                    cout << "DEBE INGRESAR UN NUMERO VALIDO"<<endl<<endl;
+                    system("pause");
+                    system("cls");
+                    cout << "PRECIO A VENDER PARA " << nombre_prenda << " POR UNIDAD: $";
+                    cin >> precio_unitario;
                 }
-                cout << "DEBE INGRESAR UN NUMERO VALIDO"<<endl<<endl;
-                system("pause");
-                system("cls");
+                pren.setPrecioVenta(precio_unitario);
+                cout << endl;
+                cout << "=============================================================="<< endl;
+                cout << endl;
                 cout << "CANTIDAD DE " << nombre_prenda << " QUE USTED ENCARGO: ";
                 cin >> cantidad;
-            }
-            pren.setCantidad(cantidad);
-            cout << endl;
-            cout << "=============================================================="<< endl;
-            cout << endl;
-
-                pren.setEstadoDePrenda(true);
-
-           system("cls");
-           if(ObjArchivoPrenDa.GuardarPrenda(pren))
-           {
-              cout << "PRENDA SUBIDA CORRECTAMENTE." << endl;
-              system("pause");
-           }else
-           {
-              cout << "ALGO SALIO MAL..." << endl;
-              system("pause");
-           }
-            break;
-        case 0:
-            {
-                return;
-                break;
-            }
-        default:
-                cout << "OPCION INCORRECTA" << endl;
-                if(cin.fail())
-                {
-                cin.clear();
-                cin.ignore();
+                while(cantidad<0 || cin.fail()){
+                    if(cin.fail())
+                    {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
+                    cout << "DEBE INGRESAR UN NUMERO VALIDO"<<endl<<endl;
+                    system("pause");
+                    system("cls");
+                    cout << "CANTIDAD DE " << nombre_prenda << " QUE USTED ENCARGO: ";
+                    cin >> cantidad;
                 }
-                system("pause");
+                pren.setCantidad(cantidad);
+                cout << endl;
+                cout << "=============================================================="<< endl;
+                cout << endl;
+
+                    pren.setEstadoDePrenda(true);
+
+               system("cls");
+               if(ObjArchivoPrenDa.GuardarPrenda(pren))
+               {
+                  cout << "PRENDA SUBIDA CORRECTAMENTE." << endl;
+                  system("pause");
+               }else
+               {
+                  cout << "ALGO SALIO MAL..." << endl;
+                  system("pause");
+               }
                 break;
-    }
+            case 0:
+                {
+                    return;
+                    break;
+                }
+            default:
+                    cout << "OPCION INCORRECTA" << endl;
+                    system("pause");
+                    system("cls");
+        }
+    }while(true);
 }
 
 void PrendaManager :: ModificacionDePrenda(Prenda &obj)
@@ -491,6 +506,7 @@ void PrendaManager::SubmenuModificarPrenda()
 
                             ModificacionDePrenda(_prenda);
                             ObjArchivoPrenDa.SobreescribirArchivoPrenda(pos, _prenda);
+                            break;
                         }
                     }else
                     {

@@ -20,37 +20,48 @@ string SeleccionDeModelo()
 {
     int selector;
     string modelo;
+    bool Error = false;
 
-    cout << "SELECCIONE EL MODELO DE PRENDA" << endl;
-    cout << "----------------------------------------------" << endl;
-    cout << "1 -    AJUSTADO" << endl;
-    cout << endl;
-    cout << "2 -     OVERSIZE" << endl;
-    cout << endl;
-    cout << "3 -     REGULAR" << endl;
-    cout << "----------------------------------------------" << endl;
-    cin >> selector;
-    switch(selector)
+    do
     {
-    case 1:
-        modelo = "AJUSTADO";
-        break;
-    case 2:
-        modelo = "OVERSIZE";
-        break;
-    case 3:
-        modelo = "REGULAR";
-        break;
-    default:
-        cout << "OPCION INCORRECTA" << endl;
-        break;
-    }
-    if(cin.fail())
-    {
-        cin.clear();
-        cin.ignore();
-        cout << "INGRESO NO COINCIDE CON LO ESTRUCTURADO. INMINENTE VUELTA AL MENU PRINCIPAL." << endl;
-    }
+
+        cout << "SELECCIONE EL MODELO DE PRENDA" << endl;
+        cout << "----------------------------------------------" << endl;
+        cout << "1 -    AJUSTADO" << endl;
+        cout << endl;
+        cout << "2 -     OVERSIZE" << endl;
+        cout << endl;
+        cout << "3 -     REGULAR" << endl;
+        cout << "----------------------------------------------" << endl;
+        cin >> selector;
+        switch(selector)
+        {
+        case 1:
+            modelo = "AJUSTADO";
+            Error = true;
+            break;
+        case 2:
+            modelo = "OVERSIZE";
+            Error = true;
+            break;
+        case 3:
+            modelo = "REGULAR";
+            Error = true;
+            break;
+        default:
+            cout << "OPCION INCORRECTA. INDIQUE NUEVAMENTE ALGUNA DE LAS OPCIONES." << endl;
+            system("pause");
+            system("cls");
+            if(cin.fail())
+            {
+                cin.clear();
+                cin.ignore();
+            }
+            break;
+        }
+
+
+    }while(Error != true);
     return modelo;
 }
 
@@ -58,47 +69,59 @@ string SeleccionDeTalle()
 {
     int selector;
     string talle;
+    bool Error = false;
 
-    cout << "SELECCIONE EL TIPO DE TALLE" << endl;
-    cout << "----------------------------------------------" << endl;
-    cout << "1 -    S (Small)" << endl;
-    cout << endl;
-    cout << "2 -    M (Medium)" << endl;
-    cout << endl;
-    cout << "3 -    L (Large)" << endl;
-    cout << endl;
-    cout << "4 -    XL (Extra Large)" << endl;
-    cout << endl;
-    cout << "5 -    XXL (Double Extra Large)" << endl;
-    cout << "----------------------------------------------" << endl;
-    cin >> selector;
-    switch(selector)
+    do
     {
-    case 1:
-        talle = "S (Small)";
-        break;
-    case 2:
-        talle = "M (Medium)";
-        break;
-    case 3:
-        talle = "L (Large)";
-        break;
-    case 4:
-        talle = "XL (Extra Large)";
-        break;
-    case 5:
-        talle = "XXL (Double Extra Large)";
-        break;
-    default:
-        cout << "OPCION INCORRECTA" << endl;
-        break;
-    }
-    if(cin.fail())
-    {
-        cin.clear();
-        cin.ignore();
-        cout << "INGRESO NO COINCIDE CON LO ESTRUCTURADO. INMINENTE VUELTA AL MENU PRINCIPAL." << endl;
-    }
+
+        cout << "SELECCIONE EL TIPO DE TALLE" << endl;
+        cout << "----------------------------------------------" << endl;
+        cout << "1 -    S (Small)" << endl;
+        cout << endl;
+        cout << "2 -    M (Medium)" << endl;
+        cout << endl;
+        cout << "3 -    L (Large)" << endl;
+        cout << endl;
+        cout << "4 -    XL (Extra Large)" << endl;
+        cout << endl;
+        cout << "5 -    XXL (Double Extra Large)" << endl;
+        cout << "----------------------------------------------" << endl;
+        cin >> selector;
+        switch(selector)
+        {
+        case 1:
+            talle = "S (Small)";
+            Error = true;
+            break;
+        case 2:
+            talle = "M (Medium)";
+            Error = true;
+            break;
+        case 3:
+            talle = "L (Large)";
+            Error = true;
+            break;
+        case 4:
+            talle = "XL (Extra Large)";
+            Error = true;
+            break;
+        case 5:
+            talle = "XXL (Double Extra Large)";
+            Error = true;
+            break;
+        default:
+            cout << "OPCION INCORRECTA. INDIQUE NUEVAMENTE ALGUNA DE LAS OPCIONES." << endl;
+            system("pause");
+            system("cls");
+            if(cin.fail())
+            {
+                cin.clear();
+                cin.ignore();
+            }
+            break;
+        }
+    }while(Error != true);
+
     return talle;
 }
 
@@ -106,47 +129,53 @@ string  SeleccionDeColor()
 {
     int selector;
     string color;
+    bool Error = false;
 
-    cout << "SELECCIONE EL COLOR DE LA PRENDA" << endl;
-    cout << "----------------------------------------------" << endl;
-    cout << "1 -    NEGRO" << endl;
-    cout << endl;
-    cout << "2 -    GRIS" << endl;
-    cout << endl;
-    cout << "3 -    BEIGE" << endl;
-    cout << endl;
-    cout << "4 -    BLANCO" << endl;
-    cout << "----------------------------------------------" << endl;
-    cin >> selector;
-    switch(selector)
+    do
     {
-    case 1:
-        color = "NEGRO";
-        break;
-    case 2:
-        color = "GRIS";
-        break;
-    case 3:
-        color = "BEIGE";
-        break;
-    case 4:
-        color = "BLANCO";
-        break;
-    default:
-        cout << "OPCION INCORRECTA" << endl;
-        if(cin.fail())
+
+        cout << "SELECCIONE EL COLOR DE LA PRENDA" << endl;
+        cout << "----------------------------------------------" << endl;
+        cout << "1 -    NEGRO" << endl;
+        cout << endl;
+        cout << "2 -    GRIS" << endl;
+        cout << endl;
+        cout << "3 -    BEIGE" << endl;
+        cout << endl;
+        cout << "4 -    BLANCO" << endl;
+        cout << "----------------------------------------------" << endl;
+        cin >> selector;
+        switch(selector)
         {
-            cin.clear();
-            cin.ignore();
+        case 1:
+            color = "NEGRO";
+            Error = true;
+            break;
+        case 2:
+            color = "GRIS";
+            Error = true;
+            break;
+        case 3:
+            color = "BEIGE";
+            Error = true;
+            break;
+        case 4:
+            color = "BLANCO";
+            Error = true;
+            break;
+        default:
+            cout << "OPCION INCORRECTA. INDIQUE NUEVAMENTE ALGUNA DE LAS OPCIONES." << endl;
+            system("pause");
+            system("cls");
+            if(cin.fail())
+            {
+                cin.clear();
+                cin.ignore();
+            }
+            break;
         }
-        break;
-    }
-    if(cin.fail())
-    {
-        cin.clear();
-        cin.ignore();
-        cout << "INGRESO NO COINCIDE CON LO ESTRUCTURADO. INMINENTE VUELTA AL MENU PRINCIPAL." << endl;
-    }
+    }while(Error != true);
+
     return color;
 }
 
@@ -157,9 +186,8 @@ void PrendaManager::CargarPrenda() {
     Prenda pren;
     int cod_prenda, cantidad, OpcionCargar, Codigo, Stock, pos, comp1 = -1;
     string nombre_prenda, modelo, talle, color;
-    char string_casteado[30];
     float precio_unitario;
-    bool Encontro = false, AntiBug = false;
+    bool Encontro = false;
     int Cantidad_Registros = ObjArchivoPrenDa.ContarRegistrosPrenda();
 
     system("cls");
@@ -242,36 +270,18 @@ void PrendaManager::CargarPrenda() {
             cout << endl;
             cout << "MODELO DE PRENDA: ";
             modelo = SeleccionDeModelo();
-            strcpy(string_casteado, modelo.c_str());
-            comp1 = strcmp(string_casteado, "");
-            if(comp1 == 0)
-            {
-                AntiBug = true;
-            }
             pren.setModelo(modelo);
             cout << endl;
             cout << "=============================================================="<< endl;
             cout << endl;
             cout << "TALLE DE PRENDA: ";
             talle = SeleccionDeTalle();
-            strcpy(string_casteado, talle.c_str());
-            comp1 = strcmp(string_casteado, "");
-            if(comp1 == 0)
-            {
-                AntiBug = true;
-            }
             pren.setTalle(talle);
             cout << endl;
             cout << "=============================================================="<< endl;
             cout << endl;
             cout << "COLOR DE PRENDA: ";
             color = SeleccionDeColor();
-            strcpy(string_casteado, color.c_str());
-            comp1 = strcmp(string_casteado, "");
-            if(comp1 == 0)
-            {
-                AntiBug = true;
-            }
             pren.setColor(color);
             cout << endl;
             cout << "=============================================================="<< endl;
@@ -299,16 +309,10 @@ void PrendaManager::CargarPrenda() {
             cout << "=============================================================="<< endl;
             cout << endl;
 
-            if(!AntiBug)
-            {
                 pren.setEstadoDePrenda(true);
-            }else
-            {
-                pren.setEstadoDePrenda(false);
-            }
 
            system("cls");
-           if(ObjArchivoPrenDa.GuardarPrenda(pren) && (!AntiBug))
+           if(ObjArchivoPrenDa.GuardarPrenda(pren))
            {
               cout << "PRENDA SUBIDA CORRECTAMENTE." << endl;
               system("pause");
@@ -325,6 +329,11 @@ void PrendaManager::CargarPrenda() {
             }
         default:
                 cout << "OPCION INCORRECTA" << endl;
+                if(cin.fail())
+                {
+                cin.clear();
+                cin.ignore();
+                }
                 system("pause");
                 break;
     }
@@ -418,15 +427,15 @@ void PrendaManager :: ModificacionDePrenda(Prenda &obj)
         default:
               if(opcion != 0){
                 cout << "OPCION INCORRECTA" << endl;
+                if(cin.fail())
+                {
+                cin.clear();
+                cin.ignore();
+                }
                 }
             break;
         }
-        if(cin.fail())
-        {
-            cin.clear();
-            cin.ignore();
-            cout << "INGRESO NO COINCIDE CON LO ESTRUCTURADO. INMINENTE VUELTA AL MENU PRINCIPAL." << endl;
-        }
+
         system("pause");
         }while(opcion != 0);
 }
@@ -489,6 +498,8 @@ void PrendaManager::SubmenuModificarPrenda()
         SubmenuInventario();
         cout << endl;
         cout << "(INGRESE '0' EN CASO DE QUERER VOLVER AL MENU PRINCIPAL)" << endl;
+        cout << endl;
+        cout << "OPCION: ";
         cin >> seleccion;
         while (seleccion != 0){
             system("cls");
@@ -499,16 +510,29 @@ void PrendaManager::SubmenuModificarPrenda()
 
                     _prenda = ObjArchivoPrenDa.LeerPrenda(x);
 
-                    if (_prenda.getCodigo() == seleccion){// Una vez encontrada modifico y guardo en el archivo
+                    if (_prenda.getCodigo() == seleccion && _prenda.getEstadoDePrenda()){// Una vez encontrada modifico y guardo en el archivo
 
                         ModificacionDePrenda(_prenda);
                         ObjArchivoPrenDa.SobreescribirArchivoPrenda(pos, _prenda);
+                    }else
+                    {
+                        cout << "CODIGO NO DISPONIBLE." << endl;
+                        system("pause");
+                        break;
                     }
                 }
                 break; // Salir del bucle una vez realizada la modificacion
             }else{
-                cout << "Prenda no encontrada. Por favor, ingrese un codigo de prenda valido: " << endl;
+                cout << "PRENDA NO ENCONTRADA. POR FAVOR, INGRESE UN CODIGO DE PRENDA VALIDO: " << endl;
+                if(cin.fail())
+                {
+                cin.clear();
+                cin.ignore();
+                }
+                system("pause");
                 SubmenuInventario();
+                cout << endl;
+                cout << "OPCION: ";
                 cin >> seleccion;
             }
         }
@@ -566,6 +590,11 @@ void PrendaManager :: SubmenuEliminarPrenda()
                 }
             }else
             {
+                if(cin.fail())
+                {
+                cin.clear();
+                cin.ignore();
+                }
                 return;
             }
         }while(Eliminar == false);

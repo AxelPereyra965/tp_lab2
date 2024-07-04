@@ -2,6 +2,7 @@
 #define MENUS_H_INCLUDED
 #include <iostream>
 #include <cstdlib>
+#include <limits>
 using namespace std;
 #include "PrendaManager.h"
 #include "VentaManager.h"
@@ -15,7 +16,8 @@ void Menu1()
 
 {
      int opcion;
-    while (true){
+   bool Error = false;
+    while (Error != true){
         system("cls");
         cout << "         PRENDAS" << endl;
         cout << "---------------------------" << endl;
@@ -38,22 +40,26 @@ void Menu1()
             case 1:
                 {
                     ManagerPrend.SubmenuCargarPrenda();
+                    Error = true;
                 }
                 break;
             case 2:
                 {
                     ManagerPrend.SubmenuModificarPrenda();
+                    Error = true;
                 }
                 break;
             case 3:
                 {
                     ManagerPrend.SubmenuEliminarPrenda();
+                    Error = true;
                     system("pause");
                 }
                 break;
             case 4:
                 {
                     ManagerVent.SubMenuCargarVenta();
+                    Error = true;
                     system("pause");
                 }
                 break;
@@ -63,14 +69,17 @@ void Menu1()
                 }
                 break;
             default:
+                 cout << "OPCION INCORRECTA. INDIQUE NUEVAMENTE ALGUNA DE LAS OPCIONES." << endl;
+                    system("pause");
+                    system("cls");
                 if(cin.fail())
                 {
-                cin.clear();
-                cin.ignore();
-                cout << "OPCION INCORRECTA" << endl;
-                system("pause");
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cout << "DEBES TOCAR CUALQUIER TECLA PARA VOLVER E INTENTARLO DE NUEVO" << endl;
+                    system("pause");
                 }
-            break;
+                break;
         }
 
     }
@@ -81,7 +90,8 @@ void Menu1()
 void Menu2()
 {
     int opcion;
-    while (true){
+    bool Error = false;
+    while (Error != true){
         system("cls");
         cout << "       INVENTARIO" << endl;
         cout << "--------------------------" << endl;
@@ -100,12 +110,14 @@ void Menu2()
             case 1:
                 {
                    ManagerPrend.SubmenuInventario();
+                   Error = true;
                    system("pause");
                 }
                 break;
             case 2:
                 {
                     ManagerPrend.SubmenuDetalleDePrenda();
+                    Error = true;
                     system("pause");
                 }
                 break;
@@ -115,14 +127,17 @@ void Menu2()
                 }
                 break;
             default:
+                 cout << "OPCION INCORRECTA. INDIQUE NUEVAMENTE ALGUNA DE LAS OPCIONES." << endl;
+                    system("pause");
+                    system("cls");
                 if(cin.fail())
                 {
-                cin.clear();
-                cin.ignore();
-                cout << "OPCION INCORRECTA" << endl;
-                system("pause");
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cout << "DEBES TOCAR CUALQUIER TECLA PARA VOLVER E INTENTARLO DE NUEVO" << endl;
+                    system("pause");
                 }
-            break;
+                break;
         }
 
     }
@@ -133,7 +148,8 @@ void Menu2()
 void Menu3()
 {
     int opcion;
-    while (true){
+    bool Error = false;
+    while (Error != true){
         system("cls");
         cout << "      ESTADISTICA" << endl;
         cout << "-------------------------" << endl;
@@ -153,18 +169,21 @@ void Menu3()
             case 1:
                 {
                     ManagerVent.SubMenuEstadisticaProductos();
+                    Error = true;
                     system("pause");
                 }
                 break;
             case 2:
                 {
                     ManagerVent.SubMenuHistorialDeVenta();
+                    Error = true;
                     system("pause");
                 }
                 break;
             case 3:
                 {
                     ManagerVent.SubMenuPorcentaDeInversion();
+                    Error = true;
                     system("pause");
                 }
                 break;
@@ -174,14 +193,17 @@ void Menu3()
                 }
                 break;
             default:
+                    cout << "OPCION INCORRECTA. INDIQUE NUEVAMENTE ALGUNA DE LAS OPCIONES." << endl;
+                    system("pause");
+                    system("cls");
                 if(cin.fail())
                 {
-                cin.clear();
-                cin.ignore();
-                cout << "OPCION INCORRECTA" << endl;
-                system("pause");
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cout << "DEBES TOCAR CUALQUIER TECLA PARA VOLVER E INTENTARLO DE NUEVO" << endl;
+                    system("pause");
                 }
-            break;
+                break;
         }
 
     }

@@ -247,7 +247,7 @@ void VentaManager::CalcularPorMes() {
             if(ganancia_neta<0){
                 ganancia_neta=0;
             }
-            int porcentaje_ganancia = (ganancia_neta / inversion) * 100;
+            int porcentaje_ganancia = ganancia_neta *100 / TotalGenerado ;
             if(porcentaje_ganancia>100){
                 porcentaje_ganancia=100;
             }

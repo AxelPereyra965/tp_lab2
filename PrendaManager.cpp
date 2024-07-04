@@ -1,5 +1,6 @@
 #include "PrendaManager.h"
 #include <iostream>
+#include <limits>
 using namespace std;
 
 /*
@@ -402,10 +403,12 @@ void PrendaManager :: ModificacionDePrenda(Prenda &obj)
             {
                 cout << "INDIQUE EL PRECIO NUEVO: $";
                 cin >> price;
-            while(price<0){
-                cout << "DEBE INGRESAR UN NUMERO VALIDO"<<endl<<endl;
-                cout << "INDIQUE EL PRECIO NUEVO: ";
-                cin >> price;
+            while(cin.fail() || price<0){
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cout << "DEBE INGRESAR UN NUMERO VALIDO"<<endl<<endl;
+                    cout << "INDIQUE EL PRECIO NUEVO: ";
+                    cin >> price;
                 }
             obj.setPrecioVenta(price);
             cout << endl;
@@ -415,10 +418,12 @@ void PrendaManager :: ModificacionDePrenda(Prenda &obj)
             {
                 cout << "INDIQUE EL NUEVO NUMERO DE STOCK: ";
                 cin >> cantidad;
-                while(cantidad<0){
-                cout << "DEBE INGRESAR UN NUMERO VALIDO"<<endl<<endl;
-                cout << "INDIQUE EL NUEVO NUMERO DE STOCK: ";
-                cin >> cantidad;
+                while(cin.fail() || cantidad<0){
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cout << "DEBE INGRESAR UN NUMERO VALIDO"<<endl<<endl;
+                    cout << "INDIQUE EL NUEVO NUMERO DE STOCK: ";
+                    cin >> cantidad;
                 }
                 obj.setCantidad(cantidad);
                 cout << endl;
@@ -561,8 +566,10 @@ void PrendaManager :: SubmenuEliminarPrenda()
             cin >> seleccion;
             cout << endl;
             system("cls");
-            if(seleccion != 0)
+            if(cin.fail()||seleccion != 0)
             {
+                cin.clear();
+                cin.ignore();
                 pos = ObjArchivoPrenDa.BuscarCodigoPrenda(seleccion);
                 if(pos != -2)
                 {

@@ -182,8 +182,9 @@ void VentaManager::CalcularPorMes() {
     // Sacar el total de precios de todas las ventas en el mes que indique el usuario
     if (cantidad_registros > 0) {
         do {
-            cout << endl;
-            cout << "Seleccione el mes: " << endl;
+            system("cls");
+            cout <<endl<< "Seleccione el mes: " << endl;
+            cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
             cout << "1=Enero 2=Febrero 3=Marzo 4=Abril 5=Mayo 6=Junio 7=Julio " << endl;
             cout << "8=Agosto 9=Septiembre 10=Octubre 11=Noviembre 12=Diciembre" << endl;
             cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
@@ -669,7 +670,7 @@ void VentaManager::SubMenuPorcentaDeInversion()
 
     system("cls");
     cout<<endl<<"Desea calcular su porcentaje por: "<<endl;
-    cout<< "1 = SOLO UN MES "<<endl;
+    cout<<" 1 = SOLO UN MES "<<endl;
     cout<< "                   "<<endl;
     cout<<" 2 = TODO EL ANIO "<<endl;
     cout<< "                   "<<endl;

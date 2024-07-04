@@ -16,8 +16,8 @@ void Menu1()
 
 {
      int opcion;
-   bool Error = false;
-    while (Error != true){
+
+    do{
         system("cls");
         cout << "         PRENDAS" << endl;
         cout << "---------------------------" << endl;
@@ -34,32 +34,49 @@ void Menu1()
         cout << endl;
         cout << "0)   MENU ANTERIOR" << endl;
 
-        cin >> opcion;
+        while (!(cin >> opcion)) { //por si se ingresa una letra
+            cin.clear(); // Limpia el error
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignora el input incorrecto
+            system("cls");
+            cout << "por favor ingrese solo numeros...."<<endl;
+            system("pause");
+            system("cls");
+            cout << "         PRENDAS" << endl;
+            cout << "---------------------------" << endl;
+            cout << endl;
+            cout << "1)    CARGAR PRENDA" << endl;
+            cout << endl;
+            cout << "2)   MODIFICAR PRENDA" << endl;
+            cout << endl;
+            cout << "3)   ELIMINAR PRENDA" << endl;
+            cout << endl;
+            cout << "4)    CARGAR VENTA" << endl;
+            cout << endl;
+            cout << "---------------------------" << endl;
+            cout << endl;
+            cout << "0)   MENU ANTERIOR" << endl;
+        }
 
         switch(opcion){
             case 1:
                 {
                     ManagerPrend.SubmenuCargarPrenda();
-                    Error = true;
                 }
                 break;
             case 2:
                 {
                     ManagerPrend.SubmenuModificarPrenda();
-                    Error = true;
                 }
                 break;
             case 3:
                 {
                     ManagerPrend.SubmenuEliminarPrenda();
-                    Error = true;
                     system("pause");
                 }
                 break;
             case 4:
                 {
                     ManagerVent.SubMenuCargarVenta();
-                    Error = true;
                     system("pause");
                 }
                 break;
@@ -72,17 +89,10 @@ void Menu1()
                  cout << "OPCION INCORRECTA. INDIQUE NUEVAMENTE ALGUNA DE LAS OPCIONES." << endl;
                     system("pause");
                     system("cls");
-                if(cin.fail())
-                {
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                    cout << "DEBES TOCAR CUALQUIER TECLA PARA VOLVER E INTENTARLO DE NUEVO" << endl;
-                    system("pause");
-                }
                 break;
         }
 
-    }
+    }while(true);
 }
 
 //          MENU DE INVENTARIO
@@ -90,8 +100,8 @@ void Menu1()
 void Menu2()
 {
     int opcion;
-    bool Error = false;
-    while (Error != true){
+
+    do{
         system("cls");
         cout << "       INVENTARIO" << endl;
         cout << "--------------------------" << endl;
@@ -104,20 +114,35 @@ void Menu2()
         cout << endl;
         cout << "0)    MENU ANTERIOR" << endl;
 
-        cin >> opcion;
+        while (!(cin >> opcion)) { //por si se ingresa una letra
+            cin.clear(); // Limpia el error
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignora el input incorrecto
+            system("cls");
+            cout << "por favor ingrese solo numeros...."<<endl;
+            system("pause");
+            system("cls");
+            cout << "       INVENTARIO" << endl;
+            cout << "--------------------------" << endl;
+            cout << endl;
+            cout << "1)    VER INVENTARIO" << endl;
+            cout << endl;
+            cout << "2)   DETALLES DE PRENDA" << endl;
+            cout << endl;
+            cout << "---------------------------" << endl;
+            cout << endl;
+            cout << "0)    MENU ANTERIOR" << endl;
+        }
 
         switch(opcion){
             case 1:
                 {
                    ManagerPrend.SubmenuInventario();
-                   Error = true;
                    system("pause");
                 }
                 break;
             case 2:
                 {
                     ManagerPrend.SubmenuDetalleDePrenda();
-                    Error = true;
                     system("pause");
                 }
                 break;
@@ -130,17 +155,10 @@ void Menu2()
                  cout << "OPCION INCORRECTA. INDIQUE NUEVAMENTE ALGUNA DE LAS OPCIONES." << endl;
                     system("pause");
                     system("cls");
-                if(cin.fail())
-                {
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                    cout << "DEBES TOCAR CUALQUIER TECLA PARA VOLVER E INTENTARLO DE NUEVO" << endl;
-                    system("pause");
-                }
                 break;
         }
 
-    }
+    }while(true);
 }
 
 //              MENU DE ESTADISTICAS
@@ -148,8 +166,8 @@ void Menu2()
 void Menu3()
 {
     int opcion;
-    bool Error = false;
-    while (Error != true){
+
+    do{
         system("cls");
         cout << "      ESTADISTICA" << endl;
         cout << "-------------------------" << endl;
@@ -164,26 +182,43 @@ void Menu3()
         cout << endl;
         cout << "0)    MENU ANTERIOR" << endl;
 
-        cin >> opcion;
+        while (!(cin >> opcion)) { //por si se ingresa una letra
+            cin.clear(); // Limpia el error
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignora el input incorrecto
+            system("cls");
+            cout << "por favor ingrese solo numeros...."<<endl;
+            system("pause");
+            system("cls");
+            cout << "      ESTADISTICA" << endl;
+            cout << "-------------------------" << endl;
+            cout << endl;
+            cout << "1)  VER PRODUCTOS MAS VENDIDOS" << endl;
+            cout << endl;
+            cout << "2)   HISTORIAL DE VENTA" << endl;
+            cout << endl;
+            cout << "3)  PORCENTAJE DE GANANCIAS POR MES" << endl;
+            cout << endl;
+            cout << "---------------------------" << endl;
+            cout << endl;
+            cout << "0)    MENU ANTERIOR" << endl;
+        }
+
         switch(opcion){
             case 1:
                 {
                     ManagerVent.SubMenuEstadisticaProductos();
-                    Error = true;
                     system("pause");
                 }
                 break;
             case 2:
                 {
                     ManagerVent.SubMenuHistorialDeVenta();
-                    Error = true;
                     system("pause");
                 }
                 break;
             case 3:
                 {
                     ManagerVent.SubMenuPorcentaDeInversion();
-                    Error = true;
                     system("pause");
                 }
                 break;
@@ -193,21 +228,14 @@ void Menu3()
                 }
                 break;
             default:
-                system("cls");
+                    system("cls");
                     cout << "OPCION INCORRECTA. INDIQUE NUEVAMENTE ALGUNA DE LAS OPCIONES." << endl;
-                    //system("pause");
-
-                if(cin.fail())
-                {
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                    cout <<endl<< "DEBES TOCAR CUALQUIER TECLA PARA VOLVER E INTENTARLO DE NUEVO" << endl;
                     system("pause");
-                }
+                    system("cls");
                 break;
         }
 
-    }
+    }while(true);
 }
 
 #endif // TALLER_H_INCLUDED

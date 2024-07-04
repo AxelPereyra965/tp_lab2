@@ -176,8 +176,8 @@ void VentaManager::CalcularPorMes() {
     Venta ven;
     int mes;
     bool igualdad = false;
-    float inversion;
-    float TotalGenerado = 0;
+    int inversion;
+    int TotalGenerado = 0;
 
     // Sacar el total de precios de todas las ventas en el mes que indique el usuario
     if (cantidad_registros > 0) {
@@ -233,7 +233,7 @@ void VentaManager::CalcularPorMes() {
             system("cls");
             cout << "Genial! Tu monto invertido es " << inversion << endl;
 
-            float ganancia_neta = TotalGenerado - inversion;
+            int ganancia_neta = TotalGenerado - inversion;
             if (ganancia_neta < 0) {
                 ganancia_neta = 0;
             }

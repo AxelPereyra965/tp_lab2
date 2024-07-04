@@ -307,6 +307,7 @@ void VentaManager::CalcularPorAnio() {
 }
 
 
+
 //////////////////////////////   DESARROLLO DE SUBMENUS   ///////////////////////////////////////////
 
 void VentaManager::SubMenuCargarVenta()

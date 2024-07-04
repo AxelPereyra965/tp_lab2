@@ -15,7 +15,7 @@ fflush(stdin) --> limpia el buffer de entrada una vez escrito/rellenado el dato 
                     que mas adelante provoque errores en la lectura del dato
 */
 
-//          FUNCIONES COMPLEMENTARIAS (LAS TRES DEVUELVEN UN STRING QUE POSTERIORMENTE LO CARGARA EN EL SET DEL METODO CARGARPRENDA)
+//FUNCIONES COMPLEMENTARIAS (LAS TRES DEVUELVEN UN STRING QUE POSTERIORMENTE LO CARGARA EN EL SET DEL METODO CARGARPRENDA)
 
 
 string SeleccionDeTalle()

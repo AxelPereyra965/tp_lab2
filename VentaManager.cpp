@@ -19,7 +19,7 @@ void VentaManager :: ListarVenta()
         int codigoVenta = ven.getCodigoVenta();
 
 
-        if (codigoVenta != codigoActual && SeparadorDeRemitos == false) //ACA SOLO SE MOSTRARA EL CODIGO DE VENTA 1
+        if (codigoVenta != codigoActual) //esto para que se muestre la primera vez de cada venta
         { //si es un nuevo grupo de venta
             cout << "==========================================" << endl;
             cout << "VENTA NRO " << codigoVenta << endl;
@@ -29,11 +29,10 @@ void VentaManager :: ListarVenta()
                  << ven.getVentaFecha().getAnio() << endl;
             cout << "------------------------------------------" << endl;
             codigoActual = codigoVenta;
-            SeparadorDeRemitos = true; //BANDERA SEPARADORA ACTIVADA
             cout << endl;
         }//si es de la misma venta imprime
 
-        for(int i = 0 ; i < Reg_Prendas ; i ++) //RECORRO TODAS LAS PRENDAS, Y MUESTRO SOLO LAS QUE SE VENDIERON
+        for(int i = 0 ; i < Reg_Prendas ; i ++) //RECORRO TODAS LAS PRENDAS, Y MUESTRO SOLO LAS QUE SE VENDIERON DE ESA VENTA
         {
             pren = _ArchiPrenda.LeerPrenda(i);
             if(pren.getCodigo() == ven.getCodigo()) //LAS RELACIONO POR SU CODIGO
@@ -45,8 +44,8 @@ void VentaManager :: ListarVenta()
                 cout << endl;
             }
         }
-        SeparadorDeRemitos = false; //RESETEO BANDERA
 
+        //pregunto si es la ultima venta o si la venta que sigue es distinta al codigo actual
         if (x == Reg_Ventas - 1 || _ArchVenta.LeerVenta(x + 1).getCodigoVenta() != codigoActual)
         {
             cout << "TOTAL VENDIDO: $" << totalVendido << endl;
@@ -217,7 +216,7 @@ void VentaManager::CalcularPorMes() {
         if (igualdad) { // Si hay ventas en ese mes
             do {
                 cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
-                cout << "Ingrese el monto invertido: ";
+                cout << "Ingrese el monto invertido: $";
                 cin >> inversion;
 
                 if (cin.fail() || inversion <= 0) {
@@ -256,10 +255,10 @@ void VentaManager::CalcularPorMes() {
 void VentaManager::CalcularPorAnio() {
     int cantidad_registros = _ArchVenta.ContarRegistrosVenta();
     Venta ven;
-    float inversion;
+    int inversion;
     int VecMeses[12] = {0};
-    float TotalGenerado = 0;
-    float VecTotalGenerado[12] = {0};
+    int TotalGenerado = 0;
+    int VecTotalGenerado[12] = {0};
 
     if (cantidad_registros > 0) {
         for (int x = 0; x < cantidad_registros; x++) {
@@ -290,8 +289,8 @@ void VentaManager::CalcularPorAnio() {
     cout <<endl;
 
     for (int i = 0; i < 12; ++i) {
-        float inversionMensual = inversion / 12;
-        float ganancia_neta = VecTotalGenerado[i] - inversionMensual;
+        int inversionMensual = inversion / 12;
+        int ganancia_neta = VecTotalGenerado[i] - inversionMensual;
         float PorcentajeGananciaMes = (ganancia_neta / inversionMensual) * 100;
 
         if (VecTotalGenerado[i] == 0) {
@@ -331,7 +330,7 @@ void VentaManager::SubMenuCargarVenta()
                 cout<<"(TOTAL ACUMULADO AL MOMENTO EN ESTA VENTA : $"<< totalVendido <<")" << endl;
                 cin >> CodigoSeleccionado;
                 cout << endl;
-            while(cin.fail() ){
+            while(cin.fail() ){ //para saber si se ingreso un caracter
                     cin.clear();
                     cin.ignore();
                     system("cls");
@@ -340,8 +339,8 @@ void VentaManager::SubMenuCargarVenta()
             }
 
 
-           while(CodigoSeleccionado<0 || CodigoSeleccionado>200 ){
-                cout<<"Por favor, Ingrese un numero valido"<<endl;
+           while(CodigoSeleccionado<0 || CodigoSeleccionado>200 ){// validar que sea un numero valido
+                cout<<"Por favor, Ingrese un numero valido"<<endl;//si entro mal....
                 system("pause");
                 system("cls");
                 _PrendManager.SubmenuInventario();
@@ -350,10 +349,6 @@ void VentaManager::SubMenuCargarVenta()
                 cin >> CodigoSeleccionado;
                 cout << endl;
             }
-            // Entramos al archivo de prenda y recorremos todas las prendas
-            // Filtramos por el código elegido
-            // seteamos el objeto que creamos
-            // lo subimos al archivo de venta
 
             bool prendaEncontrada = false;  // bandera para controlar el guardado de la venta
             //lo de prendaEncontrada es por q al modificar me duolicaba la prenda
@@ -365,7 +360,7 @@ void VentaManager::SubMenuCargarVenta()
                 _Prenda= _ArchiPrenda.LeerPrenda(x);
 
                 if (_Prenda.getCodigo() == CodigoSeleccionado && _Prenda.getEstadoDePrenda())
-                {
+                { //creamos el objeto para guardar en venta
                     _ven.setCodigoPrenda(_Prenda.getCodigo());
                     _ven.setNombrePrenda(_Prenda.getNombrePrenda());
                     _ven.setModelo(_Prenda.getModelo());
@@ -388,18 +383,18 @@ void VentaManager::SubMenuCargarVenta()
 
             }
 
-            if (prendaEncontrada) // Solo si encontramos la prenda actualizamos el stock
+            if (prendaEncontrada) // actualizamos el stock de la prenda que se vendio
             {
 
                 for (int x = 0; x < CantPrendas; x++)
                 {
                     _Prenda= _ArchiPrenda.LeerPrenda(x);
 
-                    if (_Prenda.getCodigo() == _ven.getCodigo()) // Corregimos aquí el código
+                    if (_Prenda.getCodigo() == _ven.getCodigo()) //si la prenda es la que se vendio
                     {
                         int pos = _ArchiPrenda.BuscarCodigoPrenda(x + 1);
 
-                        _Prenda.setCantidad(_Prenda.getCantidad() - cInicial);
+                        _Prenda.setCantidad(_Prenda.getCantidad() - cInicial); //seteamos la cantidad
 
                         if (_Prenda.getCantidad() <= 0)
                         {  // Si el stock queda en 0 le hacemos una baja lógica
@@ -465,7 +460,7 @@ void VentaManager::SubMenuEstadisticaProductos() {
                 system("cls");
                 cout << "Ingrese el mes (1-12): ";
                 cin >> mes;
-                while(cin.fail()||mes>12 ||mes<1 ){
+                while(cin.fail()||mes>12 ||mes<1 ){ //validacion para que se ingrese un mes correcto
                         cin.clear();
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     system("cls");
@@ -475,7 +470,7 @@ void VentaManager::SubMenuEstadisticaProductos() {
                 }
                 cout << "Ingrese el anio: ";
                 cin >> anio;
-                while(cin.fail()||anio<2024 || anio>2030 ){
+                while(cin.fail()||anio<2024 || anio>2030 ){//validacion para que se ingrese un anio correcto
                     cin.clear();
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     system("cls");

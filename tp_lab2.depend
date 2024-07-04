@@ -630,42 +630,40 @@
 1719442759 source:c:\users\usuario\desktop\carpetas progra\utn\apuntes primer año\segundo cuatrimestre\laboratorio 2\proyectolab\laboratorio2_proyecto\ventamanager.cpp
 	"VentaManager.h"
 
-1720110794 source:c:\users\aapan\downloads\laboratorio2_proyecto\fecha.cpp
+1720118066 source:c:\users\aapan\downloads\laboratorio2_proyecto\fecha.cpp
 	"Fecha.h"
 	<ctime>
 
-1720110794 c:\users\aapan\downloads\laboratorio2_proyecto\fecha.h
+1720118066 c:\users\aapan\downloads\laboratorio2_proyecto\fecha.h
 	<iostream>
 	<string>
 
-1720110794 source:c:\users\aapan\downloads\laboratorio2_proyecto\main.cpp
+1720118066 source:c:\users\aapan\downloads\laboratorio2_proyecto\main.cpp
 	<iostream>
 	<windows.h>
 	"Menus.h"
-	<windows.h>
-	"Menus.h"
 
-1720110794 c:\users\aapan\downloads\laboratorio2_proyecto\menus.h
+1720118066 c:\users\aapan\downloads\laboratorio2_proyecto\menus.h
 	<iostream>
 	<cstdlib>
 	<limits>
 	"PrendaManager.h"
 	"VentaManager.h"
 
-1720110794 c:\users\aapan\downloads\laboratorio2_proyecto\prendamanager.h
+1720118066 c:\users\aapan\downloads\laboratorio2_proyecto\prendamanager.h
 	"Prenda.h"
 	"PrendaArchivo.h"
 
-1720110794 c:\users\aapan\downloads\laboratorio2_proyecto\prenda.h
+1720118066 c:\users\aapan\downloads\laboratorio2_proyecto\prenda.h
 	<iostream>
 	<string>
 	<cstring>
 
-1720110794 c:\users\aapan\downloads\laboratorio2_proyecto\prendaarchivo.h
+1720118066 c:\users\aapan\downloads\laboratorio2_proyecto\prendaarchivo.h
 	"Prenda.h"
 	<iostream>
 
-1720110794 c:\users\aapan\downloads\laboratorio2_proyecto\ventamanager.h
+1720118066 c:\users\aapan\downloads\laboratorio2_proyecto\ventamanager.h
 	"VentaArchivo.h"
 	"PrendaManager.h"
 	"Venta.h"
@@ -673,40 +671,37 @@
 	"Prenda.h"
 	"Fecha.h"
 
-1720110794 c:\users\aapan\downloads\laboratorio2_proyecto\ventaarchivo.h
+1720118066 c:\users\aapan\downloads\laboratorio2_proyecto\ventaarchivo.h
 	"Venta.h"
 	<iostream>
 
-1720110794 c:\users\aapan\downloads\laboratorio2_proyecto\venta.h
+1720118066 c:\users\aapan\downloads\laboratorio2_proyecto\venta.h
 	"Fecha.h"
 	<string>
 	<cstring>
 
-1720110794 source:c:\users\aapan\downloads\laboratorio2_proyecto\prenda.cpp
+1720118066 source:c:\users\aapan\downloads\laboratorio2_proyecto\prenda.cpp
 	"Prenda.h"
 	<cstring>
 
-1720110794 source:c:\users\aapan\downloads\laboratorio2_proyecto\prendaarchivo.cpp
+1720118066 source:c:\users\aapan\downloads\laboratorio2_proyecto\prendaarchivo.cpp
 	"PrendaArchivo.h"
 	<iostream>
 
-1720110794 source:c:\users\aapan\downloads\laboratorio2_proyecto\prendamanager.cpp
+1720118066 source:c:\users\aapan\downloads\laboratorio2_proyecto\prendamanager.cpp
 	"PrendaManager.h"
 	<iostream>
 	<limits>
 
-1720110794 source:c:\users\aapan\downloads\laboratorio2_proyecto\venta.cpp
+1720118066 source:c:\users\aapan\downloads\laboratorio2_proyecto\venta.cpp
 	"Venta.h"
 	<cstring>
 
-1720110794 source:c:\users\aapan\downloads\laboratorio2_proyecto\ventaarchivo.cpp
+1720118066 source:c:\users\aapan\downloads\laboratorio2_proyecto\ventaarchivo.cpp
 	"VentaArchivo.h"
 	<iostream>
 
-1720110794 source:c:\users\aapan\downloads\laboratorio2_proyecto\ventamanager.cpp
-	<iostream>
-	<cstdlib>
-	<limits>
-	"PrendaManager.h"
+1720118364 source:c:\users\aapan\downloads\laboratorio2_proyecto\ventamanager.cpp
 	"VentaManager.h"
+	<limits>
 

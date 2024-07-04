@@ -253,8 +253,6 @@ void VentaManager::CalcularPorMes() {
     }
 }
 
-
-
 void VentaManager::CalcularPorAnio() {
     int cantidad_registros = _ArchVenta.ContarRegistrosVenta();
     Venta ven;
@@ -451,11 +449,11 @@ void VentaManager::SubMenuEstadisticaProductos() {
 
     char opcion[10];
     system("cls");
-    cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
+    cout << "---------------------------------" << endl;
     cout << "1 - Filtrar por mes y anio" << endl;
     cout << "                              " << endl;
     cout << "2 - Filtrar por anio" << endl;
-    cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
+    cout << "---------------------------------" << endl<<endl;
     cin >> opcion;
 
     switch (opcion[0]) {
@@ -551,13 +549,21 @@ void VentaManager::SubMenuEstadisticaProductos() {
 
             break;
         }
-        case 2: {
+        case '2': {
             int anio;
             bool ventasEncontradas = false;
 
             do { // el do while es para validar que el año sea valido
                 cout << "Ingrese el anio: ";
                 cin >> anio;
+                while(cin.fail()||anio<2024 || anio>2030 ){
+                    cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    system("cls");
+                    cout<< "Estas insertando un anio invalido "<<endl;
+                    cout<<"(--por favor, Ingrese un número entre el 2024 y 2030--)" <<endl;
+                    cin>> anio;
+                }
 
                 // Crear vector dinámico
                 Venta *vec = new Venta[CantVentas]; // pedimos memoria por la cantidad de ventas
@@ -630,6 +636,13 @@ void VentaManager::SubMenuEstadisticaProductos() {
         default:
             system("cls");
             cout << "Opcion no valida. Intente de nuevo." << endl;
+            if(cin.fail())
+                {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cout <<endl<< "DEBES TOCAR CUALQUIER TECLA PARA VOLVER E INTENTARLO DE NUEVO" << endl;
+                    system("pause");
+                }3
             break;
     }
 }

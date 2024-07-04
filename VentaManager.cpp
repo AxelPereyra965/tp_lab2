@@ -450,14 +450,18 @@ void VentaManager::SubMenuEstadisticaProductos() {
             do { // el do while es para validar que se encuentren fechas validas
                 cout << "Ingrese el mes (1-12): ";
                 cin >> mes;
-                while(mes>12 ||mes<1){
+                while(cin.fail()||mes>12 ||mes<1 ){
+                        cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     cout << "Debe ingresar un numero entre 1 al 12 "<<endl;
                     cout<< "(--ingrese nuevamente--)" <<endl;
                     cin>> mes;
                 }
                 cout << "Ingrese el anio: ";
                 cin >> anio;
-                while(anio<2024 || anio>2030 ){
+                while(cin.fail()||anio<2024 || anio>2030 ){
+                    cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     cout<< "Estas insertando un anio invalido "<<endl;
                     cout<<"(--por favor, Ingrese un número entre el 2024 y 2030--)" <<endl;
                     cin>> anio;
@@ -665,7 +669,11 @@ void VentaManager::SubMenuPorcentaDeInversion()
 
     system("cls");
     cout<<endl<<"Desea calcular su porcentaje por: "<<endl;
-    cout<< "1 = mes espesifico o 2 = todo el anio "<<endl;
+    cout<< "1 = SOLO UN MES "<<endl;
+    cout<< "                   "<<endl;
+    cout<<" 2 = TODO EL ANIO "<<endl;
+    cout<< "                   "<<endl;
+    cout<<" 0 = VOLVER ATRAS"<<endl;
     cin>>option;
     switch(option)
         {
